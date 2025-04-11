@@ -1,0 +1,156 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Runtime.InteropServices; 
+using QuanLyThuVienGUI.admin;
+using QuanLyThuVienBUS;
+
+namespace QuanLyThuVienGUI
+{
+    public partial class frmAdminMain : Form
+    {
+        // Đối tượng DangNhapBUS để kiểm tra tài khoản
+        public DangNhapBUS dangNhapBUS;
+
+        // Biến hỗ trợ kéo thả form
+        private bool dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
+
+        // Windows API để hỗ trợ kéo form
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        // Constructor nhận hoTen từ frmDangNhap
+        public frmAdminMain()
+        {
+            InitializeComponent();
+            LoadFormIntoPanel(new frmTrangChu());
+
+         
+            // Gắn sự kiện kéo thả cho thanh tiêu đề hoặc toàn bộ form
+            this.MouseDown += new MouseEventHandler(Form_MouseDown);
+            this.MouseMove += new MouseEventHandler(Form_MouseMove);
+            this.MouseUp += new MouseEventHandler(Form_MouseUp);
+
+            // Gắn sự kiện kéo thả cho panel tiêu đề
+            this.pn_ControlTab.MouseDown += new MouseEventHandler(Form_MouseDown);
+            this.pn_ControlTab.MouseMove += new MouseEventHandler(Form_MouseMove);
+            this.pn_ControlTab.MouseUp += new MouseEventHandler(Form_MouseUp);
+        }
+
+        private void Form_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            dragCursorPoint = Cursor.Position;
+            dragFormPoint = this.Location;
+        }
+
+        private void Form_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point diff = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new Size(diff));
+            }
+        }
+
+        private void Form_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmDangNhap dangNhap = new frmDangNhap();
+            dangNhap.ShowDialog();
+        }
+
+        private void LoadFormIntoPanel(Form form)
+        {
+            // Tạm thời ẩn panel và dừng layout
+            Pn_LoadFrm.SuspendLayout();
+            Pn_LoadFrm.Controls.Clear();  // Xóa form hiện tại trong panel
+
+            // Cấu hình form mới vào trong panel
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            Pn_LoadFrm.Controls.Add(form);
+
+            // Hiển thị form mới và tiếp tục layout
+            form.Show();
+            Pn_LoadFrm.ResumeLayout();
+        }
+
+        private void btnBookManagement_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmQuanLySach());
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmTrangChu());
+        }
+
+        private void btnReadersManagement_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmQuanLyDocGia());
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnFullScreen_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btnMinius_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnGenremanagement_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmQuanLyTheLoai());
+        }
+
+        private void frmAdminMain_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void btn_QLNhanVien_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmQuanLyNhanVien());
+        }
+
+        private void btn_QLThongKe_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmTrangChu());
+        }
+
+        private void btn_QLMuonTra_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmQuanLyMuonTra());
+        }
+    }
+}

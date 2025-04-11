@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace QuanLyThuVienDTO
+{
+    public class SachDTO
+    {
+        public int maSach { get; set; }
+        public string tenSach { get; set; }
+        public string tacGia { get; set; }
+        public int maTheLoai { get; set; }
+        public string nhaXuatBan { get; set; }
+        public DateTime namXuatBan { get; set; }
+        public int soLuong { get; set; }
+        public string hinhAnh { get; set; }
+        public string moTa { get; set; }
+        public int trangThai { get; set; }
+
+    }
+}
