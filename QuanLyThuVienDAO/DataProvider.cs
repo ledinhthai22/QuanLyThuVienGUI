@@ -10,7 +10,7 @@ namespace QuanLyThuVienDAO
 {
     public class DataProvider
     {
-        private string strconn = @"Data Source=LEDINHTHAI;Initial Catalog=QLThuVien;Integrated Security=True;TrustServerCertificate=True";
+        private string strconn = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=QLThuVien;Integrated Security=True;TrustServerCertificate=True";
         protected SqlConnection conn;
         public DataProvider()
         {
