@@ -101,6 +101,7 @@ namespace QuanLyThuVienDAO
             dp.Close();
             return n > 0;
         }
+        // Kiểm tra tồn tại sách trong cơ sở dữ liệu
         public bool kiemTraTonTai(SachDTO sachDTO)
         {
             string query = "SELECT * FROM Sach WHERE TenSach = @tenSach AND MaTheLoai = @maTheLoai";
