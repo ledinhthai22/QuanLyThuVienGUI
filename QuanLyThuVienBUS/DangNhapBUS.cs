@@ -27,5 +27,9 @@ namespace QuanLyThuVienBUS
         {
             return dangNhapDAO.getRole(dangNhapDTO);
         }
+        public string getNameUser(DangNhapDTO dangNhapDTO)
+        {
+            return dangNhapDAO.getNameUser(dangNhapDTO);
+        }
     }
 }

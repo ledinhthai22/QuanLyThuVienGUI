@@ -6,6 +6,8 @@ using System.IO;
 using System.Windows.Forms;
 using QuanLyThuVienBUS;
 using QuanLyThuVienDTO;
+using QuanLyThuVienGUI.admin;
+using QuanLyThuVienGUI.QuanLy;
 
 namespace QuanLyThuVienGUI
 {
@@ -25,64 +27,14 @@ namespace QuanLyThuVienGUI
         {
             taoCotDataGridView();
             loadSach(1);
-            loadComboBoxTheLoai();
-            loadComboboxTrangThai();
-            dtp_NamXB.CustomFormat = "dd/MM/yyyy";
-            
-
         }
 
-        private void btn_ChonHinh_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    string sourcePath = ofd.FileName;
-                    string fileName = Path.GetFileName(sourcePath);
-                    string targetFolder = Path.Combine(Application.StartupPath, "Images");
-                    Directory.CreateDirectory(targetFolder);
-                    string targetPath = Path.Combine(targetFolder, fileName);
-
-                    if (!File.Exists(targetPath))
-                    {
-                        File.Copy(sourcePath, targetPath);
-                    }
-
-                    tenFileAnh = fileName;
-                    pic_HinhAnhSach.Image = Image.FromFile(targetPath);
-                    pic_HinhAnhSach.SizeMode = PictureBoxSizeMode.Zoom;
-                }
-            }
-        }
+       
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            ganDuLieu();
-
-            if (!kiemTraDuLieuNhap())
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (kiemTraTonTai())
-            {
-                MessageBox.Show("Sách đã có trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (sachBUS.addSach(sachDTO))
-            {
-                MessageBox.Show("Thêm sách thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tuDongLamMoi();
-                loadSach(1);
-            }
-            else
-            {
-                MessageBox.Show("Thêm sách thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ThemSach thesach = new ThemSach();
+            thesach.ShowDialog();
         }
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
@@ -97,7 +49,7 @@ namespace QuanLyThuVienGUI
             {
                 MessageBox.Show("Xóa Thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadSach(1);
-                tuDongLamMoi();
+                
             }
             else
             {
@@ -106,7 +58,7 @@ namespace QuanLyThuVienGUI
         }
         private void btn_TaoMoi_Click(object sender, EventArgs e)
         {
-            tuDongLamMoi();
+            
             loadSach(1);
         }
 
@@ -128,133 +80,12 @@ namespace QuanLyThuVienGUI
             }
         }
 
-        private void loadComboBoxTheLoai()
-        {
-            cbo_MaTheLoai.DataSource = theLoaiBUS.getAllTheLoai();
-            cbo_MaTheLoai.DisplayMember = "TenTheLoai";
-            cbo_MaTheLoai.ValueMember = "MaTheLoai";
-        }
 
-        private void loadComboboxTrangThai()
-        {
-            cbo_TrangThai.DisplayMember = "Value";
-            cbo_TrangThai.ValueMember = "Key";
-            cbo_TrangThai.Items.Add(new KeyValuePair<int, string>(1, "Còn sách"));
-            cbo_TrangThai.Items.Add(new KeyValuePair<int, string>(0, "Đã mượn hết"));
-            cbo_TrangThai.SelectedIndex = 0;
-        }
-
-        private bool kiemTraDuLieuNhap()
-        {
-            return !(string.IsNullOrWhiteSpace(txt_TenSach.Text) ||
-                     string.IsNullOrWhiteSpace(txt_TacGia.Text) ||
-                     string.IsNullOrWhiteSpace(txt_NXB.Text) ||
-                     cbo_MaTheLoai.SelectedValue == null ||
-                     numSoLuong.Value == 0);
-        }
-
-        private void ganDuLieu()
-        {
-            sachDTO.tenSach = txt_TenSach.Text;
-            sachDTO.tacGia = txt_TacGia.Text;
-            sachDTO.namXuatBan = dtp_NamXB.Value;
-            sachDTO.maTheLoai = Convert.ToInt32(cbo_MaTheLoai.SelectedValue);
-            sachDTO.nhaXuatBan = txt_NXB.Text;
-            sachDTO.soLuong = Convert.ToInt32(numSoLuong.Value);
-            sachDTO.moTa = txt_MoTa.Text;
-            sachDTO.hinhAnh = tenFileAnh;
-        }
-
-        private bool kiemTraTonTai()
-        {
-            sachDTO.tenSach = txt_TenSach.Text;
-            int maSach = (int)dgv_DSSach.CurrentRow.Cells[0].Value;
-            return sachBUS.kiemTraTonTai(sachDTO);
-        }
-
-        private void tuDongLamMoi()
-        {
-            txt_TenSach.Clear();
-            txt_TacGia.Clear();
-            dtp_NamXB.MaxDate = DateTime.Now.AddYears(1);
-            dtp_NamXB.Value = DateTime.Now;
-            cbo_MaTheLoai.SelectedIndex = -1;
-            txt_NXB.Clear();
-            txt_MoTa.Clear();
-            numSoLuong.Value = 0;
-            pic_HinhAnhSach.Image = null;
-            tenFileAnh = "";
-            dgv_DSSach.ClearSelection();
-        }
-
-        private void dgv_DSSach_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.RowIndex >= dgv_DSSach.Rows.Count)
-                return;
-
-            DataGridViewRow row = dgv_DSSach.Rows[e.RowIndex];
-
-            if (row.IsNewRow)
-                return;
-
-            txt_TenSach.Text = row.Cells["TenSach"].Value.ToString();
-            txt_TacGia.Text = row.Cells["TacGia"].Value.ToString();
-
-            if (row.Cells["NamXuatBan"].Value != null && DateTime.TryParse(row.Cells["NamXuatBan"].Value.ToString(), out DateTime namXuatBan))
-            {
-                dtp_NamXB.Value = namXuatBan;
-            }
-            else
-            {
-                dtp_NamXB.CustomFormat = "dd/MM/yyyy";
-                dtp_NamXB.Value = DateTime.Now;
-            }
-
-            if (row.Cells["MaTheLoai"].Value != null)
-            {
-                cbo_MaTheLoai.SelectedValue = row.Cells["MaTheLoai"].Value.ToString();
-            }
-
-            txt_NXB.Text = row.Cells["NhaXuatBan"].Value.ToString();
-            numSoLuong.Value = Convert.ToInt32(row.Cells["SoLuong"].Value);
-            txt_MoTa.Text = row.Cells["MoTa"].Value.ToString();
-
-            if (row.Cells["HinhAnh"].Value != null)
-            {
-                string fileAnh = row.Cells["HinhAnh"].Value.ToString();
-                string path = Path.Combine(Application.StartupPath, "Images", fileAnh);
-
-                if (File.Exists(path))
-                {
-                    pic_HinhAnhSach.Image = Image.FromFile(path);
-                    pic_HinhAnhSach.SizeMode = PictureBoxSizeMode.Zoom;
-                }
-                else
-                {
-                    pic_HinhAnhSach.Image = null;
-                }
-            }
-            else
-            {
-                pic_HinhAnhSach.Image = null;
-            }
-        }
 
       
+      
 
-        private void cbo_TrangThai_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int selectedTrangThai = ((KeyValuePair<int, string>)cbo_TrangThai.SelectedItem).Key;
-            loadSach(selectedTrangThai); 
-            bool isActive = selectedTrangThai == 1;
-            bool isDeleted = selectedTrangThai == 0;
-
-            btn_Them.Enabled = !isDeleted;
-            btn_Xoa.Enabled = isActive;
-            btn_Sua.Enabled = isActive;
-            btn_KhoiPhuc.Enabled = isDeleted;
-        }
-
+      
         private void dgv_DSSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgv_DSSach.Columns[e.ColumnIndex].Name == "TrangThai")
@@ -350,5 +181,39 @@ namespace QuanLyThuVienGUI
             });
         }
 
+        private void pnframeInformation_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txt_TacGia_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_TenSach_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_NXB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_TenSach_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_TacGia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPublisher_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -32,11 +32,6 @@
             this.Pn_LoadFrm = new Guna.UI2.WinForms.Guna2Panel();
             this.lbl_Ten = new System.Windows.Forms.Label();
             this.pn_NavB = new System.Windows.Forms.Panel();
-            this.pn_ControlTab = new System.Windows.Forms.Panel();
-            this.lbl_Title = new System.Windows.Forms.Label();
-            this.btn_Max = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_Min = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_Close = new Guna.UI2.WinForms.Guna2Button();
             this.btn_QLMuonTra = new Guna.UI2.WinForms.Guna2Button();
             this.btn_QLNhanVien = new Guna.UI2.WinForms.Guna2Button();
             this.btn_QLDocGia = new Guna.UI2.WinForms.Guna2Button();
@@ -45,9 +40,14 @@
             this.btn_QLSach = new Guna.UI2.WinForms.Guna2Button();
             this.btn_TrangChu = new Guna.UI2.WinForms.Guna2Button();
             this.pic_Icon = new System.Windows.Forms.PictureBox();
+            this.pn_ControlTab = new System.Windows.Forms.Panel();
+            this.btn_Max = new Guna.UI2.WinForms.Guna2Button();
+            this.lbl_Title = new System.Windows.Forms.Label();
+            this.btn_Min = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_Close = new Guna.UI2.WinForms.Guna2Button();
             this.pn_NavB.SuspendLayout();
-            this.pn_ControlTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Icon)).BeginInit();
+            this.pn_ControlTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // Pn_LoadFrm
@@ -63,6 +63,7 @@
             this.Pn_LoadFrm.Name = "Pn_LoadFrm";
             this.Pn_LoadFrm.Size = new System.Drawing.Size(1185, 756);
             this.Pn_LoadFrm.TabIndex = 3;
+
             // 
             // lbl_Ten
             // 
@@ -75,6 +76,7 @@
             this.lbl_Ten.Size = new System.Drawing.Size(57, 23);
             this.lbl_Ten.TabIndex = 1;
             this.lbl_Ten.Text = "Name";
+
             // 
             // pn_NavB
             // 
@@ -90,97 +92,10 @@
             this.pn_NavB.Controls.Add(this.pic_Icon);
             this.pn_NavB.Dock = System.Windows.Forms.DockStyle.Left;
             this.pn_NavB.Location = new System.Drawing.Point(0, 0);
-            this.pn_NavB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pn_NavB.Margin = new System.Windows.Forms.Padding(4);
             this.pn_NavB.Name = "pn_NavB";
             this.pn_NavB.Size = new System.Drawing.Size(266, 782);
             this.pn_NavB.TabIndex = 1;
-            // 
-            // pn_ControlTab
-            // 
-            this.pn_ControlTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pn_ControlTab.BackColor = System.Drawing.Color.DodgerBlue;
-            this.pn_ControlTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pn_ControlTab.Controls.Add(this.btn_Max);
-            this.pn_ControlTab.Controls.Add(this.lbl_Title);
-            this.pn_ControlTab.Controls.Add(this.btn_Min);
-            this.pn_ControlTab.Controls.Add(this.btn_Close);
-            this.pn_ControlTab.Location = new System.Drawing.Point(0, 0);
-            this.pn_ControlTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pn_ControlTab.Name = "pn_ControlTab";
-            this.pn_ControlTab.Size = new System.Drawing.Size(1453, 28);
-            this.pn_ControlTab.TabIndex = 4;
-            // 
-            // lbl_Title
-            // 
-            this.lbl_Title.AutoSize = true;
-            this.lbl_Title.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(0, 2);
-            this.lbl_Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(311, 23);
-            this.lbl_Title.TabIndex = 11;
-            this.lbl_Title.Text = "HỆ THỐNG QUẢN LÝ THƯ VIỆN SÁCH";
-            // 
-            // btn_Max
-            // 
-            this.btn_Max.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Max.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Max.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Max.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Max.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Max.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_Max.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Max.FillColor = System.Drawing.Color.Transparent;
-            this.btn_Max.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_Max.ForeColor = System.Drawing.Color.White;
-            this.btn_Max.Image = global::QuanLyThuVienGUI.Properties.Resources.maximize_button_32px;
-            this.btn_Max.Location = new System.Drawing.Point(1381, -1);
-            this.btn_Max.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Max.Name = "btn_Max";
-            this.btn_Max.Size = new System.Drawing.Size(33, 28);
-            this.btn_Max.TabIndex = 12;
-            this.btn_Max.Click += new System.EventHandler(this.btnFullScreen_Click);
-            // 
-            // btn_Min
-            // 
-            this.btn_Min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Min.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Min.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Min.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Min.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Min.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_Min.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Min.FillColor = System.Drawing.Color.Transparent;
-            this.btn_Min.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_Min.ForeColor = System.Drawing.Color.White;
-            this.btn_Min.Image = global::QuanLyThuVienGUI.Properties.Resources.minus;
-            this.btn_Min.Location = new System.Drawing.Point(1345, 0);
-            this.btn_Min.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Min.Name = "btn_Min";
-            this.btn_Min.Size = new System.Drawing.Size(33, 28);
-            this.btn_Min.TabIndex = 10;
-            this.btn_Min.Click += new System.EventHandler(this.btnMinius_Click);
-            // 
-            // btn_Close
-            // 
-            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Close.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Close.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Close.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_Close.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Close.FillColor = System.Drawing.Color.Transparent;
-            this.btn_Close.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_Close.ForeColor = System.Drawing.Color.White;
-            this.btn_Close.Image = global::QuanLyThuVienGUI.Properties.Resources.multiply_32px;
-            this.btn_Close.Location = new System.Drawing.Point(1416, -1);
-            this.btn_Close.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(33, 28);
-            this.btn_Close.TabIndex = 9;
-            this.btn_Close.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btn_QLMuonTra
             // 
@@ -355,6 +270,93 @@
             this.pic_Icon.TabIndex = 0;
             this.pic_Icon.TabStop = false;
             // 
+            // pn_ControlTab
+            // 
+            this.pn_ControlTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pn_ControlTab.BackColor = System.Drawing.Color.DodgerBlue;
+            this.pn_ControlTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pn_ControlTab.Controls.Add(this.btn_Max);
+            this.pn_ControlTab.Controls.Add(this.lbl_Title);
+            this.pn_ControlTab.Controls.Add(this.btn_Min);
+            this.pn_ControlTab.Controls.Add(this.btn_Close);
+            this.pn_ControlTab.Location = new System.Drawing.Point(0, 0);
+            this.pn_ControlTab.Margin = new System.Windows.Forms.Padding(4);
+            this.pn_ControlTab.Name = "pn_ControlTab";
+            this.pn_ControlTab.Size = new System.Drawing.Size(1453, 28);
+            this.pn_ControlTab.TabIndex = 4;
+            // 
+            // btn_Max
+            // 
+            this.btn_Max.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Max.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Max.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Max.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Max.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Max.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Max.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Max.FillColor = System.Drawing.Color.Transparent;
+            this.btn_Max.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_Max.ForeColor = System.Drawing.Color.White;
+            this.btn_Max.Image = global::QuanLyThuVienGUI.Properties.Resources.maximize_button_32px;
+            this.btn_Max.Location = new System.Drawing.Point(1381, -1);
+            this.btn_Max.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Max.Name = "btn_Max";
+            this.btn_Max.Size = new System.Drawing.Size(33, 28);
+            this.btn_Max.TabIndex = 12;
+            this.btn_Max.Click += new System.EventHandler(this.btnFullScreen_Click);
+            // 
+            // lbl_Title
+            // 
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Title.Location = new System.Drawing.Point(0, 2);
+            this.lbl_Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(311, 23);
+            this.lbl_Title.TabIndex = 11;
+            this.lbl_Title.Text = "HỆ THỐNG QUẢN LÝ THƯ VIỆN SÁCH";
+            // 
+            // btn_Min
+            // 
+            this.btn_Min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Min.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Min.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Min.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Min.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Min.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Min.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Min.FillColor = System.Drawing.Color.Transparent;
+            this.btn_Min.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_Min.ForeColor = System.Drawing.Color.White;
+            this.btn_Min.Image = global::QuanLyThuVienGUI.Properties.Resources.minus;
+            this.btn_Min.Location = new System.Drawing.Point(1345, 0);
+            this.btn_Min.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Min.Name = "btn_Min";
+            this.btn_Min.Size = new System.Drawing.Size(33, 28);
+            this.btn_Min.TabIndex = 10;
+            this.btn_Min.Click += new System.EventHandler(this.btnMinius_Click);
+            // 
+            // btn_Close
+            // 
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Close.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Close.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Close.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Close.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Close.FillColor = System.Drawing.Color.Transparent;
+            this.btn_Close.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_Close.ForeColor = System.Drawing.Color.White;
+            this.btn_Close.Image = global::QuanLyThuVienGUI.Properties.Resources.multiply_32px;
+            this.btn_Close.Location = new System.Drawing.Point(1416, -1);
+            this.btn_Close.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(33, 28);
+            this.btn_Close.TabIndex = 9;
+            this.btn_Close.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmAdminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -366,16 +368,16 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAdminMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "adminMain";
             this.Load += new System.EventHandler(this.frmAdminMain_Load);
             this.pn_NavB.ResumeLayout(false);
             this.pn_NavB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Icon)).EndInit();
             this.pn_ControlTab.ResumeLayout(false);
             this.pn_ControlTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Icon)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -10,14 +10,15 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices; 
 using QuanLyThuVienGUI.admin;
 using QuanLyThuVienBUS;
+using QuanLyThuVienDTO;
 
 namespace QuanLyThuVienGUI
 {
     public partial class frmAdminMain : Form
     {
-        // Đối tượng DangNhapBUS để kiểm tra tài khoản
+        
         public DangNhapBUS dangNhapBUS;
-
+        public DangNhapDTO dangNhapDTO;
         // Biến hỗ trợ kéo thả form
         private bool dragging = false;
         private Point dragCursorPoint;
@@ -29,18 +30,16 @@ namespace QuanLyThuVienGUI
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        // Constructor nhận hoTen từ frmDangNhap
-        public frmAdminMain()
+    
+        public frmAdminMain(string tenNV)
         {
             InitializeComponent();
             LoadFormIntoPanel(new frmTrangChu());
-
-         
+            lbl_Ten.Text = tenNV;
             // Gắn sự kiện kéo thả cho thanh tiêu đề hoặc toàn bộ form
             this.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.MouseUp += new MouseEventHandler(Form_MouseUp);
-
             // Gắn sự kiện kéo thả cho panel tiêu đề
             this.pn_ControlTab.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.pn_ControlTab.MouseMove += new MouseEventHandler(Form_MouseMove);
@@ -77,17 +76,13 @@ namespace QuanLyThuVienGUI
 
         private void LoadFormIntoPanel(Form form)
         {
-            // Tạm thời ẩn panel và dừng layout
+            
             Pn_LoadFrm.SuspendLayout();
-            Pn_LoadFrm.Controls.Clear();  // Xóa form hiện tại trong panel
-
-            // Cấu hình form mới vào trong panel
+            Pn_LoadFrm.Controls.Clear(); 
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
             Pn_LoadFrm.Controls.Add(form);
-
-            // Hiển thị form mới và tiếp tục layout
             form.Show();
             Pn_LoadFrm.ResumeLayout();
         }

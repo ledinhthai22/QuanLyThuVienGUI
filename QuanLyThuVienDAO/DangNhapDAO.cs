@@ -44,6 +44,22 @@ namespace QuanLyThuVienDAO
             dp.Close();
             return (string)result;
         }
+        public string getNameUser(DangNhapDTO dangNhapDTO)
+        {
+            string query = "SELECT TenNV FROM NhanVien WHERE UserName = @userName AND PassWord = @passWord";
+            dp.Open();
+            SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
+            cmd.Parameters.AddWithValue("@userName", dangNhapDTO.userName);
+            cmd.Parameters.AddWithValue("@passWord", dangNhapDTO.passWord);
+            object result = cmd.ExecuteScalar();
+            if (result == null || result == DBNull.Value)
+            {
+                dp.Close();
+                return null;
+            }
+            dp.Close();
+            return (string)result;
+        }
 
     }
 }

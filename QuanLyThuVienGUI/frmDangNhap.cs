@@ -39,10 +39,12 @@ namespace QuanLyThuVienGUI
 
                     if (dangNhapBUS.dangNhap(dangNhapDTO)) // kiểm tra tên đăng nhập và mặt khẩu có trong database không
                     {
+                        string hoTen = dangNhapBUS.getNameUser(dangNhapDTO); 
+
                         if (dangNhapBUS.getRole(dangNhapDTO) == "admin") // kiểm tra chức vụ của tài khoản vừa được kiểm tra đăng nhập
                         {
                             MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK);
-                            frmAdminMain frmAdminMain = new frmAdminMain();
+                            frmAdminMain frmAdminMain = new frmAdminMain(hoTen); 
                             frmAdminMain.Show();
                             this.Hide();
                         }
@@ -134,11 +136,6 @@ namespace QuanLyThuVienGUI
         private void btnMinius_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
-        }
-
-        private void lbl_Title_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
