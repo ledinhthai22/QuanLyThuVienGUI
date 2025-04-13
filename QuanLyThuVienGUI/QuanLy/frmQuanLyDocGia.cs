@@ -57,7 +57,7 @@ namespace QuanLyThuVienGUI.admin
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa độc giả này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.No) return;
 
-                int maDG = (int)dgv_DSDocGia.CurrentRow.Cells[0].Value;
+               string maDG = dgv_DSDocGia.CurrentRow.Cells[0].Value.ToString();
                 docGiaDTO.maDG = maDG;
 
                 if (docGiaBUS.kiemTraRangBuoc(docGiaDTO))
@@ -97,7 +97,7 @@ namespace QuanLyThuVienGUI.admin
             }    
             if (!kiemTraDuLieuNhap()) return;
 
-            int maDG = (int)dgv_DSDocGia.CurrentRow.Cells["MaDocGia"].Value;
+             string maDG = dgv_DSDocGia.CurrentRow.Cells["MaDocGia"].Value.ToString();
             docGiaDTO.maDG = maDG;
             docGiaDTO.hoTen = txt_HoTen.Text;
             docGiaDTO.ngaySinh = dtpNgaySinh.Value;
@@ -124,7 +124,7 @@ namespace QuanLyThuVienGUI.admin
                 MessageBox.Show("Vui lòng chọn độc giả để khôi phục!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int maDG =(int)dgv_DSDocGia.CurrentRow.Cells[0].Value;
+            string maDG =dgv_DSDocGia.CurrentRow.Cells[0].Value.ToString();
             docGiaDTO.maDG = maDG;
 
             if (docGiaBUS.khoiPhucDocGia(docGiaDTO))

@@ -42,10 +42,26 @@ namespace QuanLyThuVienDAO
 
         public bool addSach(SachDTO sachDTO)
         {
-            string insert = "INSERT INTO Sach (TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, HinhAnh, MoTa,TrangThai) "
-                + "VALUES (@tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @hinhAnh, @moTa,@trangThai)";
             dp.Open();
+
+            // Gọi stored procedure để lấy mã sách mới
+            SqlCommand getIdCmd = new SqlCommand("GetNextMaSach", dp.GetConnection());
+            getIdCmd.CommandType = CommandType.StoredProcedure;
+
+            string newMaSach = "";
+            using (SqlDataReader reader = getIdCmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    newMaSach = reader.GetString(0);
+                }
+            }
+
+            // Thêm sách mới với mã sách đã lấy
+            string insert = "INSERT INTO Sach (MaSach, TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, HinhAnh, MoTa, TrangThai) " +
+                            "VALUES (@maSach, @tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @hinhAnh, @moTa, @trangThai)";
             SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
+            cmd.Parameters.AddWithValue("@maSach", newMaSach);
             cmd.Parameters.AddWithValue("@tenSach", sachDTO.tenSach);
             cmd.Parameters.AddWithValue("@tacGia", sachDTO.tacGia);
             cmd.Parameters.AddWithValue("@maTheLoai", sachDTO.maTheLoai);
@@ -55,10 +71,12 @@ namespace QuanLyThuVienDAO
             cmd.Parameters.AddWithValue("@hinhAnh", sachDTO.hinhAnh);
             cmd.Parameters.AddWithValue("@moTa", sachDTO.moTa);
             cmd.Parameters.AddWithValue("@trangThai", sachDTO.trangThai);
+
             int n = cmd.ExecuteNonQuery();
             dp.Close();
             return n > 0;
         }
+
         public bool deleteSach(SachDTO sachDTO)
         {
             string delete = "DELETE FROM Sach WHERE MaSach = @MaSach";
@@ -104,15 +122,16 @@ namespace QuanLyThuVienDAO
         // Kiểm tra tồn tại sách trong cơ sở dữ liệu
         public bool kiemTraTonTai(SachDTO sachDTO)
         {
-            string query = "SELECT * FROM Sach WHERE TenSach = @tenSach AND MaTheLoai = @maTheLoai";
+            string query = "SELECT COUNT(*) FROM Sach WHERE TenSach = @tenSach AND MaTheLoai = @maTheLoai";
             dp.Open();
             SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
             cmd.Parameters.AddWithValue("@tenSach", sachDTO.tenSach);
             cmd.Parameters.AddWithValue("@maTheLoai", sachDTO.maTheLoai);
-            object result = cmd.ExecuteScalar();
-            int n = result != null ? Convert.ToInt32(result) : 0;
+
+            int n = (int)cmd.ExecuteScalar();
             dp.Close();
             return n > 0;
         }
+
     }
 }

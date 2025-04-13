@@ -16,7 +16,8 @@ namespace QuanLyThuVienGUI
         private SachBUS sachBUS = new SachBUS();
         private TheLoaiBUS theLoaiBUS = new TheLoaiBUS();
         private SachDTO sachDTO = new SachDTO();
-        private string tenFileAnh = "";
+        private Timer selectionTimer = new Timer();
+
 
         public frmQuanLySach()
         {
@@ -27,9 +28,14 @@ namespace QuanLyThuVienGUI
         {
             taoCotDataGridView();
             loadSach(1);
+            btn_Sua.Enabled = false;
+            btn_Xoa.Enabled = false;
+            selectionTimer.Interval = 3000; // 3 giây
+            selectionTimer.Tick += SelectionTimer_Tick;
+
         }
 
-       
+
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
@@ -38,11 +44,10 @@ namespace QuanLyThuVienGUI
         }
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            int maSach = (int)dgv_DSSach.CurrentRow.Cells[0].Value;
+            string maSach = dgv_DSSach.CurrentRow.Cells[0].Value.ToString();
             sachDTO.maSach = maSach;
             if (dgv_DSSach.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn sách để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (sachBUS.deleteSach(sachDTO))
@@ -56,36 +61,14 @@ namespace QuanLyThuVienGUI
                 MessageBox.Show("Xóa thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }    
         }
-        private void btn_TaoMoi_Click(object sender, EventArgs e)
-        {
-            
-            loadSach(1);
-        }
-
         private void loadSach(int trangThai)
         {
-
             dgv_DSSach.DataSource = null;
             sachDTO.trangThai = trangThai;
             DataTable dt = sachBUS.getSach(sachDTO);
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                dgv_DSSach.DataSource = dt;
-                dgv_DSSach.ClearSelection();
-            }
-            else
-            {
-                MessageBox.Show("Không có sách nào phù hợp với trạng thái được chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            dgv_DSSach.DataSource = dt;
+            dgv_DSSach.ClearSelection();
         }
-
-
-
-      
-      
-
-      
         private void dgv_DSSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgv_DSSach.Columns[e.ColumnIndex].Name == "TrangThai")
@@ -181,39 +164,38 @@ namespace QuanLyThuVienGUI
             });
         }
 
-        private void pnframeInformation_Paint(object sender, PaintEventArgs e)
+        private void dgv_DSSach_SelectionChanged(object sender, EventArgs e)
         {
-
+            if (dgv_DSSach.SelectedRows.Count > 0)
+            {
+                btn_Xoa.Enabled = true;
+                btn_Sua.Enabled = true;
+                selectionTimer.Stop();
+                selectionTimer.Start();
+            }
+            else
+            {
+                btn_Xoa.Enabled = false;
+                btn_Sua.Enabled = false;
+            }
+            
+        }
+        private void SelectionTimer_Tick(object sender, EventArgs e)
+        {
+            selectionTimer.Stop(); // chỉ gọi 1 lần
+            dgv_DSSach.ClearSelection(); // bỏ chọn dòng
+            btn_Xoa.Enabled = false;
+            btn_Sua.Enabled = false;
         }
 
-        private void txt_TacGia_TextChanged(object sender, EventArgs e)
+        private void frmQuanLySach_Shown(object sender, EventArgs e)
         {
-
+            dgv_DSSach.ClearSelection();
         }
 
-        private void lbl_TenSach_Click(object sender, EventArgs e)
+        private void btn_LamMoi_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void txt_NXB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_TenSach_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_TacGia_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblPublisher_Click(object sender, EventArgs e)
-        {
-
+            loadSach(1);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace QuanLyThuVienDTO
 {
     public class DocGiaDTO
     {
-        public int maDG { get; set; }
+        public string maDG { get; set; }
         public string hoTen { get; set; }
         public DateTime ngaySinh { get; set; }
         public string gioiTinh { get; set; }

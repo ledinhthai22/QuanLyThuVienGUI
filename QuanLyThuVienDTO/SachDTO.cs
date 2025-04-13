@@ -9,10 +9,10 @@ namespace QuanLyThuVienDTO
 {
     public class SachDTO
     {
-        public int maSach { get; set; }
+        public string maSach { get; set; }
         public string tenSach { get; set; }
         public string tacGia { get; set; }
-        public int maTheLoai { get; set; }
+        public string maTheLoai { get; set; }
         public string nhaXuatBan { get; set; }
         public DateTime namXuatBan { get; set; }
         public int soLuong { get; set; }
