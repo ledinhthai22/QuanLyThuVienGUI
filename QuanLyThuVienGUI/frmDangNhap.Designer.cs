@@ -119,7 +119,7 @@
             this.lbl_Title.Size = new System.Drawing.Size(107, 32);
             this.lbl_Title.TabIndex = 0;
             this.lbl_Title.Text = "LOGIN";
-            this.lbl_Title.Click += new System.EventHandler(this.lbl_Title_Click);
+
             // 
             // chk_ShowPass
             // 
