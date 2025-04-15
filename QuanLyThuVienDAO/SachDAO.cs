@@ -17,28 +17,15 @@ namespace QuanLyThuVienDAO
         SachDTO sachDTO = new SachDTO();
         public DataTable getSach(SachDTO sachDTO)
         {
-            string query;
-            SqlCommand cmd;
-
-            if (sachDTO.trangThai == -1)
-            {
-                // Lấy tất cả sách, không lọc trạng thái
-                query = "SELECT * FROM Sach";
-                cmd = new SqlCommand(query, dp.GetConnection());
-            }
-            else
-            {
-                // Lọc theo trạng thái 0 hoặc 1
-                query = "SELECT * FROM Sach WHERE TrangThai = @TrangThai";
-                cmd = new SqlCommand(query, dp.GetConnection());
-                cmd.Parameters.AddWithValue("@TrangThai", sachDTO.trangThai);
-            }
+            string query = "SELECT * FROM Sach";
+            SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable tb = new DataTable();
             adapter.Fill(tb);
             return tb;
         }
+
 
         public bool addSach(SachDTO sachDTO)
         {
@@ -58,8 +45,8 @@ namespace QuanLyThuVienDAO
             }
 
             // Thêm sách mới với mã sách đã lấy
-            string insert = "INSERT INTO Sach (MaSach, TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, HinhAnh, MoTa, TrangThai) " +
-                            "VALUES (@maSach, @tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @hinhAnh, @moTa, @trangThai)";
+            string insert = "INSERT INTO Sach (MaSach, TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, MoTa, TrangThai) " +
+                            "VALUES (@maSach, @tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @moTa, @trangThai)";
             SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
             cmd.Parameters.AddWithValue("@maSach", newMaSach);
             cmd.Parameters.AddWithValue("@tenSach", sachDTO.tenSach);
@@ -68,7 +55,6 @@ namespace QuanLyThuVienDAO
             cmd.Parameters.Add("@namXuatBan", SqlDbType.Date).Value = sachDTO.namXuatBan.Date;
             cmd.Parameters.AddWithValue("@nhaXuatBan", sachDTO.nhaXuatBan);
             cmd.Parameters.AddWithValue("@soLuong", sachDTO.soLuong);
-            cmd.Parameters.AddWithValue("@hinhAnh", sachDTO.hinhAnh);
             cmd.Parameters.AddWithValue("@moTa", sachDTO.moTa);
             cmd.Parameters.AddWithValue("@trangThai", sachDTO.trangThai);
 
@@ -79,39 +65,43 @@ namespace QuanLyThuVienDAO
 
         public bool deleteSach(SachDTO sachDTO)
         {
-            string delete = "DELETE FROM Sach WHERE MaSach = @MaSach";
+            string delete = "DELETE FROM Sach  WHERE MaSach = @MaSach";
             dp.Open();
             SqlCommand cmd = new SqlCommand(delete, dp.GetConnection());
             cmd.Parameters.AddWithValue("@maSach", sachDTO.maSach);
-            int n = cmd.ExecuteNonQuery();
+            int n = (int)cmd.ExecuteNonQuery();
             dp.Close();
             return n > 0;
         }
         public bool updateSach(SachDTO sachDTO)
         {
             string update = "UPDATE Sach SET TenSach = @tenSach, TacGia = @tacGia, MaTheLoai = @maTheLoai, " +
-                "NamXuatBan = @namXuatBan, NhaXuatBan = @nhaXuatBan," +
-                " SoLuong = @soLuong, HinhAnh = @hinhAnh, MoTa = @moTa," +
-                "TrangThai = @trangThai WHERE MaSach = @maSach";
+                            "NamXuatBan = @namXuatBan, NhaXuatBan = @nhaXuatBan, " +
+                            "SoLuong = @soLuong, MoTa = @moTa, " +
+                            "TrangThai = 1 WHERE MaSach = @maSach";
+
             dp.Open();
             SqlCommand cmd = new SqlCommand(update, dp.GetConnection());
-            int n = cmd.ExecuteNonQuery();
-            dp.Close();
-            return n > 0;
-        }
-        public bool khoiPhucSach(SachDTO sachDTO)
-        {
-            string restore = "UPDATE Sach SET TrangThai = 1 WHERE MaSach = @maSach";
-            dp.Open();
-            SqlCommand cmd = new SqlCommand(restore, dp.GetConnection());
+
+            cmd.Parameters.AddWithValue("@tenSach", sachDTO.tenSach);
+            cmd.Parameters.AddWithValue("@tacGia", sachDTO.tacGia);
+            cmd.Parameters.AddWithValue("@maTheLoai", sachDTO.maTheLoai);
+            cmd.Parameters.Add("@namXuatBan", SqlDbType.Date).Value = sachDTO.namXuatBan.Date;
+            cmd.Parameters.AddWithValue("@nhaXuatBan", sachDTO.nhaXuatBan);
+            cmd.Parameters.AddWithValue("@soLuong", sachDTO.soLuong);
+            cmd.Parameters.AddWithValue("@moTa", sachDTO.moTa);
+            cmd.Parameters.AddWithValue("@trangThai", sachDTO.trangThai);
             cmd.Parameters.AddWithValue("@maSach", sachDTO.maSach);
+
             int n = cmd.ExecuteNonQuery();
             dp.Close();
             return n > 0;
         }
+
+
         public bool kiemTraRangBuoc(SachDTO sachDTO)
         {
-            string query = "SELECT * FROM PhieuMuon WHERE MaSach = @maSach";
+            string query = "SELECT COUNT(*) FROM CTPhieuMuon WHERE MaSach = @maSach";
             dp.Open();
             SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
             cmd.Parameters.AddWithValue("@maSach", sachDTO.maSach);

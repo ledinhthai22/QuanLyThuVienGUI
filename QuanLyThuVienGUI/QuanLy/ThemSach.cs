@@ -16,13 +16,11 @@ namespace QuanLyThuVienGUI.QuanLy
     public partial class ThemSach : Form
     {
         SachBUS sachBUS = new SachBUS();
-        SachDTO sachDTO = new SachDTO();
         TheLoaiBUS theLoaiBUS = new TheLoaiBUS();
-        TheLoaiDTO theLoaiDTO = new TheLoaiDTO();
         private bool dragging = false; 
         private Point dragCursorPoint; 
         private Point dragFormPoint;
-        private string tenFileAnh = ""; // Tên file ảnh sẽ lưu vào DB
+      
 
         public ThemSach()
         {
@@ -32,9 +30,9 @@ namespace QuanLyThuVienGUI.QuanLy
             this.MouseUp += new MouseEventHandler(Form_MouseUp);
 
             // Gắn sự kiện kéo thả cho panel tiêu đề
-            this.panel1.MouseDown += new MouseEventHandler(Form_MouseDown);
-            this.panel1.MouseMove += new MouseEventHandler(Form_MouseMove);
-            this.panel1.MouseUp += new MouseEventHandler(Form_MouseUp);
+            this.pn_Tab.MouseDown += new MouseEventHandler(Form_MouseDown);
+            this.pn_Tab.MouseMove += new MouseEventHandler(Form_MouseMove);
+            this.pn_Tab.MouseUp += new MouseEventHandler(Form_MouseUp);
         }
 
         private void Form_MouseDown(object sender, MouseEventArgs e)
@@ -69,7 +67,7 @@ namespace QuanLyThuVienGUI.QuanLy
                 || string.IsNullOrWhiteSpace(txt_TacGia.Text)
                 || string.IsNullOrWhiteSpace(txt_NXB.Text)
                 || numSoLuong.Value == 0
-                || pic_HinhAnhSach.Image == null
+             
                 || string.IsNullOrWhiteSpace(txt_MoTa.Text))
             {
                 if (string.IsNullOrWhiteSpace(txt_TenSach.Text))
@@ -80,15 +78,13 @@ namespace QuanLyThuVienGUI.QuanLy
                     txt_NXB.Focus();
                 else if (numSoLuong.Value == 0)
                     numSoLuong.Focus();
-                else if (pic_HinhAnhSach.Image == null)
-                    pic_HinhAnhSach.Focus();
                 else if (string.IsNullOrWhiteSpace(txt_MoTa.Text))
                     txt_MoTa.Focus();
 
                 return;
             }
 
-            // Move the instantiation of sachDTO here to avoid modifying an active statement
+            
             SachDTO newSachDTO = new SachDTO
             {
                 tenSach = txt_TenSach.Text.Trim(),
@@ -98,8 +94,8 @@ namespace QuanLyThuVienGUI.QuanLy
                 nhaXuatBan = txt_NXB.Text.Trim(),
                 soLuong = Convert.ToInt32(numSoLuong.Value),
                 moTa = txt_MoTa.Text.Trim(),
-                hinhAnh = tenFileAnh,
-                trangThai = 1 // Thêm sách mặc định đang hoạt động
+             
+                trangThai = 1
             };
 
             if (!kiemTraTonTai(newSachDTO))
@@ -134,35 +130,6 @@ namespace QuanLyThuVienGUI.QuanLy
             cbo_MaTheLoai.DataSource = theLoaiBUS.getAllTheLoai();
             cbo_MaTheLoai.DisplayMember = "TenTheLoai"; // Tên cột hiển thị
             cbo_MaTheLoai.ValueMember = "MaTheLoai";   // Tên cột giá trị
-        }
-        private void btn_ChonHinh_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    string sourcePath = ofd.FileName;
-                    string fileName = Path.GetFileName(sourcePath);
-                    string targetFolder = Path.Combine(Application.StartupPath, "Images");
-                    Directory.CreateDirectory(targetFolder); // đảm bảo folder tồn tại
-
-                    string targetPath = Path.Combine(targetFolder, fileName);
-
-                    // Nếu ảnh chưa tồn tại thì copy vào folder
-                    if (!File.Exists(targetPath))
-                    {
-                        File.Copy(sourcePath, targetPath);
-                    }
-
-                    // Lưu lại tên file để lưu vào DB
-                    tenFileAnh = fileName;
-
-                    // Hiển thị ảnh lên PictureBox
-                    pic_HinhAnhSach.Image = Image.FromFile(targetPath);
-                    pic_HinhAnhSach.SizeMode = PictureBoxSizeMode.Zoom;
-                }
-            }
         }
 
         private void ThemSach_Load(object sender, EventArgs e)

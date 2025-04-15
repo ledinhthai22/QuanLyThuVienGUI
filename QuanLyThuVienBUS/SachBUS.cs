@@ -24,6 +24,14 @@ namespace QuanLyThuVienBUS
         {
             return sachDAO.deleteSach(sachDTO);
         }
+        public bool updateSach(SachDTO sachDTO)
+        {
+            return sachDAO.updateSach(sachDTO);
+        }
+        public bool kiemTraRangBuoc(SachDTO sachDTO)
+        {
+            return sachDAO.kiemTraRangBuoc(sachDTO);
+        }
         public bool kiemTraTonTai(SachDTO sachDTO)
         {
             return sachDAO.kiemTraTonTai(sachDTO);

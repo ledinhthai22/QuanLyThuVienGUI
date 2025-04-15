@@ -7,39 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyThuVienBUS;
+using QuanLyThuVienDTO;
 
 namespace QuanLyThuVienGUI.admin
 {
     public partial class frmQuanLyNhanVien: Form
     {
+        private NhanVienBUS nhanVienBUS = new NhanVienBUS();
+        private NhanVienDTO nhanVienDTO = new NhanVienDTO();
         public frmQuanLyNhanVien()
         {
             InitializeComponent();
+            loadNV(1);
         }
-
-        private void pn_ThongTinNhap_Paint(object sender, PaintEventArgs e)
+        private void loadNV(int trangThai)
         {
 
+            dataGridView1.DataSource = nhanVienBUS.getNhanVien(nhanVienDTO);
         }
 
-        private void lbl_SoDienThoai_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_DiaChi_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_UserName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
     }
 }

@@ -11,9 +11,10 @@ namespace QuanLyThuVienGUI
         [STAThread]
         static void Main()
         {
+            string tenNV = "";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDangNhap());
+            Application.Run(new frmAdminMain(tenNV));
         }
     }
 }

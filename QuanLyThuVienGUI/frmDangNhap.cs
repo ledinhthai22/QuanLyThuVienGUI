@@ -43,14 +43,12 @@ namespace QuanLyThuVienGUI
 
                         if (dangNhapBUS.getRole(dangNhapDTO) == "admin") // kiểm tra chức vụ của tài khoản vừa được kiểm tra đăng nhập
                         {
-                            MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK);
                             frmAdminMain frmAdminMain = new frmAdminMain(hoTen); 
                             frmAdminMain.Show();
                             this.Hide();
                         }
                         else if (dangNhapBUS.getRole(dangNhapDTO) == "thuthu")
                         {
-                            MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK);
                             this.Hide();
                         }
                         else

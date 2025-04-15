@@ -270,6 +270,24 @@
     <Compile Include="QuanLy\frmQuanLyTheLoai.Designer.cs">
       <DependentUpon>frmQuanLyTheLoai.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuanLy\frmCapNhatSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLy\frmCapNhatSach.Designer.cs">
+      <DependentUpon>frmCapNhatSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLy\frmThemDocGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLy\frmThemDocGia.Designer.cs">
+      <DependentUpon>frmThemDocGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLy\frmThemTheLoai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLy\frmThemTheLoai.Designer.cs">
+      <DependentUpon>frmThemTheLoai.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLy\frmTrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +328,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLy\frmQuanLyTheLoai.resx">
       <DependentUpon>frmQuanLyTheLoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLy\frmCapNhatSach.resx">
+      <DependentUpon>frmCapNhatSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLy\frmThemDocGia.resx">
+      <DependentUpon>frmThemDocGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLy\frmThemTheLoai.resx">
+      <DependentUpon>frmThemTheLoai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLy\frmTrangChu.resx">
       <DependentUpon>frmTrangChu.cs</DependentUpon>

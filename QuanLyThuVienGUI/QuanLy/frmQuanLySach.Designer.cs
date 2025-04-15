@@ -33,12 +33,11 @@
             this.btn_Xoa = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Sua = new Guna.UI2.WinForms.Guna2Button();
             this.pnframeInformation = new System.Windows.Forms.Panel();
-            this.cbo_LocTimkiem = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.btn_LamMoi = new Guna.UI2.WinForms.Guna2Button();
             this.dgv_DSSach = new System.Windows.Forms.DataGridView();
             this.txt_TimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_TimKiem = new Guna.UI2.WinForms.Guna2Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btn_LamMoi = new Guna.UI2.WinForms.Guna2Button();
             this.pnframeInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSSach)).BeginInit();
             this.SuspendLayout();
@@ -93,9 +92,10 @@
             this.btn_Sua.Location = new System.Drawing.Point(146, 2);
             this.btn_Sua.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Sua.Name = "btn_Sua";
-            this.btn_Sua.Size = new System.Drawing.Size(67, 37);
+            this.btn_Sua.Size = new System.Drawing.Size(94, 37);
             this.btn_Sua.TabIndex = 22;
-            this.btn_Sua.Text = "Sửa";
+            this.btn_Sua.Text = "Cập nhật";
+            this.btn_Sua.Click += new System.EventHandler(this.btn_Sua_Click);
             // 
             // pnframeInformation
             // 
@@ -104,7 +104,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnframeInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnframeInformation.Controls.Add(this.btn_LamMoi);
-            this.pnframeInformation.Controls.Add(this.cbo_LocTimkiem);
             this.pnframeInformation.Controls.Add(this.dgv_DSSach);
             this.pnframeInformation.Controls.Add(this.txt_TimKiem);
             this.pnframeInformation.Controls.Add(this.btn_TimKiem);
@@ -116,23 +115,24 @@
             this.pnframeInformation.Size = new System.Drawing.Size(891, 615);
             this.pnframeInformation.TabIndex = 32;
             // 
-            // cbo_LocTimkiem
+            // btn_LamMoi
             // 
-            this.cbo_LocTimkiem.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbo_LocTimkiem.BackColor = System.Drawing.Color.Transparent;
-            this.cbo_LocTimkiem.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.cbo_LocTimkiem.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbo_LocTimkiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbo_LocTimkiem.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbo_LocTimkiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbo_LocTimkiem.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbo_LocTimkiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbo_LocTimkiem.ItemHeight = 30;
-            this.cbo_LocTimkiem.Location = new System.Drawing.Point(752, 3);
-            this.cbo_LocTimkiem.Margin = new System.Windows.Forms.Padding(2);
-            this.cbo_LocTimkiem.Name = "cbo_LocTimkiem";
-            this.cbo_LocTimkiem.Size = new System.Drawing.Size(130, 36);
-            this.cbo_LocTimkiem.TabIndex = 50;
+            this.btn_LamMoi.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_LamMoi.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.btn_LamMoi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_LamMoi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_LamMoi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_LamMoi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_LamMoi.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btn_LamMoi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_LamMoi.ForeColor = System.Drawing.Color.White;
+            this.btn_LamMoi.Location = new System.Drawing.Point(244, 2);
+            this.btn_LamMoi.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_LamMoi.Name = "btn_LamMoi";
+            this.btn_LamMoi.Size = new System.Drawing.Size(83, 37);
+            this.btn_LamMoi.TabIndex = 51;
+            this.btn_LamMoi.Text = "Làm mới";
+            this.btn_LamMoi.Click += new System.EventHandler(this.btn_LamMoi_Click);
             // 
             // dgv_DSSach
             // 
@@ -152,6 +152,7 @@
             this.dgv_DSSach.Size = new System.Drawing.Size(887, 574);
             this.dgv_DSSach.TabIndex = 49;
             this.dgv_DSSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_DSSach_CellFormatting);
+            this.dgv_DSSach.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DSSach_DataError);
             this.dgv_DSSach.SelectionChanged += new System.EventHandler(this.dgv_DSSach_SelectionChanged);
             // 
             // txt_TimKiem
@@ -168,12 +169,12 @@
             this.txt_TimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt_TimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_TimKiem.HoverState.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.txt_TimKiem.Location = new System.Drawing.Point(305, 1);
+            this.txt_TimKiem.Location = new System.Drawing.Point(331, 1);
             this.txt_TimKiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txt_TimKiem.Name = "txt_TimKiem";
             this.txt_TimKiem.PlaceholderText = "Tìm kiếm";
             this.txt_TimKiem.SelectedText = "";
-            this.txt_TimKiem.Size = new System.Drawing.Size(348, 39);
+            this.txt_TimKiem.Size = new System.Drawing.Size(462, 39);
             this.txt_TimKiem.TabIndex = 0;
             // 
             // btn_TimKiem
@@ -186,7 +187,7 @@
             this.btn_TimKiem.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_TimKiem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_TimKiem.ForeColor = System.Drawing.Color.White;
-            this.btn_TimKiem.Location = new System.Drawing.Point(654, 1);
+            this.btn_TimKiem.Location = new System.Drawing.Point(793, 1);
             this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btn_TimKiem.Name = "btn_TimKiem";
             this.btn_TimKiem.Size = new System.Drawing.Size(94, 39);
@@ -196,25 +197,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.dgv_DSSach_SelectionChanged);
-            // 
-            // btn_LamMoi
-            // 
-            this.btn_LamMoi.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_LamMoi.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.btn_LamMoi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_LamMoi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_LamMoi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_LamMoi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_LamMoi.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btn_LamMoi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btn_LamMoi.ForeColor = System.Drawing.Color.White;
-            this.btn_LamMoi.Location = new System.Drawing.Point(218, 2);
-            this.btn_LamMoi.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_LamMoi.Name = "btn_LamMoi";
-            this.btn_LamMoi.Size = new System.Drawing.Size(83, 37);
-            this.btn_LamMoi.TabIndex = 51;
-            this.btn_LamMoi.Text = "Làm mới";
-            this.btn_LamMoi.Click += new System.EventHandler(this.btn_LamMoi_Click);
             // 
             // frmQuanLySach
             // 
@@ -242,7 +224,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_TimKiem;
         private Guna.UI2.WinForms.Guna2TextBox txt_TimKiem;
         private System.Windows.Forms.DataGridView dgv_DSSach;
-        private Guna.UI2.WinForms.Guna2ComboBox cbo_LocTimkiem;
         private System.Windows.Forms.Timer timer1;
         private Guna.UI2.WinForms.Guna2Button btn_LamMoi;
     }

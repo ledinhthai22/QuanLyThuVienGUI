@@ -25,13 +25,35 @@ namespace QuanLyThuVienDAO
             }
             return dt;
         }
-
+        public DataTable getTheLoaiByMaTL(TheLoaiDTO theLoaiDTO)
+        {
+            DataTable dt = new DataTable();
+            string select = "SELECT TenTheLoai FROM TheLoai WHERE MaTheLoai = @maTL";
+            using (SqlDataAdapter da = new SqlDataAdapter(select, dp.GetConnection()))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@maTL", theLoaiDTO.maTL);
+                da.Fill(dt);
+            }
+            return dt;
+        }
         public bool addTheLoai(TheLoaiDTO theLoai)
         {
-            string insert = "INSERT INTO TheLoai(TenTheLoai) VALUES(@tenTL)";
+            SqlCommand getIdCmd = new SqlCommand("GetNextMaTheLoai", dp.GetConnection());
+            getIdCmd.CommandType = CommandType.StoredProcedure;
+
+            string newMaTheLoai = "";
+            using (SqlDataReader reader = getIdCmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    newMaTheLoai = reader.GetString(0);
+                }
+            }
+            string insert = "INSERT INTO TheLoai (MaTheLoai, TenTheLoai) VALUES(@maTL,@tenTL)";
             dp.Open();
             using (SqlCommand cmd = new SqlCommand(insert, dp.GetConnection()))
             {
+                cmd.Parameters.AddWithValue("@maTL", newMaTheLoai);
                 cmd.Parameters.AddWithValue("@tenTL", theLoai.tenTL);
                 int n = cmd.ExecuteNonQuery();
                 dp.Close();
