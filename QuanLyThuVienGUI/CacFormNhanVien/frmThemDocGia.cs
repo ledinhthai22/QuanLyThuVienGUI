@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienGUI.QuanLy
 {
-    public partial class frmThemTheLoai: Form
+    public partial class frmThemDocGia: Form
     {
-        public frmThemTheLoai()
+        public frmThemDocGia()
         {
             InitializeComponent();
+        }
+
+        private void lbl_Title_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Thoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -12,21 +12,20 @@ using QuanLyThuVienDTO;
 
 namespace QuanLyThuVienGUI.admin
 {
-    public partial class frmQuanLyNhanVien: Form
+    public partial class frmTrangChu: Form
     {
-        private NhanVienBUS nhanVienBUS = new NhanVienBUS();
-        private NhanVienDTO nhanVienDTO = new NhanVienDTO();
-        public frmQuanLyNhanVien()
+        ThongKeBUS thongKeBUS = new ThongKeBUS();
+        TheLoaiDTO theLoaiDTO = new TheLoaiDTO();
+        SachDTO SachDTO = new SachDTO();
+        public frmTrangChu()
         {
             InitializeComponent();
-            loadNV(1);
+          
         }
-        private void loadNV(int trangThai)
+
+        private void frmTrangChu_Load(object sender, EventArgs e)
         {
 
-            dataGridView1.DataSource = nhanVienBUS.getNhanVien(nhanVienDTO);
         }
-
-     
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btn_Them = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Xoa = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Sua = new Guna.UI2.WinForms.Guna2Button();
@@ -37,7 +36,6 @@
             this.dgv_DSSach = new System.Windows.Forms.DataGridView();
             this.txt_TimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_TimKiem = new Guna.UI2.WinForms.Guna2Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnframeInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSSach)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +74,6 @@
             this.btn_Xoa.Size = new System.Drawing.Size(67, 37);
             this.btn_Xoa.TabIndex = 21;
             this.btn_Xoa.Text = "Xóa";
-            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // btn_Sua
             // 
@@ -112,7 +109,7 @@
             this.pnframeInformation.Controls.Add(this.btn_Them);
             this.pnframeInformation.Location = new System.Drawing.Point(0, 0);
             this.pnframeInformation.Name = "pnframeInformation";
-            this.pnframeInformation.Size = new System.Drawing.Size(891, 615);
+            this.pnframeInformation.Size = new System.Drawing.Size(891, 616);
             this.pnframeInformation.TabIndex = 32;
             // 
             // btn_LamMoi
@@ -132,7 +129,6 @@
             this.btn_LamMoi.Size = new System.Drawing.Size(83, 37);
             this.btn_LamMoi.TabIndex = 51;
             this.btn_LamMoi.Text = "Làm mới";
-            this.btn_LamMoi.Click += new System.EventHandler(this.btn_LamMoi_Click);
             // 
             // dgv_DSSach
             // 
@@ -149,11 +145,8 @@
             this.dgv_DSSach.RowHeadersWidth = 51;
             this.dgv_DSSach.RowTemplate.Height = 24;
             this.dgv_DSSach.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_DSSach.Size = new System.Drawing.Size(887, 574);
+            this.dgv_DSSach.Size = new System.Drawing.Size(887, 575);
             this.dgv_DSSach.TabIndex = 49;
-            this.dgv_DSSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_DSSach_CellFormatting);
-            this.dgv_DSSach.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_DSSach_DataError);
-            this.dgv_DSSach.SelectionChanged += new System.EventHandler(this.dgv_DSSach_SelectionChanged);
             // 
             // txt_TimKiem
             // 
@@ -194,10 +187,6 @@
             this.btn_TimKiem.TabIndex = 45;
             this.btn_TimKiem.Text = "Tìm kiếm";
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.dgv_DSSach_SelectionChanged);
-            // 
             // frmQuanLySach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,7 +198,6 @@
             this.Name = "frmQuanLySach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLySach";
-            this.Load += new System.EventHandler(this.frmQuanLySach_Load);
             this.pnframeInformation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSSach)).EndInit();
             this.ResumeLayout(false);
@@ -224,7 +212,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_TimKiem;
         private Guna.UI2.WinForms.Guna2TextBox txt_TimKiem;
         private System.Windows.Forms.DataGridView dgv_DSSach;
-        private System.Windows.Forms.Timer timer1;
         private Guna.UI2.WinForms.Guna2Button btn_LamMoi;
     }
 }
