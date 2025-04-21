@@ -13,9 +13,25 @@ namespace QuanLyThuVienBUS
     {
         private NhanVienDAO nhanVienDAO = new NhanVienDAO();
 
-        public DataTable getNhanVien(NhanVienDTO nhanVienDTO)
+        public DataTable LoadDSNV()
         {
-            return nhanVienDAO.getNhanVien(nhanVienDTO);
+            return nhanVienDAO.LoadDSNV();
+        }
+        public bool addNV(NhanVienDTO nhanVienDTO)
+        {
+            return NhanVienDAO.addNV(nhanVienDTO);
+        }
+        public bool deleteNV(string maNV)
+        {
+            return NhanVienDAO.deleteNV(maNV);
+        }
+        public bool kiemTraTonTai(NhanVienDTO nhanVienDTO)
+        {
+            return NhanVienDAO.kiemTraTonTai(nhanVienDTO);
+        }
+        public  bool kiemTraNhanVienChoMuonSach(NhanVienDTO nhanVienDTO)
+        {
+            return NhanVienDAO.kiemTraNhanVienChoMuonSach(nhanVienDTO);
         }
 
     }

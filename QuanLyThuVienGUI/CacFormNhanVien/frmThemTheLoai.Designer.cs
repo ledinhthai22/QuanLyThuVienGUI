@@ -44,7 +44,7 @@
             this.pn_Tab.Location = new System.Drawing.Point(-1, 0);
             this.pn_Tab.Margin = new System.Windows.Forms.Padding(2);
             this.pn_Tab.Name = "pn_Tab";
-            this.pn_Tab.Size = new System.Drawing.Size(365, 24);
+            this.pn_Tab.Size = new System.Drawing.Size(340, 24);
             this.pn_Tab.TabIndex = 3;
             // 
             // lbl_Title
@@ -84,6 +84,7 @@
             this.txt_TenTheLoai.Size = new System.Drawing.Size(198, 30);
             this.txt_TenTheLoai.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_TenTheLoai.TabIndex = 15;
+            this.txt_TenTheLoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TenTheLoai_KeyPress);
             // 
             // lbl_TenTheLoai
             // 
@@ -96,7 +97,7 @@
             this.lbl_TenTheLoai.Size = new System.Drawing.Size(93, 19);
             this.lbl_TenTheLoai.TabIndex = 14;
             this.lbl_TenTheLoai.Text = "Tên Thể loại:";
-            this.lbl_TenTheLoai.Click += new System.EventHandler(this.lbl_TenTheLoai_Click);
+
             // 
             // btn_Them
             // 
@@ -116,6 +117,7 @@
             this.btn_Them.Size = new System.Drawing.Size(67, 37);
             this.btn_Them.TabIndex = 34;
             this.btn_Them.Text = "Thêm";
+            this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
             // btn_Thoat
             // 

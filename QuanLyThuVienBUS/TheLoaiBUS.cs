@@ -12,41 +12,29 @@ namespace QuanLyThuVienBUS
     public class TheLoaiBUS
     {
         TheLoaiDAO theLoaiDAO = new TheLoaiDAO();
-        public DataTable getAllTheLoai()
+        public List<TheLoaiDTO> loadTheLoai()
         {
-            return theLoaiDAO.getAllTheLoai();
-        }
-        public bool kiemTraTonTai(TheLoaiDTO theLoaiDTO)
-        {
-            return theLoaiDAO.kiemTraTonTai(theLoaiDTO);
+            return theLoaiDAO.loadTheLoai();
         }
         public bool addTheLoai(TheLoaiDTO theLoaiDTO)
         {
-            return theLoaiDAO.addTheLoai(theLoaiDTO);
+            return TheLoaiDAO.addTheLoai(theLoaiDTO);
         }
-        public bool deleteTheLoai(TheLoaiDTO theLoaiDTO)
+        public bool deleteTheLoai(string maTL)
         {
-            return theLoaiDAO.deleteTheLoai(theLoaiDTO);
-        }
-        public DataTable getTheLoaiByMaTL(TheLoaiDTO theLoaiDTO)
-        {
-            return theLoaiDAO.getTheLoaiByMaTL(theLoaiDTO);
-        }
-        //public DataTable getTheLoaiByTenTL(TheLoaiDTO theLoaiDTO)
-        //{
-        //    return theLoaiDAO.getTheLoaiByTenTL(theLoaiDTO);
-        //}
-        public bool kiemTraRangBuoc(TheLoaiDTO theLoaiDTO)
-        {
-            return theLoaiDAO.kiemTraRangBuoc(theLoaiDTO);
+            return TheLoaiDAO.deleteTheLoai(maTL);
         }
         public bool updateTheLoai(TheLoaiDTO theLoaiDTO)
         {
-            return theLoaiDAO.updateTheLoai(theLoaiDTO);
+            return TheLoaiDAO.updateTheLoai(theLoaiDTO);
         }
-        public DataTable timKiemTheLoai(string tuKhoa)
+        public bool kiemTraTheLoaiDangDuocSuDung(TheLoaiDTO theLoaiDTO)
         {
-            return theLoaiDAO.TimKiemTheLoai(tuKhoa);
+            return TheLoaiDAO.kiemTraTheLoaiDangDuocSuDung(theLoaiDTO);
+        }
+        public  bool kiemTraTonTai(TheLoaiDTO theLoaiDTO)
+        {
+            return TheLoaiDAO.kiemTraTonTai(theLoaiDTO);
         }
     }
 }

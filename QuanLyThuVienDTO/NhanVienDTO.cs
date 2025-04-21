@@ -13,14 +13,12 @@ namespace QuanLyThuVienDTO
         public string chucVu {  get; set; }
         public string gioiTinh {  get; set; }
         public DateTime ngaySinh { get; set; }
-        public string sDT {  get; set; }
-
+        public string SDT {  get; set; }
         public string diaChi {  get; set; }
-        public float luong {  get; set; }
-
+        public double luong {  get; set; }
         public string userName {  get; set; }
         public string password { get; set; }
-
         public int trangThai {  get; set; }
+        public DateTime ngayTao { get; set; }
     }
 }
