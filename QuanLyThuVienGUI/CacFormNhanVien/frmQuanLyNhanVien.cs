@@ -173,67 +173,36 @@ namespace QuanLyThuVienGUI.admin
         }
         private void getDuLieu()
         {
-            nhanVienDTO.maNV = dgv_DSNhanVien.SelectedRows[0].Cells["MaNV"].Value.ToString();
-            nhanVienDTO.tenNV = dgv_DSNhanVien.SelectedRows[0].Cells["TenNV"].Value.ToString();
-            nhanVienDTO.chucVu = dgv_DSNhanVien.SelectedRows[0].Cells["ChucVu"].Value.ToString();
-            nhanVienDTO.diaChi = dgv_DSNhanVien.SelectedRows[0].Cells["DiaChi"].Value.ToString();
-            nhanVienDTO.SDT = dgv_DSNhanVien.SelectedRows[0].Cells["SDT"].Value.ToString();
-            nhanVienDTO.ngaySinh = DateTime.Parse(dgv_DSNhanVien.SelectedRows[0].Cells["NgaySinh"].Value.ToString());
-            nhanVienDTO.luong = float.Parse(dgv_DSNhanVien.SelectedRows[0].Cells["Luong"].Value.ToString());
-            nhanVienDTO.userName = dgv_DSNhanVien.SelectedRows[0].Cells["UserName"].Value.ToString();
-            nhanVienDTO.password = dgv_DSNhanVien.SelectedRows[0].Cells["PassWord"].Value.ToString();
-            nhanVienDTO.trangThai = int.Parse(dgv_DSNhanVien.SelectedRows[0].Cells["TrangThai"].Value.ToString());
-            nhanVienDTO.ngayTao = DateTime.Parse(dgv_DSNhanVien.SelectedRows[0].Cells["NgayTao"].Value.ToString());
+            int selectedRowIndex = dgv_DSNhanVien.SelectedRows[0].Index;
+            string maNV = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[0].Value.ToString();
+            string tenNV = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[1].Value.ToString();
+            string chucVu = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[2].Value.ToString();
+            string diaChi = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[5].Value.ToString();
+            string sdt = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[4].Value.ToString();
+            DateTime ngaySinh = DateTime.Parse(dgv_DSNhanVien.Rows[selectedRowIndex].Cells[3].Value.ToString());
+            Double luong = double.Parse(dgv_DSNhanVien.Rows[selectedRowIndex].Cells[6].Value.ToString());
+            string userName = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[7].Value.ToString();
+            string passWord = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[8].Value.ToString();
+            int trangThai = int.Parse(dgv_DSNhanVien.Rows[selectedRowIndex].Cells[9].Value.ToString());
+            DateTime ngayTao = DateTime.Parse(dgv_DSNhanVien.Rows[selectedRowIndex].Cells[10].Value.ToString());
+            nhanVienDTO.maNV = maNV;
+            nhanVienDTO.tenNV = tenNV;
+            nhanVienDTO.chucVu = chucVu;
+            nhanVienDTO.diaChi = diaChi;
+            nhanVienDTO.SDT = sdt;
+            nhanVienDTO.ngaySinh = ngaySinh;
+            nhanVienDTO.luong = luong;
+            nhanVienDTO.userName = userName;
+            nhanVienDTO.password = passWord;
+            nhanVienDTO.trangThai = trangThai;
+            nhanVienDTO.ngayTao = ngayTao;
         }
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            //string maNV = dgv_DSNhanVien.SelectedRows[0].Cells["MaNV"].Value.ToString();
-            //getDuLieu();
-            //DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //if (result == DialogResult.Yes)
-            //{
-            //    if(nhanVienBUS.kiemTraNhanVienChoMuonSach(nhanVienDTO))
-            //    {
-            //        MessageBox.Show("Nhân viên này đang có sách mượn, không thể xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //    else
-            //    {
-            //        if (nhanVienBUS.deleteNV(maNV))
-            //        {
-            //            MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            loadDSNV();
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Xóa nhân viên thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
-            //}
+            
             if (dgv_DSNhanVien.SelectedRows.Count > 0)
             {
-                int selectedRowIndex = dgv_DSNhanVien.SelectedRows[0].Index;
-                string maNV = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[0].Value.ToString();
-                string tenNV = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[1].Value.ToString();
-                string chucVu = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[2].Value.ToString();
-                string diaChi = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[5].Value.ToString();
-                string sdt = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[4].Value.ToString();
-                DateTime ngaySinh = DateTime.Parse(dgv_DSNhanVien.Rows[selectedRowIndex].Cells[3].Value.ToString());
-                Double luong = double.Parse(dgv_DSNhanVien.Rows[selectedRowIndex].Cells[6].Value.ToString());
-                string userName = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[7].Value.ToString();
-                string passWord = dgv_DSNhanVien.Rows[selectedRowIndex].Cells[8].Value.ToString();
-                int trangThai = int.Parse(dgv_DSNhanVien.Rows[selectedRowIndex].Cells[9].Value.ToString());
-                DateTime ngayTao = DateTime.Parse(dgv_DSNhanVien.Rows[selectedRowIndex].Cells[10].Value.ToString());
-                nhanVienDTO.maNV = maNV;
-                nhanVienDTO.tenNV = tenNV;
-                nhanVienDTO.chucVu = chucVu;
-                nhanVienDTO.diaChi = diaChi;
-                nhanVienDTO.SDT = sdt;
-                nhanVienDTO.ngaySinh = ngaySinh;
-                nhanVienDTO.luong = luong;
-                nhanVienDTO.userName = userName;
-                nhanVienDTO.password = passWord;
-                nhanVienDTO.trangThai = trangThai;
-                nhanVienDTO.ngayTao = ngayTao;
+                getDuLieu();
                 frmXoaNhanVien xoaNV = new frmXoaNhanVien(nhanVienDTO);
                 xoaNV.ShowDialog();
             }

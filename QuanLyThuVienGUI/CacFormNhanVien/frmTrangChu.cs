@@ -25,6 +25,8 @@ namespace QuanLyThuVienGUI.admin
 
         private void frmTrangChu_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'qLThuVienDataSet.Sach' table. You can move, or remove it, as needed.
+            this.sachTableAdapter.Fill(this.qLThuVienDataSet.Sach);
 
         }
     }

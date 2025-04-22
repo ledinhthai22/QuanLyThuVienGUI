@@ -344,6 +344,11 @@
     <Compile Include="CacFormNhanVien\frmThemSach.Designer.cs">
       <DependentUpon>frmThemSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="QLThuVienDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLThuVienDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CacFormNhanVien\frmAdminMain.resx">
       <DependentUpon>frmAdminMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -428,6 +433,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="QLThuVienDataSet.xsc">
+      <DependentUpon>QLThuVienDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLThuVienDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLThuVienDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLThuVienDataSet.xss">
+      <DependentUpon>QLThuVienDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\v1.jpg" />
   </ItemGroup>
   <ItemGroup>
