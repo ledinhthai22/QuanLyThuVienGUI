@@ -240,88 +240,88 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CacFormNhanVien\frmAdminMain.cs">
+    <Compile Include="Form\frmAdminMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmAdminMain.Designer.cs">
+    <Compile Include="Form\frmAdminMain.Designer.cs">
       <DependentUpon>frmAdminMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmCapNhatNhanVien.cs">
+    <Compile Include="Form\frmCapNhatNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmCapNhatNhanVien.Designer.cs">
+    <Compile Include="Form\frmCapNhatNhanVien.Designer.cs">
       <DependentUpon>frmCapNhatNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmCapNhatTheLoai.cs">
+    <Compile Include="Form\frmCapNhatTheLoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmCapNhatTheLoai.Designer.cs">
+    <Compile Include="Form\frmCapNhatTheLoai.Designer.cs">
       <DependentUpon>frmCapNhatTheLoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmQuanLyDocGia.cs">
+    <Compile Include="Form\frmQuanLyDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmQuanLyDocGia.Designer.cs">
+    <Compile Include="Form\frmQuanLyDocGia.Designer.cs">
       <DependentUpon>frmQuanLyDocGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmQuanLyMuonTra.cs">
+    <Compile Include="Form\frmQuanLyMuonTra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmQuanLyMuonTra.Designer.cs">
+    <Compile Include="Form\frmQuanLyMuonTra.Designer.cs">
       <DependentUpon>frmQuanLyMuonTra.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmQuanLyNhanVien.cs">
+    <Compile Include="Form\frmQuanLyNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmQuanLyNhanVien.Designer.cs">
+    <Compile Include="Form\frmQuanLyNhanVien.Designer.cs">
       <DependentUpon>frmQuanLyNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmQuanLyTheLoai.cs">
+    <Compile Include="Form\frmQuanLyTheLoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmQuanLyTheLoai.Designer.cs">
+    <Compile Include="Form\frmQuanLyTheLoai.Designer.cs">
       <DependentUpon>frmQuanLyTheLoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmCapNhatSach.cs">
+    <Compile Include="Form\frmCapNhatSach.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmCapNhatSach.Designer.cs">
+    <Compile Include="Form\frmCapNhatSach.Designer.cs">
       <DependentUpon>frmCapNhatSach.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmThemDocGia.cs">
+    <Compile Include="Form\frmThemDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmThemDocGia.Designer.cs">
+    <Compile Include="Form\frmThemDocGia.Designer.cs">
       <DependentUpon>frmThemDocGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmThemNhanVien.cs">
+    <Compile Include="Form\frmThemNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmThemNhanVien.Designer.cs">
+    <Compile Include="Form\frmThemNhanVien.Designer.cs">
       <DependentUpon>frmThemNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmThemTheLoai.cs">
+    <Compile Include="Form\frmThemTheLoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmThemTheLoai.Designer.cs">
+    <Compile Include="Form\frmThemTheLoai.Designer.cs">
       <DependentUpon>frmThemTheLoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmTrangChu.cs">
+    <Compile Include="Form\frmTrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmTrangChu.Designer.cs">
+    <Compile Include="Form\frmTrangChu.Designer.cs">
       <DependentUpon>frmTrangChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmXoaNhanVien.cs">
+    <Compile Include="Form\frmXoaNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmXoaNhanVien.Designer.cs">
+    <Compile Include="Form\frmXoaNhanVien.Designer.cs">
       <DependentUpon>frmXoaNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmXoaTheLoai.cs">
+    <Compile Include="Form\frmXoaTheLoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmXoaTheLoai.Designer.cs">
+    <Compile Include="Form\frmXoaTheLoai.Designer.cs">
       <DependentUpon>frmXoaTheLoai.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDangNhap.cs">
@@ -332,71 +332,71 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CacFormNhanVien\frmQuanLySach.cs">
+    <Compile Include="Form\frmQuanLySach.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmQuanLySach.Designer.cs">
+    <Compile Include="Form\frmQuanLySach.Designer.cs">
       <DependentUpon>frmQuanLySach.cs</DependentUpon>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmThemSach.cs">
+    <Compile Include="Form\frmThemSach.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CacFormNhanVien\frmThemSach.Designer.cs">
+    <Compile Include="Form\frmThemSach.Designer.cs">
       <DependentUpon>frmThemSach.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CacFormNhanVien\frmAdminMain.resx">
+    <EmbeddedResource Include="Form\frmAdminMain.resx">
       <DependentUpon>frmAdminMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmCapNhatNhanVien.resx">
+    <EmbeddedResource Include="Form\frmCapNhatNhanVien.resx">
       <DependentUpon>frmCapNhatNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmCapNhatTheLoai.resx">
+    <EmbeddedResource Include="Form\frmCapNhatTheLoai.resx">
       <DependentUpon>frmCapNhatTheLoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmQuanLyDocGia.resx">
+    <EmbeddedResource Include="Form\frmQuanLyDocGia.resx">
       <DependentUpon>frmQuanLyDocGia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmQuanLyMuonTra.resx">
+    <EmbeddedResource Include="Form\frmQuanLyMuonTra.resx">
       <DependentUpon>frmQuanLyMuonTra.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmQuanLyNhanVien.resx">
+    <EmbeddedResource Include="Form\frmQuanLyNhanVien.resx">
       <DependentUpon>frmQuanLyNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmQuanLyTheLoai.resx">
+    <EmbeddedResource Include="Form\frmQuanLyTheLoai.resx">
       <DependentUpon>frmQuanLyTheLoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmCapNhatSach.resx">
+    <EmbeddedResource Include="Form\frmCapNhatSach.resx">
       <DependentUpon>frmCapNhatSach.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmThemDocGia.resx">
+    <EmbeddedResource Include="Form\frmThemDocGia.resx">
       <DependentUpon>frmThemDocGia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmThemNhanVien.resx">
+    <EmbeddedResource Include="Form\frmThemNhanVien.resx">
       <DependentUpon>frmThemNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmThemTheLoai.resx">
+    <EmbeddedResource Include="Form\frmThemTheLoai.resx">
       <DependentUpon>frmThemTheLoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmTrangChu.resx">
+    <EmbeddedResource Include="Form\frmTrangChu.resx">
       <DependentUpon>frmTrangChu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmXoaNhanVien.resx">
+    <EmbeddedResource Include="Form\frmXoaNhanVien.resx">
       <DependentUpon>frmXoaNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmXoaTheLoai.resx">
+    <EmbeddedResource Include="Form\frmXoaTheLoai.resx">
       <DependentUpon>frmXoaTheLoai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmQuanLySach.resx">
+    <EmbeddedResource Include="Form\frmQuanLySach.resx">
       <DependentUpon>frmQuanLySach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CacFormNhanVien\frmThemSach.resx">
+    <EmbeddedResource Include="Form\frmThemSach.resx">
       <DependentUpon>frmThemSach.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />

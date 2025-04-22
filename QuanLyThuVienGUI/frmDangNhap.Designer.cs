@@ -114,7 +114,7 @@
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(670, 58);
+            this.lbl_Title.Location = new System.Drawing.Point(672, 54);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(107, 32);
             this.lbl_Title.TabIndex = 0;
@@ -124,11 +124,11 @@
             // 
             this.chk_ShowPass.AutoSize = true;
             this.chk_ShowPass.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_ShowPass.Location = new System.Drawing.Point(588, 227);
+            this.chk_ShowPass.Location = new System.Drawing.Point(588, 225);
             this.chk_ShowPass.Name = "chk_ShowPass";
-            this.chk_ShowPass.Size = new System.Drawing.Size(101, 23);
+            this.chk_ShowPass.Size = new System.Drawing.Size(146, 23);
             this.chk_ShowPass.TabIndex = 6;
-            this.chk_ShowPass.Text = "Show pass";
+            this.chk_ShowPass.Text = "hiển thị mật khẩu";
             this.chk_ShowPass.UseVisualStyleBackColor = true;
             this.chk_ShowPass.CheckedChanged += new System.EventHandler(this.chkShowPass_CheckedChanged);
             // 

@@ -4,6 +4,8 @@ using System.Data;
 using System.Windows.Forms;
 using QuanLyThuVienBUS;
 using QuanLyThuVienDTO;
+using QuanLyThuVienGUI.CacFormNhanVien;
+using QuanLyThuVienGUI.QuanLy;
 
 namespace QuanLyThuVienGUI.admin
 {
@@ -18,7 +20,7 @@ namespace QuanLyThuVienGUI.admin
         }
         private void btn_TaoMoi_Click(object sender, EventArgs e)
         {
-            
+            LoadDS();
         }
 
         private void QuanLyDocGia_Load(object sender, EventArgs e)
@@ -30,6 +32,11 @@ namespace QuanLyThuVienGUI.admin
             dgv_DSDocGia.ReadOnly = true;
             dgv_DSDocGia.AllowUserToAddRows = false;
             dgv_DSDocGia.AllowUserToDeleteRows = false;
+        }
+        private void btn_Them_Click(object sender, EventArgs e)
+        {
+            frmThemDocGia frmThemDocGia = new frmThemDocGia();
+            frmThemDocGia.ShowDialog();
         }
         private void LoadDS()
         {
@@ -108,11 +115,6 @@ namespace QuanLyThuVienGUI.admin
             });
         }
 
-        private void btn_Them_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgv_DSDocGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if(e.ColumnIndex == 7 && e.Value != null)
@@ -126,6 +128,61 @@ namespace QuanLyThuVienGUI.admin
                 {
                     e.Value = "Ngừng hoạt động";
                 }
+            }
+        }
+
+        private void dgv_DSDocGia_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv_DSDocGia.SelectedRows.Count > 0)
+            {
+                btn_Xoa.Enabled = true;
+                btn_CapNhat.Enabled = true;
+
+
+                huychontimer.Stop();
+                huychontimer.Start();
+            }
+            else
+            {
+                btn_Xoa.Enabled = false;
+                btn_CapNhat.Enabled = false;
+            }
+        }
+
+        private void huychontimer_Tick(object sender, EventArgs e)
+        {
+            huychontimer.Stop();
+            dgv_DSDocGia.ClearSelection();
+        }
+        private void getDuLieu()
+        {
+            int selectedRowIndex = dgv_DSDocGia.SelectedRows[0].Index;
+            string maDG = dgv_DSDocGia.Rows[selectedRowIndex].Cells[0].Value.ToString();
+            string hoTen = dgv_DSDocGia.Rows[selectedRowIndex].Cells[1].Value.ToString();
+            DateTime ngaySinh = DateTime.Parse(dgv_DSDocGia.Rows[selectedRowIndex].Cells[2].Value.ToString());
+            string gioiTinh = dgv_DSDocGia.Rows[selectedRowIndex].Cells[3].Value.ToString();
+            
+            string diaChi = dgv_DSDocGia.Rows[selectedRowIndex].Cells[4].Value.ToString();
+            string SDT = dgv_DSDocGia.Rows[selectedRowIndex].Cells[5].Value.ToString();
+            string Email = dgv_DSDocGia.Rows[selectedRowIndex].Cells[6].Value.ToString();
+            int trangThai = int.Parse(dgv_DSDocGia.Rows[selectedRowIndex].Cells[7].Value.ToString());
+    
+            docGiaDTO.maDG = maDG;
+            docGiaDTO.hoTen = hoTen;
+            docGiaDTO.ngaySinh = ngaySinh;
+            docGiaDTO.gioiTinh = gioiTinh;
+            docGiaDTO.diaChi = diaChi;
+            docGiaDTO.soDienThoai = SDT;
+            docGiaDTO.ngaySinh = ngaySinh;
+           
+        }
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            if (dgv_DSDocGia.SelectedRows.Count > 0)
+            {
+                getDuLieu();
+                frmXoaNhanVien xoaNV = new frmXoaNhanVien(docGiaDTO);
+                xoaNV.ShowDialog();
             }
         }
     }
