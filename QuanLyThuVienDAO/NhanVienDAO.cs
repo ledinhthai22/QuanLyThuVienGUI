@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using QuanLyThuVienDTO;
 
 namespace QuanLyThuVienDAO
@@ -14,17 +15,45 @@ namespace QuanLyThuVienDAO
     {
 
         private static DataProvider dp = new DataProvider();
-       
-        public DataTable LoadDSNV()
+        private List<NhanVienDTO> listNhanVien = new List<NhanVienDTO>();
+        public List<NhanVienDTO> loadDSNV()
         {
-            string select = "SELECT * FROM NhanVien";
-            SqlCommand cmd = new SqlCommand(select, dp.GetConnection());
+            string select = "SELECT * FROM NhanVien WHERE TrangThai = 1 AND ChucVu = 'thuthu'";
+            try
+            {
+                SqlCommand cmd = new SqlCommand(select, dp.GetConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                listNhanVien.Clear();
 
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable tb = new DataTable();
-            adapter.Fill(tb);
-            return tb;
+                while (dr.Read())
+                {
+                    NhanVienDTO nhanVienDTO = new NhanVienDTO();
+                    nhanVienDTO.maNV = dr["MaNV"].ToString();
+                    nhanVienDTO.tenNV = dr["TenNV"].ToString();
+                    nhanVienDTO.chucVu = dr["ChucVu"].ToString();
+                    nhanVienDTO.gioiTinh = dr["GioiTinh"].ToString();
+                    nhanVienDTO.ngaySinh = dr["NgaySinh"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgaySinh"]);
+                    nhanVienDTO.SDT = dr["SDT"].ToString();
+                    nhanVienDTO.diaChi = dr["DiaChi"].ToString();
+                    nhanVienDTO.luong = dr["Luong"] == DBNull.Value ? 0f : Convert.ToSingle(dr["Luong"]);
+                    nhanVienDTO.userName = dr["Username"].ToString();
+                    nhanVienDTO.password = dr["Password"].ToString();
+                    nhanVienDTO.trangThai = Convert.ToInt32(dr["TrangThai"]);
+
+                  
+                    listNhanVien.Add(nhanVienDTO);
+                }
+
+                dp.Close();
+                return listNhanVien;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi load danh sách nhân viên: " + ex.Message);
+                return null;
+            }
         }
+
         public static bool addNV(NhanVienDTO nhanVienDTO)
         {
             string newMaNhanVien = "";
@@ -41,14 +70,12 @@ namespace QuanLyThuVienDAO
                     }
                 }
             }
-
-            // Kiểm tra ngày hợp lệ
             DateTime ngaySinh;
             if (!DateTime.TryParse(nhanVienDTO.ngaySinh.ToString(), out ngaySinh) ||
                 ngaySinh < (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue ||
                 ngaySinh > (DateTime)System.Data.SqlTypes.SqlDateTime.MaxValue)
             {
-                ngaySinh = DateTime.Now; // hoặc giá trị mặc định khác
+                ngaySinh = DateTime.Now; 
             }
 
             string insert = @"INSERT INTO NhanVien 
@@ -73,24 +100,39 @@ namespace QuanLyThuVienDAO
         }
         public static bool deleteNV(string maNV)
         {
-            string delete = "DELETE FROM NhanVien WHERE MaNV = @maNV";
+            string delete = "UPDATE NhanVien SET Trangthai = 0 WHERE MaNV = @maNV";
             SqlCommand cmd = new SqlCommand(delete, dp.GetConnection());
             cmd.Parameters.AddWithValue("@maNV", maNV);
             int n = cmd.ExecuteNonQuery();
             dp.Close();
             return n > 0;
         }
-        public static bool kiemTraNhanVienChoMuonSach(NhanVienDTO nhanVienDTO)
+        public static bool updateNV(NhanVienDTO nhanVienDTO)
         {
-            string query = "SELECT COUNT(*) FROM PhieuMuon WHERE MaNhanVien = @maNV";
-            dp.Open();
-            using (SqlCommand cmd = new SqlCommand(query, dp.GetConnection()))
+            string update = "UPDATE NhanVien SET TenNV = @tenNV, ChucVu = @chucVu,GioiTinh = @gioiTinh," +
+                "NgaySinh = @ngaySinh,SDT = @soDienThoai,DiaChi = @diaChi,Luong = @luong,Username = @userName, Password = @passWord " +
+                "WHERE MaNV = @maNV";
+            DateTime ngaySinh;
+            if (!DateTime.TryParse(nhanVienDTO.ngaySinh.ToString(), out ngaySinh) ||
+                ngaySinh < (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue ||
+                ngaySinh > (DateTime)System.Data.SqlTypes.SqlDateTime.MaxValue)
             {
-                cmd.Parameters.AddWithValue("@maNV", nhanVienDTO.maNV);
-                int count = (int)cmd.ExecuteScalar();
-                dp.Close();
-                return count > 0;
+                ngaySinh = DateTime.Now;
             }
+            SqlCommand cmd =  new SqlCommand(update, dp.GetConnection());
+            cmd.Parameters.AddWithValue("@maNV", nhanVienDTO.maNV);
+            cmd.Parameters.AddWithValue("@tenNV", nhanVienDTO.tenNV);
+            cmd.Parameters.AddWithValue("@chucVu", nhanVienDTO.chucVu);
+            cmd.Parameters.AddWithValue("@gioiTinh", nhanVienDTO.gioiTinh);
+            cmd.Parameters.AddWithValue("@ngaySinh", ngaySinh);
+            cmd.Parameters.AddWithValue("@soDienThoai", nhanVienDTO.SDT);
+            cmd.Parameters.AddWithValue("@diaChi", nhanVienDTO.diaChi);
+            cmd.Parameters.AddWithValue("@luong", nhanVienDTO.luong);
+            cmd.Parameters.AddWithValue("@userName", nhanVienDTO.userName);
+            cmd.Parameters.AddWithValue("@passWord", nhanVienDTO.password);
+            int n = cmd.ExecuteNonQuery();
+            dp.Close();
+            return n > 0;
         }
         public static bool kiemTraTonTai(NhanVienDTO nhanVienDTO)
         {

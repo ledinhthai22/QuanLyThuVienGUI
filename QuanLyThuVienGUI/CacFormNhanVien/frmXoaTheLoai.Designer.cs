@@ -120,6 +120,7 @@
             this.txt_TenTheLoai.Name = "txt_TenTheLoai";
             this.txt_TenTheLoai.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_TenTheLoai.PlaceholderText = "";
+            this.txt_TenTheLoai.ReadOnly = true;
             this.txt_TenTheLoai.SelectedText = "";
             this.txt_TenTheLoai.Size = new System.Drawing.Size(264, 37);
             this.txt_TenTheLoai.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
@@ -188,7 +189,7 @@
             this.Controls.Add(this.lbl_TenTheLoai);
             this.Controls.Add(this.txt_TenTheLoai);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmXoaTheLoai";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmXoaTheLoai";

@@ -62,6 +62,7 @@
             this.cbo_ChucVu.BorderColor = System.Drawing.Color.DodgerBlue;
             this.cbo_ChucVu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbo_ChucVu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo_ChucVu.Enabled = false;
             this.cbo_ChucVu.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbo_ChucVu.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbo_ChucVu.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -152,6 +153,7 @@
             this.txt_PassWord.Name = "txt_PassWord";
             this.txt_PassWord.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_PassWord.PlaceholderText = "";
+            this.txt_PassWord.ReadOnly = true;
             this.txt_PassWord.SelectedText = "";
             this.txt_PassWord.Size = new System.Drawing.Size(253, 37);
             this.txt_PassWord.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
@@ -189,6 +191,7 @@
             this.txt_UserName.Name = "txt_UserName";
             this.txt_UserName.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_UserName.PlaceholderText = "";
+            this.txt_UserName.ReadOnly = true;
             this.txt_UserName.SelectedText = "";
             this.txt_UserName.Size = new System.Drawing.Size(252, 37);
             this.txt_UserName.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
@@ -237,6 +240,7 @@
             this.txt_Luong.Name = "txt_Luong";
             this.txt_Luong.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_Luong.PlaceholderText = "";
+            this.txt_Luong.ReadOnly = true;
             this.txt_Luong.SelectedText = "";
             this.txt_Luong.Size = new System.Drawing.Size(255, 37);
             this.txt_Luong.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
@@ -263,6 +267,7 @@
             this.txt_HoTen.Name = "txt_HoTen";
             this.txt_HoTen.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_HoTen.PlaceholderText = "";
+            this.txt_HoTen.ReadOnly = true;
             this.txt_HoTen.SelectedText = "";
             this.txt_HoTen.Size = new System.Drawing.Size(252, 37);
             this.txt_HoTen.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
@@ -300,6 +305,7 @@
             this.txt_SoDienThoai.Name = "txt_SoDienThoai";
             this.txt_SoDienThoai.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_SoDienThoai.PlaceholderText = "";
+            this.txt_SoDienThoai.ReadOnly = true;
             this.txt_SoDienThoai.SelectedText = "";
             this.txt_SoDienThoai.Size = new System.Drawing.Size(251, 37);
             this.txt_SoDienThoai.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
@@ -320,12 +326,12 @@
             // 
             this.rad_Nu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rad_Nu.AutoSize = true;
+            this.rad_Nu.Enabled = false;
             this.rad_Nu.Location = new System.Drawing.Point(216, 171);
             this.rad_Nu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rad_Nu.Name = "rad_Nu";
             this.rad_Nu.Size = new System.Drawing.Size(45, 20);
             this.rad_Nu.TabIndex = 124;
-            this.rad_Nu.TabStop = true;
             this.rad_Nu.Text = "Nữ";
             this.rad_Nu.UseVisualStyleBackColor = true;
             // 
@@ -333,12 +339,12 @@
             // 
             this.rad_Nam.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rad_Nam.AutoSize = true;
+            this.rad_Nam.Enabled = false;
             this.rad_Nam.Location = new System.Drawing.Point(153, 173);
             this.rad_Nam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rad_Nam.Name = "rad_Nam";
             this.rad_Nam.Size = new System.Drawing.Size(57, 20);
             this.rad_Nam.TabIndex = 123;
-            this.rad_Nam.TabStop = true;
             this.rad_Nam.Text = "Nam";
             this.rad_Nam.UseVisualStyleBackColor = true;
             // 
@@ -346,6 +352,7 @@
             // 
             this.dtpNgaySinh.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtpNgaySinh.Checked = true;
+            this.dtpNgaySinh.Enabled = false;
             this.dtpNgaySinh.FillColor = System.Drawing.Color.DodgerBlue;
             this.dtpNgaySinh.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -380,6 +387,7 @@
             this.txt_DiaChi.Name = "txt_DiaChi";
             this.txt_DiaChi.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_DiaChi.PlaceholderText = "";
+            this.txt_DiaChi.ReadOnly = true;
             this.txt_DiaChi.SelectedText = "";
             this.txt_DiaChi.Size = new System.Drawing.Size(253, 37);
             this.txt_DiaChi.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;

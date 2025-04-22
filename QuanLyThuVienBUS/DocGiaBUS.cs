@@ -13,41 +13,41 @@ namespace QuanLyThuVienBUS
     public class DocGiaBUS
     {
         DocGiaDAO docgiaDAO = new DocGiaDAO();
-        public DataTable getDocGia(DocGiaDTO docGiaDTO)
+        public DataTable LoadDSDG()
         {
-            return docgiaDAO.GetDocGiaTheoTrangThai(docGiaDTO);
+            return docgiaDAO.LoadDSDG();
         }
-        public bool addDocGia(DocGiaDTO docGiaDTO)
-        {
-            return docgiaDAO.addDocGia(docGiaDTO);
-        }
-        public bool deleteDocGia(DocGiaDTO docGiaDTO)
-        {
-            return docgiaDAO.deleteDocGia(docGiaDTO);
-        }
-        public bool khoiPhucDocGia(DocGiaDTO docGiaDTO)
-        {
-            return docgiaDAO.khoiPhucSauKhiXoaMen(docGiaDTO);
-        }
-        public DataTable timKiemTheoSoDienThoai(DocGiaDTO docGiaDTO)
-        {
-           return docgiaDAO.timKiemTheoSoDienThoai(docGiaDTO);
-        }
-        public DataTable timKiemTheoHoTen(DocGiaDTO docGiaDTO)
-        {
-            return docgiaDAO.timKiemTheoHoTen(docGiaDTO);
-        }
-        public bool updateDocGia(DocGiaDTO docGiaDTO)
-        {
-            return docgiaDAO.updateDocGia(docGiaDTO);
-        }
-        public bool kiemTraTonTai(DocGiaDTO docGiaDTO)
-        {
-            return docgiaDAO.kiemTraTonTai(docGiaDTO);
-        }
-        public bool kiemTraRangBuoc(DocGiaDTO docGiaDTO)
-        {
-            return docgiaDAO.kiemTraRangBuoc(docGiaDTO);
-        }
+        //public bool addDocGia(DocGiaDTO docGiaDTO)
+        //{
+        //    return docgiaDAO.addDocGia(docGiaDTO);
+        //}
+        //public bool deleteDocGia(DocGiaDTO docGiaDTO)
+        //{
+        //    return docgiaDAO.deleteDocGia(docGiaDTO);
+        //}
+        //public bool khoiPhucDocGia(DocGiaDTO docGiaDTO)
+        //{
+        //    return docgiaDAO.khoiPhucSauKhiXoaMen(docGiaDTO);
+        //}
+        //public DataTable timKiemTheoSoDienThoai(DocGiaDTO docGiaDTO)
+        //{
+        //   return docgiaDAO.timKiemTheoSoDienThoai(docGiaDTO);
+        //}
+        //public DataTable timKiemTheoHoTen(DocGiaDTO docGiaDTO)
+        //{
+        //    return docgiaDAO.timKiemTheoHoTen(docGiaDTO);
+        //}
+        //public bool updateDocGia(DocGiaDTO docGiaDTO)
+        //{
+        //    return docgiaDAO.updateDocGia(docGiaDTO);
+        //}
+        //public bool kiemTraTonTai(DocGiaDTO docGiaDTO)
+        //{
+        //    return docgiaDAO.kiemTraTonTai(docGiaDTO);
+        //}
+        //public bool kiemTraRangBuoc(DocGiaDTO docGiaDTO)
+        //{
+        //    return docgiaDAO.kiemTraRangBuoc(docGiaDTO);
+        //}
     }
 }

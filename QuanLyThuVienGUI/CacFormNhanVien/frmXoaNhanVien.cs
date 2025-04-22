@@ -24,12 +24,18 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
         {
             InitializeComponent();
             this.selectedNhanVien = nhanVienDTO;
-
-            // Hiển thị dữ liệu lên các control
             txt_HoTen.Text = selectedNhanVien.tenNV;
             cbo_ChucVu.Text = selectedNhanVien.chucVu;
             txt_DiaChi.Text = selectedNhanVien.diaChi;
             txt_Luong.Text = selectedNhanVien.luong.ToString();
+            if (selectedNhanVien.gioiTinh == "Nam")
+            {
+                rad_Nam.Checked = true;
+            }
+            else
+            {
+                rad_Nu.Checked = true;
+            }
             txt_SoDienThoai.Text = selectedNhanVien.SDT;
             dtpNgaySinh.Value = selectedNhanVien.ngaySinh;
             txt_UserName.Text = selectedNhanVien.userName;
@@ -79,12 +85,7 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa nhân viên này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                if (nhanVienBUS.kiemTraNhanVienChoMuonSach(selectedNhanVien))
-                {
-                    MessageBox.Show("Nhân viên đang quản lý sách, không thể xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
+               
                     if (nhanVienBUS.deleteNV(selectedNhanVien.maNV))
                     {
                         MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -94,7 +95,7 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
                     {
                         MessageBox.Show("Xóa thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
+              
             }
         }
     }

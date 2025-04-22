@@ -79,6 +79,7 @@
             this.dgv_DSNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_DSNhanVien.Size = new System.Drawing.Size(1184, 701);
             this.dgv_DSNhanVien.TabIndex = 67;
+            this.dgv_DSNhanVien.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_DSNhanVien_CellFormatting);
             this.dgv_DSNhanVien.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // btn_TimKiem
@@ -97,6 +98,7 @@
             this.btn_TimKiem.Size = new System.Drawing.Size(131, 48);
             this.btn_TimKiem.TabIndex = 66;
             this.btn_TimKiem.Text = "Tìm kiếm";
+            this.btn_TimKiem.Click += new System.EventHandler(this.btn_TimKiem_Click);
             // 
             // txt_TimKiem
             // 
@@ -154,6 +156,7 @@
             this.btn_CapNhat.Size = new System.Drawing.Size(123, 46);
             this.btn_CapNhat.TabIndex = 57;
             this.btn_CapNhat.Text = "Cập Nhật";
+            this.btn_CapNhat.Click += new System.EventHandler(this.btn_CapNhat_Click);
             // 
             // btn_Xoa
             // 

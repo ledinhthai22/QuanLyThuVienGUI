@@ -200,7 +200,7 @@
             this.pn_ThongTinTL.Controls.Add(this.btn_XoaTL);
             this.pn_ThongTinTL.Controls.Add(this.guna2TextBox1);
             this.pn_ThongTinTL.Location = new System.Drawing.Point(0, 0);
-            this.pn_ThongTinTL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pn_ThongTinTL.Margin = new System.Windows.Forms.Padding(4);
             this.pn_ThongTinTL.Name = "pn_ThongTinTL";
             this.pn_ThongTinTL.Size = new System.Drawing.Size(1187, 755);
             this.pn_ThongTinTL.TabIndex = 0;
@@ -214,7 +214,7 @@
             this.dgv_DanhSachTL.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_DanhSachTL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DanhSachTL.Location = new System.Drawing.Point(0, 50);
-            this.dgv_DanhSachTL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_DanhSachTL.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_DanhSachTL.MultiSelect = false;
             this.dgv_DanhSachTL.Name = "dgv_DanhSachTL";
             this.dgv_DanhSachTL.ReadOnly = true;
@@ -222,6 +222,7 @@
             this.dgv_DanhSachTL.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_DanhSachTL.Size = new System.Drawing.Size(1185, 704);
             this.dgv_DanhSachTL.TabIndex = 48;
+            this.dgv_DanhSachTL.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSachTL_CellContentClick);
             this.dgv_DanhSachTL.SelectionChanged += new System.EventHandler(this.dgv_DanhSachTL_SelectionChanged);
             // 
             // huychontimer
@@ -236,7 +237,7 @@
             this.ClientSize = new System.Drawing.Size(1185, 756);
             this.Controls.Add(this.pn_ThongTinTL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQuanLyTheLoai";
             this.Text = "QuanLyTheLoai";
             this.Load += new System.EventHandler(this.QuanLyTheLoai_Load);

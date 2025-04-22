@@ -173,5 +173,10 @@ namespace QuanLyThuVienGUI.admin
                 btn_CapNhat.Enabled = false;
             }));
         }
+
+        private void dgv_DanhSachTL_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

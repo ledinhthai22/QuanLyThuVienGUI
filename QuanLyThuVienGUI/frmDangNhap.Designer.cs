@@ -55,7 +55,7 @@
             this.txt_Username.Font = new System.Drawing.Font("Times New Roman", 10.2F);
             this.txt_Username.ForeColor = System.Drawing.Color.Black;
             this.txt_Username.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_Username.Location = new System.Drawing.Point(503, 122);
+            this.txt_Username.Location = new System.Drawing.Point(588, 122);
             this.txt_Username.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Username.Name = "txt_Username";
             this.txt_Username.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -76,7 +76,7 @@
             this.btn_Login.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Login.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btn_Login.ForeColor = System.Drawing.Color.White;
-            this.btn_Login.Location = new System.Drawing.Point(559, 278);
+            this.btn_Login.Location = new System.Drawing.Point(644, 278);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(159, 41);
             this.btn_Login.TabIndex = 3;
@@ -99,7 +99,7 @@
             this.txt_Password.Font = new System.Drawing.Font("Times New Roman", 10.2F);
             this.txt_Password.ForeColor = System.Drawing.Color.Black;
             this.txt_Password.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_Password.Location = new System.Drawing.Point(503, 175);
+            this.txt_Password.Location = new System.Drawing.Point(588, 175);
             this.txt_Password.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.PlaceholderForeColor = System.Drawing.Color.Gray;
@@ -114,18 +114,17 @@
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(585, 58);
+            this.lbl_Title.Location = new System.Drawing.Point(670, 58);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(107, 32);
             this.lbl_Title.TabIndex = 0;
             this.lbl_Title.Text = "LOGIN";
-
             // 
             // chk_ShowPass
             // 
             this.chk_ShowPass.AutoSize = true;
             this.chk_ShowPass.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_ShowPass.Location = new System.Drawing.Point(503, 227);
+            this.chk_ShowPass.Location = new System.Drawing.Point(588, 227);
             this.chk_ShowPass.Name = "chk_ShowPass";
             this.chk_ShowPass.Size = new System.Drawing.Size(101, 23);
             this.chk_ShowPass.TabIndex = 6;
@@ -145,7 +144,7 @@
             this.btn_Minius.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Minius.ForeColor = System.Drawing.Color.White;
             this.btn_Minius.Image = global::QuanLyThuVienGUI.Properties.Resources.minus;
-            this.btn_Minius.Location = new System.Drawing.Point(741, 0);
+            this.btn_Minius.Location = new System.Drawing.Point(826, 0);
             this.btn_Minius.Name = "btn_Minius";
             this.btn_Minius.Size = new System.Drawing.Size(25, 23);
             this.btn_Minius.TabIndex = 8;
@@ -163,7 +162,7 @@
             this.btn_Close.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Close.ForeColor = System.Drawing.Color.White;
             this.btn_Close.Image = global::QuanLyThuVienGUI.Properties.Resources.multiply_32px;
-            this.btn_Close.Location = new System.Drawing.Point(767, 0);
+            this.btn_Close.Location = new System.Drawing.Point(852, 0);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(25, 23);
             this.btn_Close.TabIndex = 7;
@@ -171,12 +170,12 @@
             // 
             // pn_Image
             // 
-            this.pn_Image.BackgroundImage = global::QuanLyThuVienGUI.Properties.Resources.v1;
+            this.pn_Image.BackgroundImage = global::QuanLyThuVienGUI.Properties.Resources.background;
             this.pn_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pn_Image.Dock = System.Windows.Forms.DockStyle.Left;
             this.pn_Image.Location = new System.Drawing.Point(0, 0);
             this.pn_Image.Name = "pn_Image";
-            this.pn_Image.Size = new System.Drawing.Size(476, 443);
+            this.pn_Image.Size = new System.Drawing.Size(571, 443);
             this.pn_Image.TabIndex = 0;
             // 
             // frmDangNhap
@@ -184,7 +183,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(791, 443);
+            this.ClientSize = new System.Drawing.Size(877, 443);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.btn_Minius);
             this.Controls.Add(this.btn_Close);

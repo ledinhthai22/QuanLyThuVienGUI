@@ -344,13 +344,11 @@
     <Compile Include="CacFormNhanVien\frmThemSach.Designer.cs">
       <DependentUpon>frmThemSach.cs</DependentUpon>
     </Compile>
-    <Compile Include="QLThuVienDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLThuVienDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="CacFormNhanVien\frmAdminMain.resx">
       <DependentUpon>frmAdminMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CacFormNhanVien\frmCapNhatNhanVien.resx">
+      <DependentUpon>frmCapNhatNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CacFormNhanVien\frmCapNhatTheLoai.resx">
       <DependentUpon>frmCapNhatTheLoai.cs</DependentUpon>
@@ -433,17 +431,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="QLThuVienDataSet.xsc">
-      <DependentUpon>QLThuVienDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QLThuVienDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QLThuVienDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QLThuVienDataSet.xss">
-      <DependentUpon>QLThuVienDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Resources\v1.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -514,6 +501,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

@@ -25,7 +25,7 @@ namespace QuanLyThuVienGUI.QuanLy
             this.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.MouseUp += new MouseEventHandler(Form_MouseUp);
-
+            cbo_ChucVu.SelectedIndex = 0;
             // Gắn sự kiện kéo thả cho panel tiêu đề
             this.pn_Tab.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.pn_Tab.MouseMove += new MouseEventHandler(Form_MouseMove);

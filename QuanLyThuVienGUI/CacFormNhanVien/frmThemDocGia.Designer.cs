@@ -54,19 +54,18 @@
             this.pn_Tab.BackColor = System.Drawing.Color.DodgerBlue;
             this.pn_Tab.Controls.Add(this.lbl_Title);
             this.pn_Tab.Location = new System.Drawing.Point(-1, 0);
-            this.pn_Tab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pn_Tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pn_Tab.Name = "pn_Tab";
-            this.pn_Tab.Size = new System.Drawing.Size(388, 24);
+            this.pn_Tab.Size = new System.Drawing.Size(517, 30);
             this.pn_Tab.TabIndex = 2;
             // 
             // lbl_Title
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(139, 2);
-            this.lbl_Title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Title.Location = new System.Drawing.Point(162, 5);
             this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(110, 19);
+            this.lbl_Title.Size = new System.Drawing.Size(134, 23);
             this.lbl_Title.TabIndex = 0;
             this.lbl_Title.Text = "THÊM ĐỘC GIẢ";
             this.lbl_Title.Click += new System.EventHandler(this.lbl_Title_Click);
@@ -76,10 +75,9 @@
             this.lblThemThongTin.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblThemThongTin.AutoSize = true;
             this.lblThemThongTin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThemThongTin.Location = new System.Drawing.Point(87, 54);
-            this.lblThemThongTin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblThemThongTin.Location = new System.Drawing.Point(73, 52);
             this.lblThemThongTin.Name = "lblThemThongTin";
-            this.lblThemThongTin.Size = new System.Drawing.Size(0, 19);
+            this.lblThemThongTin.Size = new System.Drawing.Size(0, 23);
             this.lblThemThongTin.TabIndex = 58;
             // 
             // txt_Email
@@ -99,13 +97,13 @@
             this.txt_Email.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_Email.ForeColor = System.Drawing.Color.Black;
             this.txt_Email.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_Email.Location = new System.Drawing.Point(132, 174);
-            this.txt_Email.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txt_Email.Location = new System.Drawing.Point(133, 200);
+            this.txt_Email.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Email.Name = "txt_Email";
             this.txt_Email.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_Email.PlaceholderText = "";
             this.txt_Email.SelectedText = "";
-            this.txt_Email.Size = new System.Drawing.Size(191, 30);
+            this.txt_Email.Size = new System.Drawing.Size(255, 37);
             this.txt_Email.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_Email.TabIndex = 57;
             // 
@@ -126,13 +124,13 @@
             this.txt_HoTen.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_HoTen.ForeColor = System.Drawing.Color.Black;
             this.txt_HoTen.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_HoTen.Location = new System.Drawing.Point(138, 41);
-            this.txt_HoTen.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txt_HoTen.Location = new System.Drawing.Point(141, 36);
+            this.txt_HoTen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_HoTen.Name = "txt_HoTen";
             this.txt_HoTen.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_HoTen.PlaceholderText = "";
             this.txt_HoTen.SelectedText = "";
-            this.txt_HoTen.Size = new System.Drawing.Size(189, 30);
+            this.txt_HoTen.Size = new System.Drawing.Size(252, 37);
             this.txt_HoTen.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_HoTen.TabIndex = 49;
             // 
@@ -141,10 +139,9 @@
             this.lbl_Email.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_Email.AutoSize = true;
             this.lbl_Email.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Email.Location = new System.Drawing.Point(87, 188);
-            this.lbl_Email.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Email.Location = new System.Drawing.Point(73, 217);
             this.lbl_Email.Name = "lbl_Email";
-            this.lbl_Email.Size = new System.Drawing.Size(49, 19);
+            this.lbl_Email.Size = new System.Drawing.Size(59, 23);
             this.lbl_Email.TabIndex = 56;
             this.lbl_Email.Text = "Email:";
             // 
@@ -165,13 +162,13 @@
             this.txt_SoDienThoai.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_SoDienThoai.ForeColor = System.Drawing.Color.Black;
             this.txt_SoDienThoai.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_SoDienThoai.Location = new System.Drawing.Point(133, 139);
-            this.txt_SoDienThoai.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txt_SoDienThoai.Location = new System.Drawing.Point(134, 157);
+            this.txt_SoDienThoai.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_SoDienThoai.Name = "txt_SoDienThoai";
             this.txt_SoDienThoai.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_SoDienThoai.PlaceholderText = "";
             this.txt_SoDienThoai.SelectedText = "";
-            this.txt_SoDienThoai.Size = new System.Drawing.Size(191, 30);
+            this.txt_SoDienThoai.Size = new System.Drawing.Size(255, 37);
             this.txt_SoDienThoai.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_SoDienThoai.TabIndex = 55;
             // 
@@ -180,10 +177,9 @@
             this.lbl_SoDienThoai.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_SoDienThoai.AutoSize = true;
             this.lbl_SoDienThoai.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_SoDienThoai.Location = new System.Drawing.Point(35, 152);
-            this.lbl_SoDienThoai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_SoDienThoai.Location = new System.Drawing.Point(4, 173);
             this.lbl_SoDienThoai.Name = "lbl_SoDienThoai";
-            this.lbl_SoDienThoai.Size = new System.Drawing.Size(101, 19);
+            this.lbl_SoDienThoai.Size = new System.Drawing.Size(121, 23);
             this.lbl_SoDienThoai.TabIndex = 54;
             this.lbl_SoDienThoai.Text = "Số điện thoại:";
             // 
@@ -191,10 +187,10 @@
             // 
             this.rad_Nu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rad_Nu.AutoSize = true;
-            this.rad_Nu.Location = new System.Drawing.Point(189, 120);
-            this.rad_Nu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rad_Nu.Location = new System.Drawing.Point(209, 134);
+            this.rad_Nu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rad_Nu.Name = "rad_Nu";
-            this.rad_Nu.Size = new System.Drawing.Size(39, 17);
+            this.rad_Nu.Size = new System.Drawing.Size(45, 20);
             this.rad_Nu.TabIndex = 53;
             this.rad_Nu.TabStop = true;
             this.rad_Nu.Text = "Nữ";
@@ -205,10 +201,10 @@
             this.rad_Nam.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rad_Nam.AutoSize = true;
             this.rad_Nam.Checked = true;
-            this.rad_Nam.Location = new System.Drawing.Point(142, 120);
-            this.rad_Nam.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rad_Nam.Location = new System.Drawing.Point(146, 134);
+            this.rad_Nam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rad_Nam.Name = "rad_Nam";
-            this.rad_Nam.Size = new System.Drawing.Size(47, 17);
+            this.rad_Nam.Size = new System.Drawing.Size(57, 20);
             this.rad_Nam.TabIndex = 52;
             this.rad_Nam.TabStop = true;
             this.rad_Nam.Text = "Nam";
@@ -222,12 +218,12 @@
             this.dtpNgaySinh.FillColor = System.Drawing.Color.DodgerBlue;
             this.dtpNgaySinh.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgaySinh.Location = new System.Drawing.Point(139, 81);
-            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpNgaySinh.Location = new System.Drawing.Point(142, 86);
+            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpNgaySinh.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpNgaySinh.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(189, 27);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(252, 33);
             this.dtpNgaySinh.TabIndex = 51;
             this.dtpNgaySinh.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dtpNgaySinh.Value = new System.DateTime(2025, 3, 19, 10, 25, 14, 821);
@@ -248,13 +244,13 @@
             this.txt_DiaChi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_DiaChi.ForeColor = System.Drawing.Color.Black;
             this.txt_DiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_DiaChi.Location = new System.Drawing.Point(136, 225);
-            this.txt_DiaChi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txt_DiaChi.Location = new System.Drawing.Point(138, 263);
+            this.txt_DiaChi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_DiaChi.Name = "txt_DiaChi";
             this.txt_DiaChi.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txt_DiaChi.PlaceholderText = "";
             this.txt_DiaChi.SelectedText = "";
-            this.txt_DiaChi.Size = new System.Drawing.Size(186, 110);
+            this.txt_DiaChi.Size = new System.Drawing.Size(248, 135);
             this.txt_DiaChi.TabIndex = 50;
             // 
             // lbl_DiaChi
@@ -262,10 +258,9 @@
             this.lbl_DiaChi.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_DiaChi.AutoSize = true;
             this.lbl_DiaChi.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DiaChi.Location = new System.Drawing.Point(79, 223);
-            this.lbl_DiaChi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_DiaChi.Location = new System.Drawing.Point(62, 260);
             this.lbl_DiaChi.Name = "lbl_DiaChi";
-            this.lbl_DiaChi.Size = new System.Drawing.Size(58, 19);
+            this.lbl_DiaChi.Size = new System.Drawing.Size(70, 23);
             this.lbl_DiaChi.TabIndex = 48;
             this.lbl_DiaChi.Text = "Địa chỉ:";
             // 
@@ -274,10 +269,9 @@
             this.lbl_GioiTinh.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_GioiTinh.AutoSize = true;
             this.lbl_GioiTinh.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_GioiTinh.Location = new System.Drawing.Point(69, 118);
-            this.lbl_GioiTinh.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_GioiTinh.Location = new System.Drawing.Point(49, 131);
             this.lbl_GioiTinh.Name = "lbl_GioiTinh";
-            this.lbl_GioiTinh.Size = new System.Drawing.Size(69, 19);
+            this.lbl_GioiTinh.Size = new System.Drawing.Size(85, 23);
             this.lbl_GioiTinh.TabIndex = 47;
             this.lbl_GioiTinh.Text = "Giới tính:";
             // 
@@ -286,10 +280,9 @@
             this.lbl_NgaySinh.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_NgaySinh.AutoSize = true;
             this.lbl_NgaySinh.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_NgaySinh.Location = new System.Drawing.Point(62, 84);
-            this.lbl_NgaySinh.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_NgaySinh.Location = new System.Drawing.Point(40, 89);
             this.lbl_NgaySinh.Name = "lbl_NgaySinh";
-            this.lbl_NgaySinh.Size = new System.Drawing.Size(79, 19);
+            this.lbl_NgaySinh.Size = new System.Drawing.Size(94, 23);
             this.lbl_NgaySinh.TabIndex = 46;
             this.lbl_NgaySinh.Text = "Ngày sinh:";
             // 
@@ -298,10 +291,9 @@
             this.lbl_HoTen.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_HoTen.AutoSize = true;
             this.lbl_HoTen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_HoTen.Location = new System.Drawing.Point(80, 56);
-            this.lbl_HoTen.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_HoTen.Location = new System.Drawing.Point(64, 55);
             this.lbl_HoTen.Name = "lbl_HoTen";
-            this.lbl_HoTen.Size = new System.Drawing.Size(60, 19);
+            this.lbl_HoTen.Size = new System.Drawing.Size(70, 23);
             this.lbl_HoTen.TabIndex = 45;
             this.lbl_HoTen.Text = "Họ Tên:";
             // 
@@ -317,10 +309,10 @@
             this.btn_Them.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Them.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_Them.ForeColor = System.Drawing.Color.White;
-            this.btn_Them.Location = new System.Drawing.Point(109, 383);
-            this.btn_Them.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Them.Location = new System.Drawing.Point(114, 425);
+            this.btn_Them.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Them.Name = "btn_Them";
-            this.btn_Them.Size = new System.Drawing.Size(67, 37);
+            this.btn_Them.Size = new System.Drawing.Size(89, 46);
             this.btn_Them.TabIndex = 59;
             this.btn_Them.Text = "Thêm";
             // 
@@ -335,20 +327,20 @@
             this.btn_Thoat.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Thoat.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_Thoat.ForeColor = System.Drawing.Color.White;
-            this.btn_Thoat.Location = new System.Drawing.Point(217, 383);
-            this.btn_Thoat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Thoat.Location = new System.Drawing.Point(244, 425);
+            this.btn_Thoat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Thoat.Name = "btn_Thoat";
-            this.btn_Thoat.Size = new System.Drawing.Size(67, 37);
+            this.btn_Thoat.Size = new System.Drawing.Size(89, 46);
             this.btn_Thoat.TabIndex = 60;
             this.btn_Thoat.Text = "Thoát";
             this.btn_Thoat.Click += new System.EventHandler(this.btn_Thoat_Click);
             // 
             // frmThemDocGia
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(387, 465);
+            this.ClientSize = new System.Drawing.Size(446, 517);
             this.Controls.Add(this.btn_Them);
             this.Controls.Add(this.btn_Thoat);
             this.Controls.Add(this.lblThemThongTin);
@@ -367,7 +359,7 @@
             this.Controls.Add(this.lbl_NgaySinh);
             this.Controls.Add(this.lbl_DiaChi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmThemDocGia";
             this.Text = "frmThemDocGia";
             this.pn_Tab.ResumeLayout(false);

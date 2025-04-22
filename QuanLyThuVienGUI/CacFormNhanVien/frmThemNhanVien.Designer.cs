@@ -366,7 +366,7 @@
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(133, 2);
+            this.lbl_Title.Location = new System.Drawing.Point(145, 5);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(157, 23);
             this.lbl_Title.TabIndex = 0;
@@ -420,7 +420,6 @@
             this.cbo_ChucVu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbo_ChucVu.ItemHeight = 30;
             this.cbo_ChucVu.Items.AddRange(new object[] {
-            "admin",
             "thuthu"});
             this.cbo_ChucVu.Location = new System.Drawing.Point(145, 99);
             this.cbo_ChucVu.Name = "cbo_ChucVu";
@@ -455,7 +454,7 @@
             this.Controls.Add(this.lbl_HoTen);
             this.Controls.Add(this.lbl_NgaySinh);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmThemNhanVien";
             this.Text = "frmThemNhanVien";
             this.pn_Tab.ResumeLayout(false);

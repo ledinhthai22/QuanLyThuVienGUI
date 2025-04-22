@@ -23,7 +23,31 @@ namespace QuanLyThuVienGUI.admin
 
         private void QuanLyDocGia_Load(object sender, EventArgs e)
         {
+            LoadDS();
             taoCotDataGridView();
+            dgv_DSDocGia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_DSDocGia.MultiSelect = false;
+            dgv_DSDocGia.ReadOnly = true;
+            dgv_DSDocGia.AllowUserToAddRows = false;
+            dgv_DSDocGia.AllowUserToDeleteRows = false;
+        }
+        private void LoadDS()
+        {
+            try
+            {
+                dgv_DSDocGia.DataSource = null;
+                dgv_DSDocGia.DataSource = docGiaBUS.LoadDSDG();
+                this.BeginInvoke(new Action(() =>
+                {
+                    dgv_DSDocGia.ClearSelection();
+                    btn_Xoa.Enabled = false;
+                    btn_CapNhat.Enabled = false;
+                }));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải lại danh sách độc giả: " + ex.Message);
+            }
         }
         private void taoCotDataGridView()
         {
@@ -87,6 +111,22 @@ namespace QuanLyThuVienGUI.admin
         private void btn_Them_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgv_DSDocGia_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if(e.ColumnIndex == 7 && e.Value != null)
+            {
+                string trangThai = e.Value.ToString();
+                if (trangThai == "1")
+                {
+                    e.Value = "Đang hoạt động";
+                }
+                else if (trangThai == "0")
+                {
+                    e.Value = "Ngừng hoạt động";
+                }
+            }
         }
     }
 }
