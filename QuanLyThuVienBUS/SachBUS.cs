@@ -16,5 +16,9 @@ namespace QuanLyThuVienBUS
         {
             return sachDAO.loadSach();
         }
+        public bool addSach(SachDTO sachDTO)
+        {
+            return SachDAO.addSach(sachDTO);
+        }
     }
 }

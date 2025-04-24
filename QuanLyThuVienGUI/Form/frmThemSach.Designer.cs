@@ -127,7 +127,6 @@
             this.txt_NXB.Size = new System.Drawing.Size(200, 30);
             this.txt_NXB.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_NXB.TabIndex = 42;
-            this.txt_NXB.TextChanged += new System.EventHandler(this.txt_NXB_TextChanged);
             // 
             // lblPublisher
             // 
@@ -373,6 +372,7 @@
             this.Name = "frmThemSach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ThemSach";
+            this.Load += new System.EventHandler(this.frmThemSach_Load);
             this.pn_Tab.ResumeLayout(false);
             this.pn_Tab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).EndInit();

@@ -15,7 +15,7 @@ namespace QuanLyThuVienGUI
             string tenNV = "";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAdminMain(tenNV));
+            Application.Run(new frmMain(tenNV));
         }
     }
 }

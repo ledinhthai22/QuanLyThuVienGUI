@@ -14,7 +14,6 @@ namespace QuanLyThuVienGUI
     public partial class frmQuanLySach : Form
     {
         SachBUS sachBUS = new SachBUS();
-        SachDTO sachDTO = new SachDTO();
         public frmQuanLySach()
         {
             InitializeComponent();
@@ -70,8 +69,8 @@ namespace QuanLyThuVienGUI
             });
             dgv_DSSach.Columns.Add(new DataGridViewTextBoxColumn
             {
-                Name = "MaTheLoai",
-                DataPropertyName = "MaTheLoai",
+                Name = "TenTheLoai",
+                DataPropertyName = "TenTheLoai",
                 HeaderText = "Thể loại"
             });
             dgv_DSSach.Columns.Add(new DataGridViewTextBoxColumn
@@ -94,6 +93,12 @@ namespace QuanLyThuVienGUI
                 DataPropertyName = "SoLuong",
                 HeaderText = "Số lượng"
             });
+            dgv_DSSach.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "MoTa",
+                DataPropertyName = "MoTa",
+                HeaderText = "Mô tả"
+            });
 
             dgv_DSSach.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -111,6 +116,55 @@ namespace QuanLyThuVienGUI
         {
             taoCotDataGridView();
             loadDSSach();
+            huychontimer = new Timer();
+            huychontimer.Interval = 3000;
+            huychontimer.Tick += huychontimer_Tick;
+            dgv_DSSach.SelectionChanged += dgv_DSSach_SelectionChanged;
+        }
+
+        private void dgv_DSSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 8 && e.Value != null)
+            {
+                string trangThai = e.Value.ToString();
+                if (trangThai == "1")
+                {
+                    e.Value = "Còn sẵn";
+                }
+                else if (trangThai == "0")
+                {
+                    e.Value = "đã mượn hết";
+                }
+            }
+        }
+
+        private void btn_LamMoi_Click(object sender, EventArgs e)
+        {
+            loadDSSach();
+        }
+
+        private void dgv_DSSach_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv_DSSach.SelectedRows.Count > 0)
+            {
+                btn_Xoa.Enabled = true;
+                btn_Sua.Enabled = true;
+
+
+                huychontimer.Stop();
+                huychontimer.Start();
+            }
+            else
+            {
+                btn_Xoa.Enabled = false;
+                btn_Sua.Enabled = false;
+            }
+        }
+
+        private void huychontimer_Tick(object sender, EventArgs e)
+        {
+            huychontimer.Stop();
+            dgv_DSSach.ClearSelection();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_Them = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Xoa = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Sua = new Guna.UI2.WinForms.Guna2Button();
@@ -36,6 +37,7 @@
             this.dgv_DSSach = new System.Windows.Forms.DataGridView();
             this.txt_TimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_TimKiem = new Guna.UI2.WinForms.Guna2Button();
+            this.huychontimer = new System.Windows.Forms.Timer(this.components);
             this.pnframeInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSSach)).BeginInit();
             this.SuspendLayout();
@@ -129,9 +131,12 @@
             this.btn_LamMoi.Size = new System.Drawing.Size(83, 37);
             this.btn_LamMoi.TabIndex = 51;
             this.btn_LamMoi.Text = "Làm mới";
+            this.btn_LamMoi.Click += new System.EventHandler(this.btn_LamMoi_Click);
             // 
             // dgv_DSSach
             // 
+            this.dgv_DSSach.AllowUserToAddRows = false;
+            this.dgv_DSSach.AllowUserToDeleteRows = false;
             this.dgv_DSSach.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -147,6 +152,8 @@
             this.dgv_DSSach.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_DSSach.Size = new System.Drawing.Size(888, 574);
             this.dgv_DSSach.TabIndex = 49;
+            this.dgv_DSSach.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_DSSach_CellFormatting);
+            this.dgv_DSSach.SelectionChanged += new System.EventHandler(this.dgv_DSSach_SelectionChanged);
             // 
             // txt_TimKiem
             // 
@@ -187,6 +194,11 @@
             this.btn_TimKiem.TabIndex = 45;
             this.btn_TimKiem.Text = "Tìm kiếm";
             // 
+            // huychontimer
+            // 
+            this.huychontimer.Interval = 3000;
+            this.huychontimer.Tick += new System.EventHandler(this.huychontimer_Tick);
+            // 
             // frmQuanLySach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,5 +226,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txt_TimKiem;
         private System.Windows.Forms.DataGridView dgv_DSSach;
         private Guna.UI2.WinForms.Guna2Button btn_LamMoi;
+        private System.Windows.Forms.Timer huychontimer;
     }
 }

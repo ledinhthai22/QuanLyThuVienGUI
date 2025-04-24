@@ -14,7 +14,7 @@ using QuanLyThuVienDTO;
 
 namespace QuanLyThuVienGUI
 {
-    public partial class frmAdminMain : Form
+    public partial class frmMain : Form
     {
         
         public DangNhapBUS dangNhapBUS;
@@ -31,7 +31,7 @@ namespace QuanLyThuVienGUI
         public static extern bool ReleaseCapture();
 
     
-        public frmAdminMain(string tenNV)
+        public frmMain(string tenNV)
         {
             InitializeComponent();
             LoadFormIntoPanel(new frmTrangChu());

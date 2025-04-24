@@ -13,11 +13,13 @@ namespace QuanLyThuVienDAO
 
     public class SachDAO
     {
-        DataProvider dp = new DataProvider();
+        static DataProvider dp = new DataProvider();
         SachDTO sachDTO = new SachDTO();
         public DataTable loadSach()
         {
-            string query = "SELECT * FROM Sach WHERE SoLuong > 0  AND TrangThai = 1";
+            string query = "SELECT MaSach,TenSach,TacGia,TenTheLoai,NamXuatBan,NhaXuatBan,SoLuong,MoTa,TrangThai " +
+                           "FROM Sach S join TheLoai TL ON S.MaTheLoai = TL.MaTheLoai " +
+                           "WHERE TrangThai = 1 AND SoLuong > 0";
             SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -27,39 +29,40 @@ namespace QuanLyThuVienDAO
         }
 
 
-    //    public bool addSach(SachDTO sachDTO)
-    //    {
-    //        dp.Open();
-    //        SqlCommand getIdCmd = new SqlCommand("GetNextMaSach", dp.GetConnection());
-    //        getIdCmd.CommandType = CommandType.StoredProcedure;
+        public static bool addSach(SachDTO sachDTO)
+        {
+            dp.Open();
+            SqlCommand getIdCmd = new SqlCommand("GetNextMaSach", dp.GetConnection());
+            getIdCmd.CommandType = CommandType.StoredProcedure;
 
-    //        string newMaSach = "";
-    //        using (SqlDataReader reader = getIdCmd.ExecuteReader())
-    //        {
-    //            if (reader.Read())
-    //            {
-    //                newMaSach = reader.GetString(0);
-    //            }
-    //        }
+            string newMaSach = "";
+            using (SqlDataReader reader = getIdCmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    newMaSach = reader.GetString(0);
+                }
+            }
 
-    //        string insert = "INSERT INTO Sach (MaSach, TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, MoTa, TrangThai) " +
-    //                        "VALUES (@maSach, @tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @moTa, @trangThai)";
-    //        SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
-    //        cmd.Parameters.AddWithValue("@maSach", newMaSach);
-    //        cmd.Parameters.AddWithValue("@tenSach", sachDTO.tenSach);
-    //        cmd.Parameters.AddWithValue("@tacGia", sachDTO.tacGia);
-    //        cmd.Parameters.AddWithValue("@maTheLoai", sachDTO.maTheLoai);
-    //        cmd.Parameters.Add("@namXuatBan", SqlDbType.Date).Value = sachDTO.namXuatBan.Date;
-    //        cmd.Parameters.AddWithValue("@nhaXuatBan", sachDTO.nhaXuatBan);
-    //        cmd.Parameters.AddWithValue("@soLuong", sachDTO.soLuong);
-    //        cmd.Parameters.AddWithValue("@moTa", sachDTO.moTa);
-    //        cmd.Parameters.AddWithValue("@trangThai", sachDTO.trangThai);
+            string insert = "INSERT INTO Sach (MaSach, TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, MoTa, TrangThai) " +
+                            "VALUES (@maSach, @tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @moTa, 1)";
+            SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
+            cmd.Parameters.AddWithValue("@maSach", newMaSach);
+            cmd.Parameters.AddWithValue("@tenSach", sachDTO.tenSach);
+            cmd.Parameters.AddWithValue("@tacGia", sachDTO.tacGia);
+            cmd.Parameters.AddWithValue("@maTheLoai", sachDTO.maTheLoai);
+            cmd.Parameters.Add("@namXuatBan", SqlDbType.Date).Value = sachDTO.namXuatBan.Date;
+            cmd.Parameters.AddWithValue("@nhaXuatBan", sachDTO.nhaXuatBan);
+            cmd.Parameters.AddWithValue("@soLuong", sachDTO.soLuong);
+            cmd.Parameters.AddWithValue("@moTa", sachDTO.moTa);
+            int n = cmd.ExecuteNonQuery();
+            dp.Close();
+            return n > 0;
+        }
 
-    //        int n = cmd.ExecuteNonQuery();
-    //        dp.Close();
-    //        return n > 0;
-    //    }
+        public static bool kiemTraTonTai(SachDTO sachDTO)
+        {
 
-        
+        }
     }
 }

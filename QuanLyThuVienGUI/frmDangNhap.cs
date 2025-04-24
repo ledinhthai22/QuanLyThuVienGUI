@@ -43,7 +43,7 @@ namespace QuanLyThuVienGUI
 
                         if (dangNhapBUS.getRole(dangNhapDTO) == "admin") // kiểm tra chức vụ của tài khoản vừa được kiểm tra đăng nhập
                         {
-                            frmAdminMain frmAdminMain = new frmAdminMain(hoTen); 
+                            frmMain frmAdminMain = new frmMain(hoTen); 
                             frmAdminMain.Show();
                             this.Hide();
                         }

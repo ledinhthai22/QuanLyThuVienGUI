@@ -80,7 +80,7 @@
             this.dgv_DSNhanVien.Size = new System.Drawing.Size(1184, 701);
             this.dgv_DSNhanVien.TabIndex = 67;
             this.dgv_DSNhanVien.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_DSNhanVien_CellFormatting);
-            this.dgv_DSNhanVien.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.dgv_DSNhanVien.SelectionChanged += new System.EventHandler(this.dgv_DSNhanVien_SelectionChanged);
             // 
             // btn_TimKiem
             // 

@@ -1,6 +1,6 @@
 ﻿namespace QuanLyThuVienGUI
 {
-    partial class frmAdminMain
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.Pn_LoadFrm = new Guna.UI2.WinForms.Guna2Panel();
             this.lbl_Ten = new System.Windows.Forms.Label();
             this.pn_NavB = new System.Windows.Forms.Panel();

@@ -149,7 +149,7 @@ namespace QuanLyThuVienGUI.admin
             dgv_DSNhanVien.ClearSelection();
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private void dgv_DSNhanVien_SelectionChanged(object sender, EventArgs e)
         {
             if (dgv_DSNhanVien.SelectedRows.Count > 0)
             {
@@ -179,7 +179,7 @@ namespace QuanLyThuVienGUI.admin
             huychontimer = new Timer();
             huychontimer.Interval = 3000; 
             huychontimer.Tick += huychontimer_Tick;
-            dgv_DSNhanVien.SelectionChanged += dataGridView1_SelectionChanged;
+            dgv_DSNhanVien.SelectionChanged += dgv_DSNhanVien_SelectionChanged;
         }
         private void getDuLieu()
         {

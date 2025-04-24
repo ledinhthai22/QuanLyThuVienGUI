@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.SqlServer.Management.HadrModel;
 using QuanLyThuVienBUS;
 using QuanLyThuVienDTO;
 
@@ -17,6 +18,7 @@ namespace QuanLyThuVienGUI.QuanLy
     {
         SachBUS sachBUS = new SachBUS();
         TheLoaiBUS theLoaiBUS = new TheLoaiBUS();
+        SachDTO sachDTO = new SachDTO();
         private bool dragging = false; 
         private Point dragCursorPoint; 
         private Point dragFormPoint;
@@ -33,6 +35,7 @@ namespace QuanLyThuVienGUI.QuanLy
             this.pn_Tab.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.pn_Tab.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.pn_Tab.MouseUp += new MouseEventHandler(Form_MouseUp);
+            numSoLuong.Minimum = 1;
         }
 
         private void Form_MouseDown(object sender, MouseEventArgs e)
@@ -50,6 +53,13 @@ namespace QuanLyThuVienGUI.QuanLy
                 this.Location = Point.Add(dragFormPoint, new Size(diff));
             }
         }
+        private void loadCboTL()
+        {
+            List<TheLoaiDTO> dsTheLoai = theLoaiBUS.loadTheLoai(); // giả sử bạn có hàm này trong TheLoaiBUS
+            cbo_MaTheLoai.DataSource = dsTheLoai;
+            cbo_MaTheLoai.DisplayMember = "TenTL";
+            cbo_MaTheLoai.ValueMember = "MaTL";
+        }
 
         private void Form_MouseUp(object sender, MouseEventArgs e)
         {
@@ -63,13 +73,41 @@ namespace QuanLyThuVienGUI.QuanLy
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            
+            getDuLieu();
+            if(string.IsNullOrWhiteSpace(txt_TenSach.Text)
+                || string.IsNullOrWhiteSpace(txt_TacGia.Text)
+                || string.IsNullOrWhiteSpace(txt_NXB.Text)
+                || string.IsNullOrWhiteSpace(txt_MoTa.Text)
+                || dtp_NamXB.Value == null)
+            {
+                return;
+            }
+            if (sachBUS.addSach(sachDTO))
+            {
+                MessageBox.Show("Thêm sách thành công");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Thêm thất bại");
+            }
+        }
+        private void getDuLieu()
+        {
+            sachDTO.tenSach = txt_TenSach.Text;
+            sachDTO.tacGia = txt_TacGia.Text;
+            sachDTO.moTa = txt_MoTa.Text;
+            sachDTO.soLuong = (int)numSoLuong.Value;
+            sachDTO.nhaXuatBan = txt_NXB.Text;
+            sachDTO.namXuatBan = dtp_NamXB.Value;
+            sachDTO.maTheLoai = cbo_MaTheLoai.SelectedValue.ToString(); 
         }
 
-        private void txt_NXB_TextChanged(object sender, EventArgs e)
+
+        private void frmThemSach_Load(object sender, EventArgs e)
         {
-
-
+            loadCboTL();
+            
         }
     }
 }
