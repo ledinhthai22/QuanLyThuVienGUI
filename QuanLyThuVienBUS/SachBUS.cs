@@ -12,6 +12,9 @@ namespace QuanLyThuVienBUS
     public class SachBUS
     {
         SachDAO sachDAO = new SachDAO();
-       
+        public DataTable loadSach()
+        {
+            return sachDAO.loadSach();
+        }
     }
 }

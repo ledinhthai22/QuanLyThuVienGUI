@@ -17,7 +17,7 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
-        NhanVienDTO nhanVienDTO = new NhanVienDTO();
+
         NhanVienBUS nhanVienBUS = new NhanVienBUS();
         private NhanVienDTO selectedNhanVien;
         public frmXoaNhanVien(NhanVienDTO nhanVienDTO)

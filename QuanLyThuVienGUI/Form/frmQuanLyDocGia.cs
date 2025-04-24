@@ -172,6 +172,7 @@ namespace QuanLyThuVienGUI.admin
             docGiaDTO.ngaySinh = ngaySinh;
             docGiaDTO.gioiTinh = gioiTinh;
             docGiaDTO.diaChi = diaChi;
+            docGiaDTO.email = Email;
             docGiaDTO.soDienThoai = SDT;
             docGiaDTO.ngaySinh = ngaySinh;
            
@@ -181,8 +182,18 @@ namespace QuanLyThuVienGUI.admin
             if (dgv_DSDocGia.SelectedRows.Count > 0)
             {
                 getDuLieu();
-                frmXoaNhanVien xoaNV = new frmXoaNhanVien(docGiaDTO);
-                xoaNV.ShowDialog();
+                frmXoaDocGia xoaDG = new frmXoaDocGia(docGiaDTO);
+                xoaDG.ShowDialog();
+            }
+        }
+
+        private void btn_CapNhat_Click(object sender, EventArgs e)
+        {
+            if (dgv_DSDocGia.SelectedRows.Count > 0)
+            {
+                getDuLieu();
+                frmCapNhatDocGia capNhatDG = new frmCapNhatDocGia(docGiaDTO);
+                capNhatDG.ShowDialog();
             }
         }
     }

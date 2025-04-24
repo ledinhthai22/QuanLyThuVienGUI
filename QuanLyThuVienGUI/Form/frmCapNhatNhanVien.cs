@@ -86,22 +86,14 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
         private void btn_CapNhat_Click(object sender, EventArgs e)
         {
             getDuLieu(selectedNhanVien);
-            getDuLieu(selectedNhanVien);
-            if (nhanVienBUS.kiemTraTonTai(selectedNhanVien))
+            if (nhanVienBUS.updateNV(selectedNhanVien))
             {
-                MessageBox.Show("Username đã tồn tại ở tài khoản khác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
             }
             else
             {
-                if (nhanVienBUS.updateNV(selectedNhanVien))
-                {
-                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Cập nhật thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

@@ -324,11 +324,23 @@
     <Compile Include="Form\frmXoaTheLoai.Designer.cs">
       <DependentUpon>frmXoaTheLoai.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\frmCapNhatDocGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmCapNhatDocGia.Designer.cs">
+      <DependentUpon>frmCapNhatDocGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDangNhap.Designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmXoaDocGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmXoaDocGia.Designer.cs">
+      <DependentUpon>frmXoaDocGia.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -346,6 +358,9 @@
     </Compile>
     <EmbeddedResource Include="Form\frmAdminMain.resx">
       <DependentUpon>frmAdminMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmCapNhatDocGia.resx">
+      <DependentUpon>frmCapNhatDocGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmCapNhatNhanVien.resx">
       <DependentUpon>frmCapNhatNhanVien.cs</DependentUpon>
@@ -379,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmTrangChu.resx">
       <DependentUpon>frmTrangChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmXoaDocGia.resx">
+      <DependentUpon>frmXoaDocGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmXoaNhanVien.resx">
       <DependentUpon>frmXoaNhanVien.cs</DependentUpon>

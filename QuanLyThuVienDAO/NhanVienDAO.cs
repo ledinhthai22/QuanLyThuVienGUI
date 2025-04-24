@@ -39,8 +39,10 @@ namespace QuanLyThuVienDAO
                     nhanVienDTO.userName = dr["Username"].ToString();
                     nhanVienDTO.password = dr["Password"].ToString();
                     nhanVienDTO.trangThai = Convert.ToInt32(dr["TrangThai"]);
+                    nhanVienDTO.ngayTao = dr["NgayTao"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTao"]);
 
-                  
+
+
                     listNhanVien.Add(nhanVienDTO);
                 }
 
@@ -70,13 +72,15 @@ namespace QuanLyThuVienDAO
                     }
                 }
             }
+          
             DateTime ngaySinh;
             if (!DateTime.TryParse(nhanVienDTO.ngaySinh.ToString(), out ngaySinh) ||
-                ngaySinh < (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue ||
+                ngaySinh < new DateTime(1753, 1, 1) || // Kiểm tra ngày bắt đầu hợp lệ
                 ngaySinh > (DateTime)System.Data.SqlTypes.SqlDateTime.MaxValue)
             {
-                ngaySinh = DateTime.Now; 
+                ngaySinh = new DateTime(1753, 1, 1); // Nếu không hợp lệ, đặt ngày mặc định hợp lệ
             }
+
 
             string insert = @"INSERT INTO NhanVien 
                      (MaNV, TenNV, ChucVu, GioiTinh, NgaySinh, SDT, DiaChi, Luong, Username, Password, TrangThai)
@@ -93,7 +97,6 @@ namespace QuanLyThuVienDAO
             cmd.Parameters.AddWithValue("@luong", nhanVienDTO.luong);
             cmd.Parameters.AddWithValue("@userName", nhanVienDTO.userName);
             cmd.Parameters.AddWithValue("@passWord", nhanVienDTO.password);
-
             int n = cmd.ExecuteNonQuery();
             dp.Close();
             return n > 0;

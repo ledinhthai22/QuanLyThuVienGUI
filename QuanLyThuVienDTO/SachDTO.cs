@@ -16,9 +16,8 @@ namespace QuanLyThuVienDTO
         public string nhaXuatBan { get; set; }
         public DateTime namXuatBan { get; set; }
         public int soLuong { get; set; }
-        public string hinhAnh { get; set; }
         public string moTa { get; set; }
-        public int trangThai { get; set; }
+        public int trangThai { get; set; } 
 
     }
 }

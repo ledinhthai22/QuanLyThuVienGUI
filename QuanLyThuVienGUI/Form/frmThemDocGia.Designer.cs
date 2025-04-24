@@ -56,7 +56,7 @@
             this.pn_Tab.Location = new System.Drawing.Point(-1, 0);
             this.pn_Tab.Margin = new System.Windows.Forms.Padding(2);
             this.pn_Tab.Name = "pn_Tab";
-            this.pn_Tab.Size = new System.Drawing.Size(388, 24);
+            this.pn_Tab.Size = new System.Drawing.Size(336, 24);
             this.pn_Tab.TabIndex = 2;
             // 
             // lbl_Title
@@ -75,7 +75,7 @@
             this.lblThemThongTin.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblThemThongTin.AutoSize = true;
             this.lblThemThongTin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThemThongTin.Location = new System.Drawing.Point(55, 42);
+            this.lblThemThongTin.Location = new System.Drawing.Point(65, 42);
             this.lblThemThongTin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblThemThongTin.Name = "lblThemThongTin";
             this.lblThemThongTin.Size = new System.Drawing.Size(0, 19);
@@ -98,7 +98,7 @@
             this.txt_Email.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_Email.ForeColor = System.Drawing.Color.Black;
             this.txt_Email.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_Email.Location = new System.Drawing.Point(100, 162);
+            this.txt_Email.Location = new System.Drawing.Point(114, 162);
             this.txt_Email.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txt_Email.Name = "txt_Email";
             this.txt_Email.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -127,7 +127,7 @@
             this.txt_HoTen.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_HoTen.ForeColor = System.Drawing.Color.Black;
             this.txt_HoTen.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_HoTen.Location = new System.Drawing.Point(106, 29);
+            this.txt_HoTen.Location = new System.Drawing.Point(116, 29);
             this.txt_HoTen.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txt_HoTen.Name = "txt_HoTen";
             this.txt_HoTen.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -143,7 +143,7 @@
             this.lbl_Email.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_Email.AutoSize = true;
             this.lbl_Email.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Email.Location = new System.Drawing.Point(55, 176);
+            this.lbl_Email.Location = new System.Drawing.Point(65, 176);
             this.lbl_Email.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Email.Name = "lbl_Email";
             this.lbl_Email.Size = new System.Drawing.Size(49, 19);
@@ -167,7 +167,7 @@
             this.txt_SoDienThoai.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_SoDienThoai.ForeColor = System.Drawing.Color.Black;
             this.txt_SoDienThoai.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_SoDienThoai.Location = new System.Drawing.Point(100, 128);
+            this.txt_SoDienThoai.Location = new System.Drawing.Point(114, 131);
             this.txt_SoDienThoai.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txt_SoDienThoai.Name = "txt_SoDienThoai";
             this.txt_SoDienThoai.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -183,7 +183,7 @@
             this.lbl_SoDienThoai.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_SoDienThoai.AutoSize = true;
             this.lbl_SoDienThoai.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_SoDienThoai.Location = new System.Drawing.Point(3, 141);
+            this.lbl_SoDienThoai.Location = new System.Drawing.Point(13, 141);
             this.lbl_SoDienThoai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_SoDienThoai.Name = "lbl_SoDienThoai";
             this.lbl_SoDienThoai.Size = new System.Drawing.Size(101, 19);
@@ -194,7 +194,7 @@
             // 
             this.rad_Nu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rad_Nu.AutoSize = true;
-            this.rad_Nu.Location = new System.Drawing.Point(157, 109);
+            this.rad_Nu.Location = new System.Drawing.Point(167, 109);
             this.rad_Nu.Margin = new System.Windows.Forms.Padding(2);
             this.rad_Nu.Name = "rad_Nu";
             this.rad_Nu.Size = new System.Drawing.Size(39, 17);
@@ -208,7 +208,7 @@
             this.rad_Nam.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rad_Nam.AutoSize = true;
             this.rad_Nam.Checked = true;
-            this.rad_Nam.Location = new System.Drawing.Point(110, 109);
+            this.rad_Nam.Location = new System.Drawing.Point(120, 109);
             this.rad_Nam.Margin = new System.Windows.Forms.Padding(2);
             this.rad_Nam.Name = "rad_Nam";
             this.rad_Nam.Size = new System.Drawing.Size(47, 17);
@@ -225,7 +225,7 @@
             this.dtpNgaySinh.FillColor = System.Drawing.Color.DodgerBlue;
             this.dtpNgaySinh.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgaySinh.Location = new System.Drawing.Point(106, 70);
+            this.dtpNgaySinh.Location = new System.Drawing.Point(116, 70);
             this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNgaySinh.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpNgaySinh.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -252,7 +252,7 @@
             this.txt_DiaChi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_DiaChi.ForeColor = System.Drawing.Color.Black;
             this.txt_DiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_DiaChi.Location = new System.Drawing.Point(100, 198);
+            this.txt_DiaChi.Location = new System.Drawing.Point(114, 198);
             this.txt_DiaChi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txt_DiaChi.Name = "txt_DiaChi";
             this.txt_DiaChi.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -268,7 +268,7 @@
             this.lbl_DiaChi.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_DiaChi.AutoSize = true;
             this.lbl_DiaChi.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DiaChi.Location = new System.Drawing.Point(46, 211);
+            this.lbl_DiaChi.Location = new System.Drawing.Point(56, 211);
             this.lbl_DiaChi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_DiaChi.Name = "lbl_DiaChi";
             this.lbl_DiaChi.Size = new System.Drawing.Size(58, 19);
@@ -280,7 +280,7 @@
             this.lbl_GioiTinh.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_GioiTinh.AutoSize = true;
             this.lbl_GioiTinh.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_GioiTinh.Location = new System.Drawing.Point(37, 106);
+            this.lbl_GioiTinh.Location = new System.Drawing.Point(47, 106);
             this.lbl_GioiTinh.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_GioiTinh.Name = "lbl_GioiTinh";
             this.lbl_GioiTinh.Size = new System.Drawing.Size(69, 19);
@@ -292,7 +292,7 @@
             this.lbl_NgaySinh.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_NgaySinh.AutoSize = true;
             this.lbl_NgaySinh.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_NgaySinh.Location = new System.Drawing.Point(30, 72);
+            this.lbl_NgaySinh.Location = new System.Drawing.Point(40, 72);
             this.lbl_NgaySinh.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_NgaySinh.Name = "lbl_NgaySinh";
             this.lbl_NgaySinh.Size = new System.Drawing.Size(79, 19);
@@ -304,7 +304,7 @@
             this.lbl_HoTen.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_HoTen.AutoSize = true;
             this.lbl_HoTen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_HoTen.Location = new System.Drawing.Point(48, 45);
+            this.lbl_HoTen.Location = new System.Drawing.Point(58, 45);
             this.lbl_HoTen.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_HoTen.Name = "lbl_HoTen";
             this.lbl_HoTen.Size = new System.Drawing.Size(60, 19);
@@ -323,7 +323,7 @@
             this.btn_Them.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Them.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_Them.ForeColor = System.Drawing.Color.White;
-            this.btn_Them.Location = new System.Drawing.Point(90, 272);
+            this.btn_Them.Location = new System.Drawing.Point(100, 272);
             this.btn_Them.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(67, 37);
@@ -342,7 +342,7 @@
             this.btn_Thoat.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Thoat.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_Thoat.ForeColor = System.Drawing.Color.White;
-            this.btn_Thoat.Location = new System.Drawing.Point(180, 272);
+            this.btn_Thoat.Location = new System.Drawing.Point(190, 272);
             this.btn_Thoat.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(67, 37);

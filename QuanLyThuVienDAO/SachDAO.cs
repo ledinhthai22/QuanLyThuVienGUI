@@ -15,9 +15,9 @@ namespace QuanLyThuVienDAO
     {
         DataProvider dp = new DataProvider();
         SachDTO sachDTO = new SachDTO();
-        public DataTable getSach(SachDTO sachDTO)
+        public DataTable loadSach()
         {
-            string query = "SELECT * FROM Sach";
+            string query = "SELECT * FROM Sach WHERE SoLuong > 0  AND TrangThai = 1";
             SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -27,38 +27,38 @@ namespace QuanLyThuVienDAO
         }
 
 
-        public bool addSach(SachDTO sachDTO)
-        {
-            dp.Open();
-            SqlCommand getIdCmd = new SqlCommand("GetNextMaSach", dp.GetConnection());
-            getIdCmd.CommandType = CommandType.StoredProcedure;
+    //    public bool addSach(SachDTO sachDTO)
+    //    {
+    //        dp.Open();
+    //        SqlCommand getIdCmd = new SqlCommand("GetNextMaSach", dp.GetConnection());
+    //        getIdCmd.CommandType = CommandType.StoredProcedure;
 
-            string newMaSach = "";
-            using (SqlDataReader reader = getIdCmd.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    newMaSach = reader.GetString(0);
-                }
-            }
+    //        string newMaSach = "";
+    //        using (SqlDataReader reader = getIdCmd.ExecuteReader())
+    //        {
+    //            if (reader.Read())
+    //            {
+    //                newMaSach = reader.GetString(0);
+    //            }
+    //        }
 
-            string insert = "INSERT INTO Sach (MaSach, TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, MoTa, TrangThai) " +
-                            "VALUES (@maSach, @tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @moTa, @trangThai)";
-            SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
-            cmd.Parameters.AddWithValue("@maSach", newMaSach);
-            cmd.Parameters.AddWithValue("@tenSach", sachDTO.tenSach);
-            cmd.Parameters.AddWithValue("@tacGia", sachDTO.tacGia);
-            cmd.Parameters.AddWithValue("@maTheLoai", sachDTO.maTheLoai);
-            cmd.Parameters.Add("@namXuatBan", SqlDbType.Date).Value = sachDTO.namXuatBan.Date;
-            cmd.Parameters.AddWithValue("@nhaXuatBan", sachDTO.nhaXuatBan);
-            cmd.Parameters.AddWithValue("@soLuong", sachDTO.soLuong);
-            cmd.Parameters.AddWithValue("@moTa", sachDTO.moTa);
-            cmd.Parameters.AddWithValue("@trangThai", sachDTO.trangThai);
+    //        string insert = "INSERT INTO Sach (MaSach, TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, MoTa, TrangThai) " +
+    //                        "VALUES (@maSach, @tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @moTa, @trangThai)";
+    //        SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
+    //        cmd.Parameters.AddWithValue("@maSach", newMaSach);
+    //        cmd.Parameters.AddWithValue("@tenSach", sachDTO.tenSach);
+    //        cmd.Parameters.AddWithValue("@tacGia", sachDTO.tacGia);
+    //        cmd.Parameters.AddWithValue("@maTheLoai", sachDTO.maTheLoai);
+    //        cmd.Parameters.Add("@namXuatBan", SqlDbType.Date).Value = sachDTO.namXuatBan.Date;
+    //        cmd.Parameters.AddWithValue("@nhaXuatBan", sachDTO.nhaXuatBan);
+    //        cmd.Parameters.AddWithValue("@soLuong", sachDTO.soLuong);
+    //        cmd.Parameters.AddWithValue("@moTa", sachDTO.moTa);
+    //        cmd.Parameters.AddWithValue("@trangThai", sachDTO.trangThai);
 
-            int n = cmd.ExecuteNonQuery();
-            dp.Close();
-            return n > 0;
-        }
+    //        int n = cmd.ExecuteNonQuery();
+    //        dp.Close();
+    //        return n > 0;
+    //    }
 
         
     }

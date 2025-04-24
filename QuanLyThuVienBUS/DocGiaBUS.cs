@@ -21,5 +21,17 @@ namespace QuanLyThuVienBUS
         {
             return DocGiaDAO.addDocGia(docGiaDTO);
         }
+        public bool deleteDocGia(string maDocGia)
+        {
+            return DocGiaDAO.deleteDocGia(maDocGia);
+        }
+        public bool updateDocGia(DocGiaDTO docGiaDTO)
+        {
+            return DocGiaDAO.updateDocGia(docGiaDTO);
+        }
+        public  bool KiemTraDocGiaTrungEmailHoacSDT(string email, string soDienThoai)
+        {
+            return DocGiaDAO.KiemTraDocGiaTrungEmailHoacSDT(email, soDienThoai);
+        }
     }
 }

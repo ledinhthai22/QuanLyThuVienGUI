@@ -54,11 +54,12 @@
             this.btn_CapNhat.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_CapNhat.ForeColor = System.Drawing.Color.White;
             this.btn_CapNhat.Location = new System.Drawing.Point(146, 3);
-            this.btn_CapNhat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_CapNhat.Margin = new System.Windows.Forms.Padding(2);
             this.btn_CapNhat.Name = "btn_CapNhat";
             this.btn_CapNhat.Size = new System.Drawing.Size(92, 37);
             this.btn_CapNhat.TabIndex = 34;
             this.btn_CapNhat.Text = "Cập Nhật";
+            this.btn_CapNhat.Click += new System.EventHandler(this.btn_CapNhat_Click);
             // 
             // btn_Xoa
             // 
@@ -72,7 +73,7 @@
             this.btn_Xoa.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_Xoa.ForeColor = System.Drawing.Color.White;
             this.btn_Xoa.Location = new System.Drawing.Point(75, 3);
-            this.btn_Xoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Xoa.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(67, 37);
             this.btn_Xoa.TabIndex = 33;
@@ -92,7 +93,7 @@
             this.pn_ThongTinDocGia.Controls.Add(this.btn_Them);
             this.pn_ThongTinDocGia.Controls.Add(this.btn_Xoa);
             this.pn_ThongTinDocGia.Location = new System.Drawing.Point(0, 0);
-            this.pn_ThongTinDocGia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pn_ThongTinDocGia.Margin = new System.Windows.Forms.Padding(2);
             this.pn_ThongTinDocGia.Name = "pn_ThongTinDocGia";
             this.pn_ThongTinDocGia.Size = new System.Drawing.Size(890, 615);
             this.pn_ThongTinDocGia.TabIndex = 44;
@@ -106,7 +107,7 @@
             this.dgv_DSDocGia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_DSDocGia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DSDocGia.Location = new System.Drawing.Point(-1, 43);
-            this.dgv_DSDocGia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_DSDocGia.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_DSDocGia.Name = "dgv_DSDocGia";
             this.dgv_DSDocGia.ReadOnly = true;
             this.dgv_DSDocGia.RowHeadersWidth = 51;
@@ -128,7 +129,7 @@
             this.btn_TimKiem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_TimKiem.ForeColor = System.Drawing.Color.White;
             this.btn_TimKiem.Location = new System.Drawing.Point(778, 3);
-            this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btn_TimKiem.Name = "btn_TimKiem";
             this.btn_TimKiem.Size = new System.Drawing.Size(105, 37);
             this.btn_TimKiem.TabIndex = 45;
@@ -168,7 +169,7 @@
             this.btn_LamMoi.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_LamMoi.ForeColor = System.Drawing.Color.White;
             this.btn_LamMoi.Location = new System.Drawing.Point(243, 3);
-            this.btn_LamMoi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_LamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btn_LamMoi.Name = "btn_LamMoi";
             this.btn_LamMoi.Size = new System.Drawing.Size(95, 37);
             this.btn_LamMoi.TabIndex = 43;
@@ -188,7 +189,7 @@
             this.btn_Them.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_Them.ForeColor = System.Drawing.Color.White;
             this.btn_Them.Location = new System.Drawing.Point(4, 3);
-            this.btn_Them.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Them.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(67, 37);
             this.btn_Them.TabIndex = 32;
@@ -207,7 +208,7 @@
             this.ClientSize = new System.Drawing.Size(889, 614);
             this.Controls.Add(this.pn_ThongTinDocGia);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmQuanLyDocGia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLyDocGia";

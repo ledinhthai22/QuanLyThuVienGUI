@@ -50,7 +50,7 @@
             this.btn_Them.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Them.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Them.ForeColor = System.Drawing.Color.White;
-            this.btn_Them.Location = new System.Drawing.Point(4, 2);
+            this.btn_Them.Location = new System.Drawing.Point(3, 2);
             this.btn_Them.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(67, 37);
@@ -68,7 +68,7 @@
             this.btn_Xoa.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Xoa.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Xoa.ForeColor = System.Drawing.Color.White;
-            this.btn_Xoa.Location = new System.Drawing.Point(75, 2);
+            this.btn_Xoa.Location = new System.Drawing.Point(74, 2);
             this.btn_Xoa.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(67, 37);
@@ -86,7 +86,7 @@
             this.btn_Sua.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Sua.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_Sua.ForeColor = System.Drawing.Color.White;
-            this.btn_Sua.Location = new System.Drawing.Point(146, 2);
+            this.btn_Sua.Location = new System.Drawing.Point(145, 2);
             this.btn_Sua.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Sua.Name = "btn_Sua";
             this.btn_Sua.Size = new System.Drawing.Size(94, 37);
@@ -109,7 +109,7 @@
             this.pnframeInformation.Controls.Add(this.btn_Them);
             this.pnframeInformation.Location = new System.Drawing.Point(0, 0);
             this.pnframeInformation.Name = "pnframeInformation";
-            this.pnframeInformation.Size = new System.Drawing.Size(891, 616);
+            this.pnframeInformation.Size = new System.Drawing.Size(889, 616);
             this.pnframeInformation.TabIndex = 32;
             // 
             // btn_LamMoi
@@ -123,7 +123,7 @@
             this.btn_LamMoi.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_LamMoi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_LamMoi.ForeColor = System.Drawing.Color.White;
-            this.btn_LamMoi.Location = new System.Drawing.Point(244, 2);
+            this.btn_LamMoi.Location = new System.Drawing.Point(243, 2);
             this.btn_LamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btn_LamMoi.Name = "btn_LamMoi";
             this.btn_LamMoi.Size = new System.Drawing.Size(83, 37);
@@ -145,7 +145,7 @@
             this.dgv_DSSach.RowHeadersWidth = 51;
             this.dgv_DSSach.RowTemplate.Height = 24;
             this.dgv_DSSach.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_DSSach.Size = new System.Drawing.Size(887, 575);
+            this.dgv_DSSach.Size = new System.Drawing.Size(888, 574);
             this.dgv_DSSach.TabIndex = 49;
             // 
             // txt_TimKiem
@@ -162,7 +162,7 @@
             this.txt_TimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt_TimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_TimKiem.HoverState.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.txt_TimKiem.Location = new System.Drawing.Point(331, 1);
+            this.txt_TimKiem.Location = new System.Drawing.Point(330, 1);
             this.txt_TimKiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txt_TimKiem.Name = "txt_TimKiem";
             this.txt_TimKiem.PlaceholderText = "Tìm kiếm";
@@ -180,7 +180,7 @@
             this.btn_TimKiem.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_TimKiem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_TimKiem.ForeColor = System.Drawing.Color.White;
-            this.btn_TimKiem.Location = new System.Drawing.Point(793, 1);
+            this.btn_TimKiem.Location = new System.Drawing.Point(792, 1);
             this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btn_TimKiem.Name = "btn_TimKiem";
             this.btn_TimKiem.Size = new System.Drawing.Size(94, 39);
@@ -198,6 +198,7 @@
             this.Name = "frmQuanLySach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLySach";
+            this.Load += new System.EventHandler(this.frmQuanLySach_Load);
             this.pnframeInformation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSSach)).EndInit();
             this.ResumeLayout(false);

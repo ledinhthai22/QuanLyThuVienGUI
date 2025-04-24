@@ -93,7 +93,7 @@ namespace QuanLyThuVienGUI.QuanLy
             nv.SDT = txt_SoDienThoai.Text;
             nv.diaChi = txt_DiaChi.Text;
 
-            // Xử lý chuyển đổi lương an toàn
+            
             float luong;
             string luongText = txt_Luong.Text.Replace(".", "").Replace(",", "");
             if (float.TryParse(luongText, out luong))
@@ -153,24 +153,28 @@ namespace QuanLyThuVienGUI.QuanLy
 
         private void txt_UserName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) &&
+            !(e.KeyChar >= 'a' && e.KeyChar <= 'z') &&
+            !(e.KeyChar >= 'A' && e.KeyChar <= 'Z') &&
+            !(e.KeyChar >= '0' && e.KeyChar <= '9'))
             {
-                e.Handled = true;
+                e.Handled = true; 
             }
         }
 
         private void txt_PassWord_KeyPress(object sender, KeyPressEventArgs e)
         {
+
             if (char.IsWhiteSpace(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled = true; 
             }
         }
 
         private void txt_Luong_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            // Chỉ cho phép số, phím điều khiển và dấu chấm (.)
+           
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
                 e.Handled = true;
@@ -180,12 +184,12 @@ namespace QuanLyThuVienGUI.QuanLy
             if (txt_Luong == null)
                 return;
 
-            // Xử lý khi nhập dấu chấm
+           
             if (e.KeyChar == '.')
             {
                 int position = txt_Luong.SelectionStart;
 
-                // Cho phép dấu chấm chỉ ở vị trí 1, 2, 3, 5, 9, 13 (vị trí bạn tùy chỉnh)
+              
                 int[] allowedDotPositions = { 1, 2, 3, 5, 9, 13 };
 
                 if (!allowedDotPositions.Contains(position))
@@ -194,14 +198,14 @@ namespace QuanLyThuVienGUI.QuanLy
                     return;
                 }
 
-                // Không cho nhập nếu đã có dấu chấm tại vị trí đó
+              
                 if (txt_Luong.Text.Length > position && txt_Luong.Text[position] == '.')
                 {
                     e.Handled = true;
                     return;
                 }
 
-                // Không cho nhập nếu đã đủ 3 dấu chấm
+              
                 int countDot = txt_Luong.Text.Count(c => c == '.');
                 if (countDot >= 3)
                 {
@@ -209,7 +213,7 @@ namespace QuanLyThuVienGUI.QuanLy
                     return;
                 }
 
-                // Nếu đã có dấu chấm tại đúng vị trí đang nhập thì cũng không cho nhập
+                
                 if (txt_Luong.Text.IndexOf('.') == position)
                 {
                     e.Handled = true;
@@ -217,7 +221,7 @@ namespace QuanLyThuVienGUI.QuanLy
                 }
             }
 
-            // Giới hạn độ dài tối đa của chuỗi
+         
             if (txt_Luong.Text.Length >= 15 && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
@@ -228,9 +232,9 @@ namespace QuanLyThuVienGUI.QuanLy
         {
             
             dtpNgaySinh.MaxDate = DateTime.Now.AddYears(-18);
-
-            
             dtpNgaySinh.MinDate = DateTime.Now.AddYears(-60);
+            txt_UserName.KeyPress += txt_UserName_KeyPress;
+            txt_PassWord.KeyPress += txt_PassWord_KeyPress;
         }
     }
 }
