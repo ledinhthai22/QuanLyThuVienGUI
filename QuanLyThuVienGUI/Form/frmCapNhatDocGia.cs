@@ -29,7 +29,7 @@ namespace QuanLyThuVienGUI
             this.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.MouseUp += new MouseEventHandler(Form_MouseUp);
             this.selectedDocGia = docGiaDTO;
-            txt_MaDocGia.Text = selectedDocGia.maDG;
+            txt_MaDocGia.Text = selectedDocGia.maDocGia;
             txt_HoTen.Text = selectedDocGia.hoTen;
             txt_Email.Text = selectedDocGia.email;
             txt_DiaChi.Text = selectedDocGia.diaChi;
@@ -85,12 +85,11 @@ namespace QuanLyThuVienGUI
         private void getDuLieu()
         {
            
-            docGiaDTO.maDG = txt_MaDocGia.Text;
+            docGiaDTO.maDocGia = txt_MaDocGia.Text;
             docGiaDTO.hoTen = txt_HoTen.Text;
             docGiaDTO.gioiTinh = rad_Nam.Checked ? "Nam" : "Nữ";
             docGiaDTO.ngaySinh = dtpNgaySinh.Value;
             docGiaDTO.diaChi  = txt_DiaChi.Text;
-            docGiaDTO.maDG = txt_MaDocGia.Text;
             docGiaDTO.email = txt_Email.Text;
             docGiaDTO.soDienThoai  = txt_SoDienThoai.Text;
 

@@ -82,15 +82,24 @@ namespace QuanLyThuVienGUI.QuanLy
             {
                 return;
             }
-            if (sachBUS.addSach(sachDTO))
+            if(sachBUS.kiemTraTonTai(sachDTO))
             {
-                MessageBox.Show("Thêm sách thành công");
-                this.Close();
+                MessageBox.Show("Tên sách đã tồn tại");
+               
             }
             else
             {
-                MessageBox.Show("Thêm thất bại");
-            }
+                if (sachBUS.addSach(sachDTO))
+                {
+                    MessageBox.Show("Thêm sách thành công");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại");
+                }
+            }    
+           
         }
         private void getDuLieu()
         {

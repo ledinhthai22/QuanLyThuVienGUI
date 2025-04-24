@@ -27,7 +27,7 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
             txt_HoTen.Text = selectedNhanVien.tenNV;
             cbo_ChucVu.Text = selectedNhanVien.chucVu;
             txt_DiaChi.Text = selectedNhanVien.diaChi;
-            txt_Luong.Text = selectedNhanVien.luong.ToString();
+          
             if (selectedNhanVien.gioiTinh == "Nam")
             {
                 rad_Nam.Checked = true;

@@ -15,14 +15,38 @@ namespace QuanLyThuVienDAO
     {
 
         private static DataProvider dp = new DataProvider();
-        public DataTable LoadDSDG()
+        private List<DocGiaDTO> listDocGia = new List<DocGiaDTO>();
+        public List<DocGiaDTO> loadDSDG()
         {
-            string select = "SELECT * FROM Docgia WHERE Trangthai = 1 ";
-            SqlCommand cmd = new SqlCommand(select, dp.GetConnection());
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable tb = new DataTable();
-            adapter.Fill(tb);
-            return tb;
+            string select = "SELECT * FROM Docgia WHERE TrangThai = 1 ";
+            try
+            {
+                SqlCommand cmd = new SqlCommand(select, dp.GetConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                listDocGia.Clear();
+
+                while (dr.Read())
+                {
+                    DocGiaDTO docGiaDTO = new DocGiaDTO();
+                    docGiaDTO.maDocGia = dr["MaDocGia"].ToString();
+                    docGiaDTO.hoTen = dr["HoTen"].ToString() ;
+                    docGiaDTO.gioiTinh = dr["GioiTinh"].ToString();
+                    docGiaDTO.ngaySinh = dr["NgaySinh"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgaySinh"]);
+                    docGiaDTO.soDienThoai = dr["SoDienThoai"].ToString();
+                    docGiaDTO.diaChi = dr["DiaChi"].ToString();
+                    docGiaDTO.email = dr["email"].ToString();
+                    docGiaDTO.TrangThai = Convert.ToInt32(dr["TrangThai"]);
+                    listDocGia.Add(docGiaDTO);
+                }
+
+                dp.Close();
+                return listDocGia;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi load danh sách nhân viên: " + ex.Message);
+                return null;
+            }
         }
         public static bool addDocGia(DocGiaDTO docGiaDTO)
         {
@@ -104,7 +128,7 @@ namespace QuanLyThuVienDAO
                 {
                     ngaySinh = DateTime.Now;
                 }
-                cmd.Parameters.AddWithValue("@maDocGia", docGiaDTO.maDG);
+                cmd.Parameters.AddWithValue("@maDocGia", docGiaDTO.maDocGia);
                 cmd.Parameters.AddWithValue("@hoTen", docGiaDTO.hoTen);
                 cmd.Parameters.AddWithValue("@ngaySinh", ngaySinh);
                 cmd.Parameters.AddWithValue("@gioiTinh", docGiaDTO.gioiTinh);

@@ -28,7 +28,7 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
             txt_HoTen.Text = selectedNhanVien.tenNV;
             cbo_ChucVu.Text = selectedNhanVien.chucVu;
             txt_DiaChi.Text = selectedNhanVien.diaChi;
-            txt_Luong.Text = selectedNhanVien.luong.ToString();
+          
             if (selectedNhanVien.gioiTinh == "Nam")
             {
                 rad_Nam.Checked = true;
@@ -106,7 +106,6 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
             nv.ngaySinh = dtpNgaySinh.Value;
             nv.SDT = txt_SoDienThoai.Text;
             nv.diaChi = txt_DiaChi.Text;
-            nv.luong = float.Parse(txt_Luong.Text);
             nv.userName = txt_UserName.Text;
             nv.password = txt_PassWord.Text;
             nv.trangThai = 1;

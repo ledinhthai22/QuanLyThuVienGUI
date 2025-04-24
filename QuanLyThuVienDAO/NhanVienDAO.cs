@@ -35,7 +35,6 @@ namespace QuanLyThuVienDAO
                     nhanVienDTO.ngaySinh = dr["NgaySinh"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgaySinh"]);
                     nhanVienDTO.SDT = dr["SDT"].ToString();
                     nhanVienDTO.diaChi = dr["DiaChi"].ToString();
-                    nhanVienDTO.luong = dr["Luong"] == DBNull.Value ? 0f : Convert.ToSingle(dr["Luong"]);
                     nhanVienDTO.userName = dr["Username"].ToString();
                     nhanVienDTO.password = dr["Password"].ToString();
                     nhanVienDTO.trangThai = Convert.ToInt32(dr["TrangThai"]);
@@ -83,8 +82,8 @@ namespace QuanLyThuVienDAO
 
 
             string insert = @"INSERT INTO NhanVien 
-                     (MaNV, TenNV, ChucVu, GioiTinh, NgaySinh, SDT, DiaChi, Luong, Username, Password, TrangThai)
-                     VALUES(@maNV, @tenNV, @ChucVu, @gioiTinh, @ngaySinh, @soDienThoai, @diaChi, @luong, @userName, @passWord, 1)";
+                     (MaNV, TenNV, ChucVu, GioiTinh, NgaySinh, SDT, DiaChi, Username, Password, TrangThai)
+                     VALUES(@maNV, @tenNV, @ChucVu, @gioiTinh, @ngaySinh, @soDienThoai, @diaChi, @userName, @passWord, 1)";
 
             SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
             cmd.Parameters.AddWithValue("@maNV", newMaNhanVien);
@@ -94,7 +93,6 @@ namespace QuanLyThuVienDAO
             cmd.Parameters.AddWithValue("@ngaySinh", ngaySinh);
             cmd.Parameters.AddWithValue("@soDienThoai", nhanVienDTO.SDT);
             cmd.Parameters.AddWithValue("@diaChi", nhanVienDTO.diaChi);
-            cmd.Parameters.AddWithValue("@luong", nhanVienDTO.luong);
             cmd.Parameters.AddWithValue("@userName", nhanVienDTO.userName);
             cmd.Parameters.AddWithValue("@passWord", nhanVienDTO.password);
             int n = cmd.ExecuteNonQuery();
@@ -113,7 +111,7 @@ namespace QuanLyThuVienDAO
         public static bool updateNV(NhanVienDTO nhanVienDTO)
         {
             string update = "UPDATE NhanVien SET TenNV = @tenNV, ChucVu = @chucVu,GioiTinh = @gioiTinh," +
-                "NgaySinh = @ngaySinh,SDT = @soDienThoai,DiaChi = @diaChi,Luong = @luong,Username = @userName, Password = @passWord " +
+                "NgaySinh = @ngaySinh,SDT = @soDienThoai,DiaChi = @diaChi,Username = @userName, Password = @passWord " +
                 "WHERE MaNV = @maNV";
             DateTime ngaySinh;
             if (!DateTime.TryParse(nhanVienDTO.ngaySinh.ToString(), out ngaySinh) ||
@@ -130,7 +128,6 @@ namespace QuanLyThuVienDAO
             cmd.Parameters.AddWithValue("@ngaySinh", ngaySinh);
             cmd.Parameters.AddWithValue("@soDienThoai", nhanVienDTO.SDT);
             cmd.Parameters.AddWithValue("@diaChi", nhanVienDTO.diaChi);
-            cmd.Parameters.AddWithValue("@luong", nhanVienDTO.luong);
             cmd.Parameters.AddWithValue("@userName", nhanVienDTO.userName);
             cmd.Parameters.AddWithValue("@passWord", nhanVienDTO.password);
             int n = cmd.ExecuteNonQuery();

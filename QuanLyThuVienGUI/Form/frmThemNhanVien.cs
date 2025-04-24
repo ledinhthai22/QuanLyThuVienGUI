@@ -60,7 +60,6 @@ namespace QuanLyThuVienGUI.QuanLy
                dtpNgaySinh.Value == null ||
                string.IsNullOrWhiteSpace(txt_SoDienThoai.Text) ||
                string.IsNullOrWhiteSpace(txt_DiaChi.Text) ||
-               string.IsNullOrWhiteSpace(txt_Luong.Text) ||
                string.IsNullOrWhiteSpace(txt_UserName.Text) ||
                string.IsNullOrWhiteSpace(txt_PassWord.Text))
             {
@@ -92,20 +91,6 @@ namespace QuanLyThuVienGUI.QuanLy
             nv.ngaySinh = dtpNgaySinh.Value;
             nv.SDT = txt_SoDienThoai.Text;
             nv.diaChi = txt_DiaChi.Text;
-
-            
-            float luong;
-            string luongText = txt_Luong.Text.Replace(".", "").Replace(",", "");
-            if (float.TryParse(luongText, out luong))
-            {
-                nv.luong = luong;
-            }
-            else
-            {
-                MessageBox.Show("Lương không hợp lệ. Vui lòng nhập số hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             nv.userName = txt_UserName.Text;
             nv.password = txt_PassWord.Text;
             nv.trangThai = 1;
@@ -168,63 +153,6 @@ namespace QuanLyThuVienGUI.QuanLy
             if (char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = true; 
-            }
-        }
-
-        private void txt_Luong_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-           
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
-            {
-                e.Handled = true;
-                return;
-            }
-
-            if (txt_Luong == null)
-                return;
-
-           
-            if (e.KeyChar == '.')
-            {
-                int position = txt_Luong.SelectionStart;
-
-              
-                int[] allowedDotPositions = { 1, 2, 3, 5, 9, 13 };
-
-                if (!allowedDotPositions.Contains(position))
-                {
-                    e.Handled = true;
-                    return;
-                }
-
-              
-                if (txt_Luong.Text.Length > position && txt_Luong.Text[position] == '.')
-                {
-                    e.Handled = true;
-                    return;
-                }
-
-              
-                int countDot = txt_Luong.Text.Count(c => c == '.');
-                if (countDot >= 3)
-                {
-                    e.Handled = true;
-                    return;
-                }
-
-                
-                if (txt_Luong.Text.IndexOf('.') == position)
-                {
-                    e.Handled = true;
-                    return;
-                }
-            }
-
-         
-            if (txt_Luong.Text.Length >= 15 && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
             }
         }
 

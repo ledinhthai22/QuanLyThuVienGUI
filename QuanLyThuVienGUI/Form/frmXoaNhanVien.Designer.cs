@@ -38,9 +38,7 @@
             this.txt_UserName = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_UserName = new System.Windows.Forms.Label();
             this.lbl_ChucVu = new System.Windows.Forms.Label();
-            this.txt_Luong = new Guna.UI2.WinForms.Guna2TextBox();
             this.txt_HoTen = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_Luong = new System.Windows.Forms.Label();
             this.txt_SoDienThoai = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_SoDienThoai = new System.Windows.Forms.Label();
             this.rad_Nu = new System.Windows.Forms.RadioButton();
@@ -72,7 +70,7 @@
             "admin",
             "thuthu"});
             this.cbo_ChucVu.Location = new System.Drawing.Point(111, 106);
-            this.cbo_ChucVu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbo_ChucVu.Margin = new System.Windows.Forms.Padding(2);
             this.cbo_ChucVu.Name = "cbo_ChucVu";
             this.cbo_ChucVu.Size = new System.Drawing.Size(192, 36);
             this.cbo_ChucVu.TabIndex = 137;
@@ -87,8 +85,8 @@
             this.btn_Huy.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Huy.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_Huy.ForeColor = System.Drawing.Color.White;
-            this.btn_Huy.Location = new System.Drawing.Point(180, 370);
-            this.btn_Huy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Huy.Location = new System.Drawing.Point(174, 346);
+            this.btn_Huy.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Huy.Name = "btn_Huy";
             this.btn_Huy.Size = new System.Drawing.Size(73, 37);
             this.btn_Huy.TabIndex = 136;
@@ -105,8 +103,8 @@
             this.btn_Xoa.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Xoa.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_Xoa.ForeColor = System.Drawing.Color.White;
-            this.btn_Xoa.Location = new System.Drawing.Point(85, 370);
-            this.btn_Xoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Xoa.Location = new System.Drawing.Point(79, 346);
+            this.btn_Xoa.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(73, 37);
             this.btn_Xoa.TabIndex = 135;
@@ -118,7 +116,7 @@
             this.pn_Tab.BackColor = System.Drawing.Color.DodgerBlue;
             this.pn_Tab.Controls.Add(this.lbl_Title);
             this.pn_Tab.Location = new System.Drawing.Point(-2, 0);
-            this.pn_Tab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pn_Tab.Margin = new System.Windows.Forms.Padding(2);
             this.pn_Tab.Name = "pn_Tab";
             this.pn_Tab.Size = new System.Drawing.Size(330, 24);
             this.pn_Tab.TabIndex = 134;
@@ -224,33 +222,6 @@
             this.lbl_ChucVu.TabIndex = 129;
             this.lbl_ChucVu.Text = "Chức vụ:";
             // 
-            // txt_Luong
-            // 
-            this.txt_Luong.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Luong.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.txt_Luong.BorderThickness = 2;
-            this.txt_Luong.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txt_Luong.DefaultText = "";
-            this.txt_Luong.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txt_Luong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txt_Luong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txt_Luong.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txt_Luong.FillColor = System.Drawing.SystemColors.Control;
-            this.txt_Luong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_Luong.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txt_Luong.ForeColor = System.Drawing.Color.Black;
-            this.txt_Luong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_Luong.Location = new System.Drawing.Point(109, 326);
-            this.txt_Luong.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txt_Luong.Name = "txt_Luong";
-            this.txt_Luong.PlaceholderForeColor = System.Drawing.Color.Black;
-            this.txt_Luong.PlaceholderText = "";
-            this.txt_Luong.ReadOnly = true;
-            this.txt_Luong.SelectedText = "";
-            this.txt_Luong.Size = new System.Drawing.Size(191, 30);
-            this.txt_Luong.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txt_Luong.TabIndex = 128;
-            // 
             // txt_HoTen
             // 
             this.txt_HoTen.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -277,18 +248,6 @@
             this.txt_HoTen.Size = new System.Drawing.Size(189, 30);
             this.txt_HoTen.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_HoTen.TabIndex = 120;
-            // 
-            // lbl_Luong
-            // 
-            this.lbl_Luong.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_Luong.AutoSize = true;
-            this.lbl_Luong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Luong.Location = new System.Drawing.Point(59, 337);
-            this.lbl_Luong.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_Luong.Name = "lbl_Luong";
-            this.lbl_Luong.Size = new System.Drawing.Size(55, 19);
-            this.lbl_Luong.TabIndex = 127;
-            this.lbl_Luong.Text = "Lương:";
             // 
             // txt_SoDienThoai
             // 
@@ -335,7 +294,7 @@
             this.rad_Nu.AutoSize = true;
             this.rad_Nu.Enabled = false;
             this.rad_Nu.Location = new System.Drawing.Point(171, 144);
-            this.rad_Nu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rad_Nu.Margin = new System.Windows.Forms.Padding(2);
             this.rad_Nu.Name = "rad_Nu";
             this.rad_Nu.Size = new System.Drawing.Size(39, 17);
             this.rad_Nu.TabIndex = 124;
@@ -348,7 +307,7 @@
             this.rad_Nam.AutoSize = true;
             this.rad_Nam.Enabled = false;
             this.rad_Nam.Location = new System.Drawing.Point(120, 144);
-            this.rad_Nam.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rad_Nam.Margin = new System.Windows.Forms.Padding(2);
             this.rad_Nam.Name = "rad_Nam";
             this.rad_Nam.Size = new System.Drawing.Size(47, 17);
             this.rad_Nam.TabIndex = 123;
@@ -364,7 +323,7 @@
             this.dtpNgaySinh.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNgaySinh.Location = new System.Drawing.Point(113, 165);
-            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNgaySinh.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpNgaySinh.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
@@ -503,9 +462,7 @@
             this.Controls.Add(this.txt_UserName);
             this.Controls.Add(this.lbl_UserName);
             this.Controls.Add(this.lbl_ChucVu);
-            this.Controls.Add(this.txt_Luong);
             this.Controls.Add(this.txt_HoTen);
-            this.Controls.Add(this.lbl_Luong);
             this.Controls.Add(this.txt_SoDienThoai);
             this.Controls.Add(this.lbl_SoDienThoai);
             this.Controls.Add(this.rad_Nu);
@@ -517,7 +474,7 @@
             this.Controls.Add(this.lbl_HoTen);
             this.Controls.Add(this.lbl_NgaySinh);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmXoaNhanVien";
             this.Text = "frmXoaNhanVien";
             this.Load += new System.EventHandler(this.frmXoaNhanVien_Load);
@@ -540,9 +497,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txt_UserName;
         private System.Windows.Forms.Label lbl_UserName;
         private System.Windows.Forms.Label lbl_ChucVu;
-        private Guna.UI2.WinForms.Guna2TextBox txt_Luong;
         private Guna.UI2.WinForms.Guna2TextBox txt_HoTen;
-        private System.Windows.Forms.Label lbl_Luong;
         private Guna.UI2.WinForms.Guna2TextBox txt_SoDienThoai;
         private System.Windows.Forms.Label lbl_SoDienThoai;
         private System.Windows.Forms.RadioButton rad_Nu;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using QuanLyThuVienBUS;
 using QuanLyThuVienDTO;
@@ -43,7 +44,7 @@ namespace QuanLyThuVienGUI.admin
             try
             {
                 dgv_DSDocGia.DataSource = null;
-                dgv_DSDocGia.DataSource = docGiaBUS.LoadDSDG();
+                dgv_DSDocGia.DataSource = docGiaBUS.loadDSDG();
                 this.BeginInvoke(new Action(() =>
                 {
                     dgv_DSDocGia.ClearSelection();
@@ -65,20 +66,20 @@ namespace QuanLyThuVienGUI.admin
             {
                 Name = "MaDocGia",
                 DataPropertyName = "MaDocGia",
-                HeaderText = "Mã Độc Giả"
+                HeaderText = "Mã độc giả"
             });
 
             dgv_DSDocGia.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "HoTen",
                 DataPropertyName = "HoTen",
-                HeaderText = "Họ Tên"
+                HeaderText = "Họ tên"
             });
             dgv_DSDocGia.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "NgaySinh",
                 DataPropertyName = "NgaySinh",
-                HeaderText = "Ngày Sinh"
+                HeaderText = "Ngày sinh"
             });
             dgv_DSDocGia.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -90,14 +91,14 @@ namespace QuanLyThuVienGUI.admin
             {
                 Name = "DiaChi",
                 DataPropertyName = "DiaChi",
-                HeaderText = "Địa Chỉ"
+                HeaderText = "Địa chỉ"
             });
 
             dgv_DSDocGia.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "SoDienThoai",
                 DataPropertyName = "SoDienThoai",
-                HeaderText = "Số điện Thoại"
+                HeaderText = "Số điện thoại"
             });
 
             dgv_DSDocGia.Columns.Add(new DataGridViewTextBoxColumn
@@ -111,7 +112,7 @@ namespace QuanLyThuVienGUI.admin
             {
                 Name = "TrangThai",
                 DataPropertyName = "TrangThai",
-                HeaderText = "Trạng Thái"
+                HeaderText = "Trạng thái"
             });
         }
 
@@ -122,7 +123,7 @@ namespace QuanLyThuVienGUI.admin
                 string trangThai = e.Value.ToString();
                 if (trangThai == "1")
                 {
-                    e.Value = "Đang hoạt động";
+                    e.Value = "Hoạt động";
                 }
                 else if (trangThai == "0")
                 {
@@ -138,21 +139,12 @@ namespace QuanLyThuVienGUI.admin
                 btn_Xoa.Enabled = true;
                 btn_CapNhat.Enabled = true;
 
-
-                huychontimer.Stop();
-                huychontimer.Start();
             }
             else
             {
                 btn_Xoa.Enabled = false;
                 btn_CapNhat.Enabled = false;
             }
-        }
-
-        private void huychontimer_Tick(object sender, EventArgs e)
-        {
-            huychontimer.Stop();
-            dgv_DSDocGia.ClearSelection();
         }
         private void getDuLieu()
         {
@@ -161,21 +153,18 @@ namespace QuanLyThuVienGUI.admin
             string hoTen = dgv_DSDocGia.Rows[selectedRowIndex].Cells[1].Value.ToString();
             DateTime ngaySinh = DateTime.Parse(dgv_DSDocGia.Rows[selectedRowIndex].Cells[2].Value.ToString());
             string gioiTinh = dgv_DSDocGia.Rows[selectedRowIndex].Cells[3].Value.ToString();
-            
             string diaChi = dgv_DSDocGia.Rows[selectedRowIndex].Cells[4].Value.ToString();
             string SDT = dgv_DSDocGia.Rows[selectedRowIndex].Cells[5].Value.ToString();
             string Email = dgv_DSDocGia.Rows[selectedRowIndex].Cells[6].Value.ToString();
             int trangThai = int.Parse(dgv_DSDocGia.Rows[selectedRowIndex].Cells[7].Value.ToString());
-    
-            docGiaDTO.maDG = maDG;
+            docGiaDTO.maDocGia = maDG;
             docGiaDTO.hoTen = hoTen;
             docGiaDTO.ngaySinh = ngaySinh;
             docGiaDTO.gioiTinh = gioiTinh;
             docGiaDTO.diaChi = diaChi;
             docGiaDTO.email = Email;
             docGiaDTO.soDienThoai = SDT;
-            docGiaDTO.ngaySinh = ngaySinh;
-           
+  
         }
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
@@ -184,6 +173,7 @@ namespace QuanLyThuVienGUI.admin
                 getDuLieu();
                 frmXoaDocGia xoaDG = new frmXoaDocGia(docGiaDTO);
                 xoaDG.ShowDialog();
+                dgv_DSDocGia.ClearSelection();
             }
         }
 
@@ -194,7 +184,51 @@ namespace QuanLyThuVienGUI.admin
                 getDuLieu();
                 frmCapNhatDocGia capNhatDG = new frmCapNhatDocGia(docGiaDTO);
                 capNhatDG.ShowDialog();
+                dgv_DSDocGia.ClearSelection();
             }
+        }
+
+        private void btn_TimKiem_Click(object sender, EventArgs e)
+        {
+            string keyWord = txt_TimKiem.Text.Trim().ToLower();
+            if (string.IsNullOrEmpty(keyWord))
+            {
+                return;
+            }
+
+            List<DocGiaDTO> dsDocGia = docGiaBUS.loadDSDG();
+
+            var ketQua = dsDocGia
+                .Where(dg => dg.hoTen != null && dg.hoTen.ToLower().Contains(keyWord))
+                .ToList();
+
+            dgv_DSDocGia.DataSource = null;
+            dgv_DSDocGia.DataSource = ketQua;
+
+            // Nếu muốn cập nhật lại header (nếu cột bị mất format):
+            dgv_DSDocGia.Columns[0].HeaderText = "Mã độc giả";
+            dgv_DSDocGia.Columns[1].HeaderText = "Họ tên";
+            dgv_DSDocGia.Columns[2].HeaderText = "Ngày sinh";
+            dgv_DSDocGia.Columns[3].HeaderText = "Giới tính";
+            dgv_DSDocGia.Columns[4].HeaderText = "Địa chỉ";
+            dgv_DSDocGia.Columns[5].HeaderText = "Số điện thoại";
+            dgv_DSDocGia.Columns[6].HeaderText = "Email";
+            dgv_DSDocGia.Columns[7].HeaderText = "Trạng thái";
+
+            dgv_DSDocGia.ClearSelection();
+
+        }
+        public List<DocGiaDTO> TimKiemNhanVien(string keyword)
+        {
+            var danhSach = docGiaBUS.loadDSDG();
+            keyword = keyword.ToLower();
+
+            return danhSach.Where(dg =>
+                (!string.IsNullOrEmpty(dg.hoTen) && dg.hoTen.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(dg.maDocGia) && dg.maDocGia.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(dg.soDienThoai) && dg.soDienThoai.ToLower().Contains(keyword))
+             
+            ).ToList();
         }
     }
 }

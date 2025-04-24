@@ -18,8 +18,7 @@ namespace QuanLyThuVienGUI.admin
     public partial class frmQuanLyTheLoai : Form
     {
         TheLoaiBUS theLoaiBUS = new TheLoaiBUS();
-        TheLoaiDTO theLoaiDTO = new TheLoaiDTO();
-        private Timer huyChonTimer;
+
 
         public frmQuanLyTheLoai()
         {
@@ -29,12 +28,6 @@ namespace QuanLyThuVienGUI.admin
         private void QuanLyTheLoai_Load(object sender, EventArgs e)
         {
             loadDSTheLoai();
-
-            // Khởi tạo Timer
-            huyChonTimer = new Timer();
-            huyChonTimer.Interval = 3000; // 3 giây
-            huyChonTimer.Tick += huychontimer_Tick;
-
             this.BeginInvoke(new Action(() =>
             {
                 dgv_DanhSachTL.ClearSelection();
@@ -92,21 +85,12 @@ namespace QuanLyThuVienGUI.admin
             {
                 btn_XoaTL.Enabled = true;
                 btn_CapNhat.Enabled = true;
-
-                // Reset timer nếu chọn dòng mới
-                huychontimer.Stop();
-                huychontimer.Start();
             }
             else
             {
                 btn_XoaTL.Enabled = false;
                 btn_CapNhat.Enabled = false;
             }
-        }
-        private void huychontimer_Tick(object sender, EventArgs e)
-        {
-            huychontimer.Stop();
-            dgv_DanhSachTL.ClearSelection();
         }
 
         private void btn_LamMoi_Click(object sender, EventArgs e)
@@ -126,6 +110,7 @@ namespace QuanLyThuVienGUI.admin
                 theLoaiDTO.tenTL = tenTL;
                 frmXoaTheLoai xoaTheLoai = new frmXoaTheLoai(theLoaiDTO);
                 xoaTheLoai.ShowDialog();
+                dgv_DanhSachTL.ClearSelection();
             }
            
         }
@@ -143,6 +128,7 @@ namespace QuanLyThuVienGUI.admin
                 theLoaiDTO.tenTL = tenTL;
                 frmCapNhatTheLoai capNhatTheLoai = new frmCapNhatTheLoai(theLoaiDTO);
                 capNhatTheLoai.ShowDialog();
+                dgv_DanhSachTL.ClearSelection();
             }
         }
 
@@ -165,13 +151,6 @@ namespace QuanLyThuVienGUI.admin
 
             dgv_DanhSachTL.Columns[0].HeaderText = "Mã thể loại";
             dgv_DanhSachTL.Columns[1].HeaderText = "Tên thể loại";
-
-            this.BeginInvoke(new Action(() =>
-            {
-                dgv_DanhSachTL.ClearSelection();
-                btn_XoaTL.Enabled = false;
-                btn_CapNhat.Enabled = false;
-            }));
         }
 
         private void dgv_DanhSachTL_CellContentClick(object sender, DataGridViewCellEventArgs e)

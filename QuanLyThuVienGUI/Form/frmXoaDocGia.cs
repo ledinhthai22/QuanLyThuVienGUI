@@ -27,7 +27,7 @@ namespace QuanLyThuVienGUI
             this.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.MouseUp += new MouseEventHandler(Form_MouseUp);
             this.selectedDocGia = docGiaDTO;
-            txt_MaDocGia.Text = selectedDocGia.maDG;
+            txt_MaDocGia.Text = selectedDocGia.maDocGia;
             txt_HoTen.Text = selectedDocGia.hoTen;
             txt_Email.Text = selectedDocGia.email;
             txt_DiaChi.Text =selectedDocGia.diaChi;
@@ -84,7 +84,7 @@ namespace QuanLyThuVienGUI
             if (result == DialogResult.Yes)
             {
 
-                if (docGiaBUS.deleteDocGia(selectedDocGia.maDG))
+                if (docGiaBUS.deleteDocGia(selectedDocGia.maDocGia))
                 {
                     MessageBox.Show("Xóa độc giả thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();

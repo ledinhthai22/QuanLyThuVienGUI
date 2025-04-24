@@ -13,9 +13,9 @@ namespace QuanLyThuVienBUS
     public class DocGiaBUS
     {
         DocGiaDAO docgiaDAO = new DocGiaDAO();
-        public DataTable LoadDSDG()
+        public List<DocGiaDTO> loadDSDG()
         {
-            return docgiaDAO.LoadDSDG();
+            return docgiaDAO.loadDSDG();
         }
         public bool addDocGia(DocGiaDTO docGiaDTO)
         {

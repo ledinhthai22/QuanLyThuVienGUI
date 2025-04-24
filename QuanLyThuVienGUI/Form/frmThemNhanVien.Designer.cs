@@ -33,9 +33,7 @@
             this.txt_UserName = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_UserName = new System.Windows.Forms.Label();
             this.lbl_ChucVu = new System.Windows.Forms.Label();
-            this.txt_Luong = new Guna.UI2.WinForms.Guna2TextBox();
             this.txt_HoTen = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lbl_Luong = new System.Windows.Forms.Label();
             this.txt_SoDienThoai = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbl_SoDienThoai = new System.Windows.Forms.Label();
             this.rad_Nu = new System.Windows.Forms.RadioButton();
@@ -144,33 +142,6 @@
             this.lbl_ChucVu.TabIndex = 106;
             this.lbl_ChucVu.Text = "Chức vụ:";
             // 
-            // txt_Luong
-            // 
-            this.txt_Luong.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Luong.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.txt_Luong.BorderThickness = 2;
-            this.txt_Luong.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txt_Luong.DefaultText = "";
-            this.txt_Luong.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txt_Luong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txt_Luong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txt_Luong.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txt_Luong.FillColor = System.Drawing.SystemColors.Control;
-            this.txt_Luong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_Luong.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txt_Luong.ForeColor = System.Drawing.Color.Black;
-            this.txt_Luong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_Luong.Location = new System.Drawing.Point(108, 301);
-            this.txt_Luong.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txt_Luong.Name = "txt_Luong";
-            this.txt_Luong.PlaceholderForeColor = System.Drawing.Color.Black;
-            this.txt_Luong.PlaceholderText = "";
-            this.txt_Luong.SelectedText = "";
-            this.txt_Luong.Size = new System.Drawing.Size(191, 30);
-            this.txt_Luong.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txt_Luong.TabIndex = 105;
-            this.txt_Luong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Luong_KeyPress);
-            // 
             // txt_HoTen
             // 
             this.txt_HoTen.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -197,18 +168,6 @@
             this.txt_HoTen.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_HoTen.TabIndex = 97;
             this.txt_HoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_HoTen_KeyPress);
-            // 
-            // lbl_Luong
-            // 
-            this.lbl_Luong.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_Luong.AutoSize = true;
-            this.lbl_Luong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Luong.Location = new System.Drawing.Point(56, 316);
-            this.lbl_Luong.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_Luong.Name = "lbl_Luong";
-            this.lbl_Luong.Size = new System.Drawing.Size(55, 19);
-            this.lbl_Luong.TabIndex = 104;
-            this.lbl_Luong.Text = "Lương:";
             // 
             // txt_SoDienThoai
             // 
@@ -457,9 +416,7 @@
             this.Controls.Add(this.txt_UserName);
             this.Controls.Add(this.lbl_UserName);
             this.Controls.Add(this.lbl_ChucVu);
-            this.Controls.Add(this.txt_Luong);
             this.Controls.Add(this.txt_HoTen);
-            this.Controls.Add(this.lbl_Luong);
             this.Controls.Add(this.txt_SoDienThoai);
             this.Controls.Add(this.lbl_SoDienThoai);
             this.Controls.Add(this.rad_Nu);
@@ -488,9 +445,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txt_UserName;
         private System.Windows.Forms.Label lbl_UserName;
         private System.Windows.Forms.Label lbl_ChucVu;
-        private Guna.UI2.WinForms.Guna2TextBox txt_Luong;
         private Guna.UI2.WinForms.Guna2TextBox txt_HoTen;
-        private System.Windows.Forms.Label lbl_Luong;
         private Guna.UI2.WinForms.Guna2TextBox txt_SoDienThoai;
         private System.Windows.Forms.Label lbl_SoDienThoai;
         private System.Windows.Forms.RadioButton rad_Nu;

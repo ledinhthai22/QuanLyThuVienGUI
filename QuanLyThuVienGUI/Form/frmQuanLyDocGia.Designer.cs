@@ -44,7 +44,6 @@
             // 
             // btn_CapNhat
             // 
-            this.btn_CapNhat.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_CapNhat.BackColor = System.Drawing.Color.DodgerBlue;
             this.btn_CapNhat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_CapNhat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -63,7 +62,6 @@
             // 
             // btn_Xoa
             // 
-            this.btn_Xoa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_Xoa.BackColor = System.Drawing.Color.DodgerBlue;
             this.btn_Xoa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_Xoa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -82,7 +80,8 @@
             // 
             // pn_ThongTinDocGia
             // 
-            this.pn_ThongTinDocGia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pn_ThongTinDocGia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pn_ThongTinDocGia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pn_ThongTinDocGia.Controls.Add(this.dgv_DSDocGia);
@@ -120,7 +119,7 @@
             // 
             // btn_TimKiem
             // 
-            this.btn_TimKiem.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_TimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_TimKiem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_TimKiem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_TimKiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -134,10 +133,11 @@
             this.btn_TimKiem.Size = new System.Drawing.Size(105, 37);
             this.btn_TimKiem.TabIndex = 45;
             this.btn_TimKiem.Text = "Tìm kiếm";
+            this.btn_TimKiem.Click += new System.EventHandler(this.btn_TimKiem_Click);
             // 
             // txt_TimKiem
             // 
-            this.txt_TimKiem.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_TimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_TimKiem.BorderColor = System.Drawing.Color.DodgerBlue;
             this.txt_TimKiem.BorderThickness = 2;
             this.txt_TimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -159,7 +159,6 @@
             // 
             // btn_LamMoi
             // 
-            this.btn_LamMoi.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_LamMoi.BackColor = System.Drawing.Color.DodgerBlue;
             this.btn_LamMoi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_LamMoi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -178,7 +177,6 @@
             // 
             // btn_Them
             // 
-            this.btn_Them.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_Them.BackColor = System.Drawing.Color.DodgerBlue;
             this.btn_Them.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_Them.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -199,7 +197,6 @@
             // huychontimer
             // 
             this.huychontimer.Interval = 3000;
-            this.huychontimer.Tick += new System.EventHandler(this.huychontimer_Tick);
             // 
             // frmQuanLyDocGia
             // 

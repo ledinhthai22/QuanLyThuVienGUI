@@ -44,7 +44,6 @@
             // 
             // btn_Them
             // 
-            this.btn_Them.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_Them.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_Them.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_Them.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -62,7 +61,6 @@
             // 
             // btn_Xoa
             // 
-            this.btn_Xoa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_Xoa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_Xoa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_Xoa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -76,10 +74,10 @@
             this.btn_Xoa.Size = new System.Drawing.Size(67, 37);
             this.btn_Xoa.TabIndex = 21;
             this.btn_Xoa.Text = "Xóa";
+            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // btn_Sua
             // 
-            this.btn_Sua.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_Sua.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             this.btn_Sua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_Sua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -116,7 +114,6 @@
             // 
             // btn_LamMoi
             // 
-            this.btn_LamMoi.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_LamMoi.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             this.btn_LamMoi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_LamMoi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -157,7 +154,7 @@
             // 
             // txt_TimKiem
             // 
-            this.txt_TimKiem.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_TimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_TimKiem.BorderColor = System.Drawing.Color.DodgerBlue;
             this.txt_TimKiem.BorderThickness = 2;
             this.txt_TimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -179,7 +176,7 @@
             // 
             // btn_TimKiem
             // 
-            this.btn_TimKiem.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_TimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_TimKiem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_TimKiem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btn_TimKiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

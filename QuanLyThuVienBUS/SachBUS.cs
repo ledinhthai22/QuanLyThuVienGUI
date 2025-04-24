@@ -20,5 +20,10 @@ namespace QuanLyThuVienBUS
         {
             return SachDAO.addSach(sachDTO);
         }
+
+        public bool kiemTraTonTai(SachDTO sachDTO)
+        {
+            return SachDAO.kiemTraTonTai(sachDTO);
+        }
     }
 }
