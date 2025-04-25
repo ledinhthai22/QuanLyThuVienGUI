@@ -89,12 +89,11 @@ namespace QuanLyThuVienGUI
                 DataPropertyName = "NhaXuatBan",
                 HeaderText = "Nhà xuất bản"
             });
-
             dgv_DSSach.Columns.Add(new DataGridViewTextBoxColumn
             {
-                Name = "SoLuong",
-                DataPropertyName = "SoLuong",
-                HeaderText = "Số lượng"
+                Name = "NhaCungCap",
+                DataPropertyName = "NhaCungCap",
+                HeaderText = "Nhà cung cấp"
             });
             dgv_DSSach.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -102,6 +101,13 @@ namespace QuanLyThuVienGUI
                 DataPropertyName = "MoTa",
                 HeaderText = "Mô tả"
             });
+            dgv_DSSach.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "SoLuong",
+                DataPropertyName = "SoLuong",
+                HeaderText = "Số lượng"
+            });
+           
 
             dgv_DSSach.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -134,7 +140,7 @@ namespace QuanLyThuVienGUI
 
         private void dgv_DSSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 8 && e.Value != null)
+            if (e.ColumnIndex == 9 && e.Value != null)
             {
                 string trangThai = e.Value.ToString();
                 if (trangThai == "1")
@@ -185,9 +191,10 @@ namespace QuanLyThuVienGUI
             string tenTheLoai = dgv_DSSach.Rows[selectedRowIndex].Cells[3].Value.ToString();
             DateTime namXuatBan = DateTime.Parse(dgv_DSSach.Rows[selectedRowIndex].Cells[4].Value.ToString());
             string nhaXuatBan = dgv_DSSach.Rows[selectedRowIndex].Cells[5].Value.ToString();
-            int soLuong = int.Parse(dgv_DSSach.Rows[selectedRowIndex].Cells[6].Value.ToString());
+            string nhaCungCap = dgv_DSSach.Rows[selectedRowIndex].Cells[6].Value.ToString();
+            int soLuong = int.Parse(dgv_DSSach.Rows[selectedRowIndex].Cells[8].Value.ToString());
             string moTa = dgv_DSSach.Rows[selectedRowIndex].Cells[7].Value.ToString();
-            int trangThai = int.Parse(dgv_DSSach.Rows[selectedRowIndex].Cells[8].Value.ToString());
+            int trangThai = int.Parse(dgv_DSSach.Rows[selectedRowIndex].Cells[9].Value.ToString());
             string maTheLoai = dgv_DSSach.Rows[selectedRowIndex].Cells["MaTheLoai"].Value.ToString();
             sachDTO.maTheLoai = maTheLoai;
             sachDTO.maSach = maSach;
@@ -199,6 +206,7 @@ namespace QuanLyThuVienGUI
             sachDTO.namXuatBan = namXuatBan;
             sachDTO.soLuong = soLuong;
             sachDTO.trangThai = trangThai;
+            sachDTO.nhaCungCap = nhaCungCap;
         }
         private void btn_Xoa_Click(object sender, EventArgs e)
         {

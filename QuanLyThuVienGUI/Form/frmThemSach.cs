@@ -110,6 +110,7 @@ namespace QuanLyThuVienGUI.QuanLy
             sachDTO.nhaXuatBan = txt_NXB.Text;
             sachDTO.namXuatBan = dtp_NamXB.Value;
             sachDTO.maTheLoai = cbo_MaTheLoai.SelectedValue.ToString(); 
+            sachDTO.nhaCungCap = txt_NhaCungCap.Text;
         }
 
 

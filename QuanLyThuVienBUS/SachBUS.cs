@@ -20,7 +20,14 @@ namespace QuanLyThuVienBUS
         {
             return SachDAO.addSach(sachDTO);
         }
-
+        public bool deleteSach(string maSach)
+        {
+            return SachDAO.deteleSach(maSach);
+        }
+        public bool kiemTraSachDangDuocMuon(SachDTO sachDTO)
+        {
+            return SachDAO.kiemTraSachDangDuocMuon(sachDTO);
+        }
         public bool kiemTraTonTai(SachDTO sachDTO)
         {
             return SachDAO.kiemTraTonTai(sachDTO);

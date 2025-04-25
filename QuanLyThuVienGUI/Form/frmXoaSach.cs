@@ -74,7 +74,28 @@ namespace QuanLyThuVienGUI
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa sách này không này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                if(sachBUS.kiemTraSachDangDuocMuon(selectedSach))
+                {
+                    MessageBox.Show("Sách đang được mượn không thể xóa");
+                }
+                else
+                {
+
+                    if (sachBUS.deleteSach(selectedSach.maSach))
+                    {
+                        MessageBox.Show("Xóa sách thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }    
+
+            }
         }
     }
 }

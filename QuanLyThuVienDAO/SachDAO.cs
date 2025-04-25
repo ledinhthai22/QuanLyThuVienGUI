@@ -19,9 +19,8 @@ namespace QuanLyThuVienDAO
         public DataTable loadSach()
         {
             string query = "SELECT S.MaSach, S.TenSach, S.TacGia, S.MaTheLoai, TL.TenTheLoai, " +
-               "S.NamXuatBan, S.NhaXuatBan, S.SoLuong, S.MoTa, S.TrangThai " +
-               "FROM Sach S JOIN TheLoai TL ON S.MaTheLoai = TL.MaTheLoai " +
-               "WHERE S.TrangThai = 1 AND S.SoLuong > 0";
+               "S.NamXuatBan, S.NhaXuatBan, S.SoLuong, S.MoTa, S.TrangThai,S.NhaCungCap " +
+               "FROM Sach S JOIN TheLoai TL ON S.MaTheLoai = TL.MaTheLoai ";
 
             SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -46,8 +45,8 @@ namespace QuanLyThuVienDAO
                 }
             }
 
-            string insert = "INSERT INTO Sach (MaSach, TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, MoTa, TrangThai) " +
-                            "VALUES (@maSach, @tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @moTa, 1)";
+            string insert = "INSERT INTO Sach (MaSach, TenSach, TacGia, MaTheLoai, NamXuatBan, NhaXuatBan, SoLuong, MoTa, TrangThai,NhaCungCap) " +
+                            "VALUES (@maSach, @tenSach, @tacGia, @maTheLoai, @namXuatBan, @nhaXuatBan, @soLuong, @moTa, 1,@nhaCungCap)";
             SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
             cmd.Parameters.AddWithValue("@maSach", newMaSach);
             cmd.Parameters.AddWithValue("@tenSach", sachDTO.tenSach);
@@ -57,6 +56,16 @@ namespace QuanLyThuVienDAO
             cmd.Parameters.AddWithValue("@nhaXuatBan", sachDTO.nhaXuatBan);
             cmd.Parameters.AddWithValue("@soLuong", sachDTO.soLuong);
             cmd.Parameters.AddWithValue("@moTa", sachDTO.moTa);
+            cmd.Parameters.AddWithValue("@nhaCungCap", sachDTO.nhaCungCap);
+            int n = cmd.ExecuteNonQuery();
+            dp.Close();
+            return n > 0;
+        }
+        public static bool deteleSach(string maSach)
+        {
+            string delete = "DELETE FROM Sach WHERE MaSach = @maSach";
+            SqlCommand cmd = new SqlCommand(delete, dp.GetConnection());
+            cmd.Parameters.AddWithValue("@maSach", maSach);
             int n = cmd.ExecuteNonQuery();
             dp.Close();
             return n > 0;
@@ -76,13 +85,13 @@ namespace QuanLyThuVienDAO
         }
         public static bool kiemTraSachDangDuocMuon(SachDTO sachDTO)
         {
-            string query = "SELECT COUNT(*) FROM ChiTietPhieuMuon WHERE MaSach = @MaSach"; // giả sử TrangThai = 0 là chưa trả
+            string query = "SELECT COUNT(*) FROM ChiTietPhieuMuon WHERE MaSach = @MaSach";
             dp.Open();
             using (SqlCommand cmd = new SqlCommand(query, dp.GetConnection()))
             {
                 cmd.Parameters.AddWithValue("@MaSach", sachDTO.maSach);
                 int count = (int)cmd.ExecuteScalar();
-                return count > 0; // nếu có dòng thoả => sách đang được mượn
+                return count > 0;
             }
 
         }
