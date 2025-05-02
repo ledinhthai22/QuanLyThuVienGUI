@@ -44,8 +44,8 @@ namespace QuanLyThuVienDAO
                 ngayMuon = DateTime.Now;
             }
 
-            string insert = "INSERT INTO CTPhieuMuon (MaCTPhieuMuon, MaPhieuMuon, MaSach, NgayMuon, NgayTra, NgayThucTe, GhiChu) " +
-                  "VALUES (@maCTPhieuMuon, @maPhieuMuon, @maSach, @ngayMuon, @ngayTra, NULL, '')";
+            string insert = "INSERT INTO CTPhieuMuon (MaCTPhieuMuon, MaPhieuMuon, MaSach, NgayMuon, NgayTra, NgayThucTe) " +
+                  "VALUES (@maCTPhieuMuon, @maPhieuMuon, @maSach, @ngayMuon, @ngayTra, NULL)";
             SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
             cmd.Parameters.AddWithValue("@maCTPhieuMuon", newCTMaPhieuMuon);
             cmd.Parameters.AddWithValue("@maPhieuMuon", ctPhieuMuonDTO.maPhieuMuon);

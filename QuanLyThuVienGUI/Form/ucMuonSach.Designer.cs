@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btn_TimKiem = new Guna.UI2.WinForms.Guna2Button();
+            this.txt_TKSach = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btn_TimKiemSach = new Guna.UI2.WinForms.Guna2Button();
             this.btn_TaoPhieuMuon = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Them = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Thoat = new Guna.UI2.WinForms.Guna2Button();
@@ -44,8 +44,8 @@
             this.lbl_SoLuongSach = new System.Windows.Forms.Label();
             this.lbl_NgayTra = new System.Windows.Forms.Label();
             this.lbl_TenDocGia = new System.Windows.Forms.Label();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btn_TimKiemDG = new Guna.UI2.WinForms.Guna2Button();
+            this.txt_TKDocGia = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgv_DSDG = new System.Windows.Forms.DataGridView();
             this.grp_ThongTinSachMuon = new Guna.UI2.WinForms.Guna2GroupBox();
             this.grp_DanhSachSachMuon = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -60,43 +60,44 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSS)).BeginInit();
             this.SuspendLayout();
             // 
-            // guna2TextBox1
+            // txt_TKSach
             // 
-            this.guna2TextBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.guna2TextBox1.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.guna2TextBox1.BorderThickness = 2;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(3, 44);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PlaceholderText = "Tìm kiếm sách";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(688, 48);
-            this.guna2TextBox1.TabIndex = 4;
+            this.txt_TKSach.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_TKSach.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.txt_TKSach.BorderThickness = 2;
+            this.txt_TKSach.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_TKSach.DefaultText = "";
+            this.txt_TKSach.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txt_TKSach.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txt_TKSach.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txt_TKSach.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txt_TKSach.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txt_TKSach.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txt_TKSach.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txt_TKSach.Location = new System.Drawing.Point(3, 44);
+            this.txt_TKSach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_TKSach.Name = "txt_TKSach";
+            this.txt_TKSach.PlaceholderText = "Tìm kiếm sách";
+            this.txt_TKSach.SelectedText = "";
+            this.txt_TKSach.Size = new System.Drawing.Size(688, 48);
+            this.txt_TKSach.TabIndex = 4;
             // 
-            // btn_TimKiem
+            // btn_TimKiemSach
             // 
-            this.btn_TimKiem.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_TimKiem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_TimKiem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_TimKiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_TimKiem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_TimKiem.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btn_TimKiem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_TimKiem.ForeColor = System.Drawing.Color.White;
-            this.btn_TimKiem.Location = new System.Drawing.Point(691, 44);
-            this.btn_TimKiem.Name = "btn_TimKiem";
-            this.btn_TimKiem.Size = new System.Drawing.Size(111, 48);
-            this.btn_TimKiem.TabIndex = 5;
-            this.btn_TimKiem.Text = "Tìm kiếm";
+            this.btn_TimKiemSach.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_TimKiemSach.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_TimKiemSach.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_TimKiemSach.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_TimKiemSach.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_TimKiemSach.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btn_TimKiemSach.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_TimKiemSach.ForeColor = System.Drawing.Color.White;
+            this.btn_TimKiemSach.Location = new System.Drawing.Point(691, 44);
+            this.btn_TimKiemSach.Name = "btn_TimKiemSach";
+            this.btn_TimKiemSach.Size = new System.Drawing.Size(111, 48);
+            this.btn_TimKiemSach.TabIndex = 5;
+            this.btn_TimKiemSach.Text = "Tìm kiếm";
+            this.btn_TimKiemSach.Click += new System.EventHandler(this.btn_TimKiemSach_Click);
             // 
             // btn_TaoPhieuMuon
             // 
@@ -162,8 +163,8 @@
             this.grp_ThongTinMuon.Controls.Add(this.lbl_SoLuongSach);
             this.grp_ThongTinMuon.Controls.Add(this.lbl_NgayTra);
             this.grp_ThongTinMuon.Controls.Add(this.lbl_TenDocGia);
-            this.grp_ThongTinMuon.Controls.Add(this.guna2Button2);
-            this.grp_ThongTinMuon.Controls.Add(this.guna2TextBox2);
+            this.grp_ThongTinMuon.Controls.Add(this.btn_TimKiemDG);
+            this.grp_ThongTinMuon.Controls.Add(this.txt_TKDocGia);
             this.grp_ThongTinMuon.Controls.Add(this.dgv_DSDG);
             this.grp_ThongTinMuon.Controls.Add(this.btn_Thoat);
             this.grp_ThongTinMuon.Controls.Add(this.btn_TaoPhieuMuon);
@@ -242,7 +243,7 @@
             this.dtp_NgayTra.FillColor = System.Drawing.Color.DodgerBlue;
             this.dtp_NgayTra.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtp_NgayTra.ForeColor = System.Drawing.Color.Black;
-            this.dtp_NgayTra.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtp_NgayTra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_NgayTra.Location = new System.Drawing.Point(134, 567);
             this.dtp_NgayTra.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtp_NgayTra.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -253,12 +254,13 @@
             // 
             // dtp_NgayMuon
             // 
+            this.dtp_NgayMuon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.dtp_NgayMuon.Checked = true;
             this.dtp_NgayMuon.Enabled = false;
             this.dtp_NgayMuon.FillColor = System.Drawing.Color.DodgerBlue;
             this.dtp_NgayMuon.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtp_NgayMuon.ForeColor = System.Drawing.Color.Black;
-            this.dtp_NgayMuon.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtp_NgayMuon.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_NgayMuon.Location = new System.Drawing.Point(134, 521);
             this.dtp_NgayMuon.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtp_NgayMuon.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -339,46 +341,48 @@
             this.lbl_TenDocGia.TabIndex = 34;
             this.lbl_TenDocGia.Text = "Họ tên:";
             // 
-            // guna2Button2
+            // btn_TimKiemDG
             // 
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.DodgerBlue;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(263, 45);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(111, 48);
-            this.guna2Button2.TabIndex = 11;
-            this.guna2Button2.Text = "Tìm kiếm";
+            this.btn_TimKiemDG.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_TimKiemDG.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_TimKiemDG.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_TimKiemDG.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_TimKiemDG.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btn_TimKiemDG.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_TimKiemDG.ForeColor = System.Drawing.Color.White;
+            this.btn_TimKiemDG.Location = new System.Drawing.Point(263, 45);
+            this.btn_TimKiemDG.Name = "btn_TimKiemDG";
+            this.btn_TimKiemDG.Size = new System.Drawing.Size(111, 48);
+            this.btn_TimKiemDG.TabIndex = 11;
+            this.btn_TimKiemDG.Text = "Tìm kiếm";
+            this.btn_TimKiemDG.Click += new System.EventHandler(this.btn_TimKiemDG_Click);
             // 
-            // guna2TextBox2
+            // txt_TKDocGia
             // 
-            this.guna2TextBox2.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.guna2TextBox2.BorderThickness = 2;
-            this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox2.DefaultText = "";
-            this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Location = new System.Drawing.Point(7, 45);
-            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox2.Name = "guna2TextBox2";
-            this.guna2TextBox2.PlaceholderText = "Tìm kiếm độc giả";
-            this.guna2TextBox2.SelectedText = "";
-            this.guna2TextBox2.Size = new System.Drawing.Size(256, 48);
-            this.guna2TextBox2.TabIndex = 11;
+            this.txt_TKDocGia.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.txt_TKDocGia.BorderThickness = 2;
+            this.txt_TKDocGia.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_TKDocGia.DefaultText = "";
+            this.txt_TKDocGia.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txt_TKDocGia.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txt_TKDocGia.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txt_TKDocGia.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txt_TKDocGia.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txt_TKDocGia.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txt_TKDocGia.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txt_TKDocGia.Location = new System.Drawing.Point(7, 45);
+            this.txt_TKDocGia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_TKDocGia.Name = "txt_TKDocGia";
+            this.txt_TKDocGia.PlaceholderText = "Tìm kiếm độc giả";
+            this.txt_TKDocGia.SelectedText = "";
+            this.txt_TKDocGia.Size = new System.Drawing.Size(256, 48);
+            this.txt_TKDocGia.TabIndex = 11;
             // 
             // dgv_DSDG
             // 
             this.dgv_DSDG.AllowUserToAddRows = false;
             this.dgv_DSDG.AllowUserToOrderColumns = true;
+            this.dgv_DSDG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_DSDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DSDG.Location = new System.Drawing.Point(6, 95);
             this.dgv_DSDG.MultiSelect = false;
@@ -400,8 +404,8 @@
             this.grp_ThongTinSachMuon.Controls.Add(this.dgv_DSS);
             this.grp_ThongTinSachMuon.Controls.Add(this.btn_xoa);
             this.grp_ThongTinSachMuon.Controls.Add(this.btn_Them);
-            this.grp_ThongTinSachMuon.Controls.Add(this.guna2TextBox1);
-            this.grp_ThongTinSachMuon.Controls.Add(this.btn_TimKiem);
+            this.grp_ThongTinSachMuon.Controls.Add(this.txt_TKSach);
+            this.grp_ThongTinSachMuon.Controls.Add(this.btn_TimKiemSach);
             this.grp_ThongTinSachMuon.CustomBorderColor = System.Drawing.Color.DodgerBlue;
             this.grp_ThongTinSachMuon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_ThongTinSachMuon.ForeColor = System.Drawing.Color.Black;
@@ -500,15 +504,15 @@
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2Button btn_TimKiem;
+        private Guna.UI2.WinForms.Guna2TextBox txt_TKSach;
+        private Guna.UI2.WinForms.Guna2Button btn_TimKiemSach;
         private Guna.UI2.WinForms.Guna2Button btn_TaoPhieuMuon;
         private Guna.UI2.WinForms.Guna2Button btn_Them;
         private Guna.UI2.WinForms.Guna2Button btn_Thoat;
         private Guna.UI2.WinForms.Guna2GroupBox grp_ThongTinMuon;
         private Guna.UI2.WinForms.Guna2GroupBox grp_ThongTinSachMuon;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2Button btn_TimKiemDG;
+        private Guna.UI2.WinForms.Guna2TextBox txt_TKDocGia;
         private System.Windows.Forms.DataGridView dgv_DSDG;
         private System.Windows.Forms.DataGridView dgv_DSS;
         private Guna.UI2.WinForms.Guna2Button btn_xoa;

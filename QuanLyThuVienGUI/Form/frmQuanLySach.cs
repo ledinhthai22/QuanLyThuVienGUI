@@ -104,7 +104,7 @@ namespace QuanLyThuVienGUI
                         MessageBox.Show("Không tìm thấy kết quả khớp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadDSSach();
                     }
-
+                    txt_TimKiem.Clear();
 
                     dgv_DSSach.ClearSelection();
                 }

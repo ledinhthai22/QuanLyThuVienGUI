@@ -220,6 +220,7 @@ namespace QuanLyThuVienGUI.admin
                 tinhTongTrang();
                 TrangHienTai = 1;
                 LoadTrang();
+                // xóa ô tìm kiếm
                 return;
             }
 
@@ -228,7 +229,7 @@ namespace QuanLyThuVienGUI.admin
                 .ToList();
 
             danhSachTL = ketQua; // <<< cập nhật danh sách mới sau tìm kiếm
-
+            txt_TimKiemTL.Clear();
             tinhTongTrang();
             TrangHienTai = 1;
             LoadTrang();

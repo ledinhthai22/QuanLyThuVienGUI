@@ -89,7 +89,7 @@ namespace QuanLyThuVienGUI.admin
                         loadDSNV(); 
                     }
 
-                  
+                    txt_TimKiem.Clear();
                     dgv_DSNhanVien.ClearSelection();
                 }
                 else

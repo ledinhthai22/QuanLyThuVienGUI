@@ -12,6 +12,9 @@ namespace QuanLyThuVienBUS
     public class ThongKeBUS
     {
         ThongKeDAO thongKeDAO = new ThongKeDAO();
-      
+        public List<ThongKeDTO> layThongKeNguoiMuonTheoNgay()
+        {
+            return thongKeDAO.thongKeNguoiMuonTheoNgay();
+        }
     }
 }

@@ -127,7 +127,7 @@ namespace QuanLyThuVienGUI
                 btn_QLSach.Visible = false;
                 btn_QLTheLoai.Visible = false;
                 btn_QLNhanVien.Visible = false;
-                btn_QLDocGia.Visible = false;
+                
             }
         }
 

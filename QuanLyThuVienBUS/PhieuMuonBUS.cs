@@ -19,5 +19,9 @@ namespace QuanLyThuVienBUS
         {
             return PhieuMuonDAO.createPhieuMuon(phieuMuonDTO);
         }
+        public bool kiemTraMuon(string maDocGia)
+        {
+            return PhieuMuonDAO.kiemTraMuon(maDocGia);
+        }
     }
 }

@@ -98,5 +98,23 @@ namespace QuanLyThuVienDAO
            
           
         }
+        public static bool kiemTraMuon(string maDocGia)
+        {
+            string select = "SELECT COUNT(*) FROM PhieuMuon WHERE MaDocGia = @maDocGia AND TrangThai = 1";
+            SqlCommand cmd = new SqlCommand(select, dp.GetConnection());
+            cmd.Parameters.AddWithValue("@maDocGia", maDocGia);
+
+            try
+            {
+                dp.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+            finally
+            {
+                dp.Close();
+            }
+        }
+
     }
 }

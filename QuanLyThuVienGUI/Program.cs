@@ -12,12 +12,12 @@ namespace QuanLyThuVienGUI
         [STAThread]
         static void Main()
         {
-            string tenNV = "";
-            string chucVu = "";
-            string maNV = "";
+            //string tenNV = "";
+            //string chucVu = "";
+            //string maNV = "";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain(tenNV,chucVu,maNV));
+            Application.Run(new frmDangNhap());
         }
     }
 }

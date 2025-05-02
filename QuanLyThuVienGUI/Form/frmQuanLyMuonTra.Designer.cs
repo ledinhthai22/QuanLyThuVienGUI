@@ -35,6 +35,7 @@
             this.dgv_LoadDuLieu = new System.Windows.Forms.DataGridView();
             this.btn_TraSach = new Guna.UI2.WinForms.Guna2Button();
             this.btn_MuonSach = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_PhieuPhat = new Guna.UI2.WinForms.Guna2Button();
             this.pn_Thongtin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_LoadDuLieu)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +46,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pn_Thongtin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pn_Thongtin.Controls.Add(this.btn_PhieuPhat);
             this.pn_Thongtin.Controls.Add(this.cbo_LocTheoDanhSach);
             this.pn_Thongtin.Controls.Add(this.txt_TimKiem);
             this.pn_Thongtin.Controls.Add(this.btn_TimKiem);
@@ -71,7 +73,7 @@
             this.cbo_LocTheoDanhSach.Items.AddRange(new object[] {
             "Danh sách phiếu mượn",
             "Danh sách phiếu phạt"});
-            this.cbo_LocTheoDanhSach.Location = new System.Drawing.Point(320, 10);
+            this.cbo_LocTheoDanhSach.Location = new System.Drawing.Point(478, 10);
             this.cbo_LocTheoDanhSach.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_LocTheoDanhSach.Name = "cbo_LocTheoDanhSach";
             this.cbo_LocTheoDanhSach.Size = new System.Drawing.Size(244, 36);
@@ -92,12 +94,12 @@
             this.txt_TimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt_TimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_TimKiem.HoverState.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.txt_TimKiem.Location = new System.Drawing.Point(570, 4);
+            this.txt_TimKiem.Location = new System.Drawing.Point(729, 4);
             this.txt_TimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_TimKiem.Name = "txt_TimKiem";
             this.txt_TimKiem.PlaceholderText = "Tìm kiếm";
             this.txt_TimKiem.SelectedText = "";
-            this.txt_TimKiem.Size = new System.Drawing.Size(480, 44);
+            this.txt_TimKiem.Size = new System.Drawing.Size(321, 44);
             this.txt_TimKiem.TabIndex = 46;
             // 
             // btn_TimKiem
@@ -135,7 +137,6 @@
             this.dgv_LoadDuLieu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_LoadDuLieu.Size = new System.Drawing.Size(1186, 702);
             this.dgv_LoadDuLieu.TabIndex = 30;
-          
             this.dgv_LoadDuLieu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_LoadDuLieu_CellFormatting);
             // 
             // btn_TraSach
@@ -172,6 +173,22 @@
             this.btn_MuonSach.Text = "Mượn sách";
             this.btn_MuonSach.Click += new System.EventHandler(this.btn_MuonSach_Click);
             // 
+            // btn_PhieuPhat
+            // 
+            this.btn_PhieuPhat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_PhieuPhat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_PhieuPhat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_PhieuPhat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_PhieuPhat.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btn_PhieuPhat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_PhieuPhat.ForeColor = System.Drawing.Color.White;
+            this.btn_PhieuPhat.Location = new System.Drawing.Point(319, 4);
+            this.btn_PhieuPhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_PhieuPhat.Name = "btn_PhieuPhat";
+            this.btn_PhieuPhat.Size = new System.Drawing.Size(152, 44);
+            this.btn_PhieuPhat.TabIndex = 49;
+            this.btn_PhieuPhat.Text = "Phiếu phạt";
+            // 
             // frmQuanLyMuonTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -198,5 +215,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txt_TimKiem;
         private Guna.UI2.WinForms.Guna2Button btn_TimKiem;
         private Guna.UI2.WinForms.Guna2ComboBox cbo_LocTheoDanhSach;
+        private Guna.UI2.WinForms.Guna2Button btn_PhieuPhat;
     }
 }

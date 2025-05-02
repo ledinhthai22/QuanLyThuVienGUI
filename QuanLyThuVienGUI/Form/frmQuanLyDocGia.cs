@@ -287,11 +287,12 @@ namespace QuanLyThuVienGUI.admin
                     else
                     {
                         MessageBox.Show("Không tìm thấy kết quả khớp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        loadDSDG(); // Nếu không có kết quả, tải lại toàn bộ danh sách nhân viên
+                        loadDSDG(); 
                     }
 
                     // Tự động xóa lựa chọn
                     dgv_DSDocGia.ClearSelection();
+                    txt_TimKiem.Clear();
                 }
                 else
                 {

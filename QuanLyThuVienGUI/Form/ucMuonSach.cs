@@ -26,12 +26,16 @@ namespace QuanLyThuVienGUI
         PhieuMuonBUS phieuMuonBUS = new PhieuMuonBUS();
         PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO();
         CTPhieuMuonBUS ctPhieuMuonBUS = new CTPhieuMuonBUS(); // Thêm đối tượng CTPhieuMuon BUS
-        public string maNV;
+        private string maNV;
+        private string maphieuMuon;
+        
         public ucMuonSach(admin.frmQuanLyMuonTra parent, string maNV)
         {
+          
             InitializeComponent();
             this.parentForm = parent;
             this.maNV = maNV;
+          
         }
 
         private void btn_Thoat_Click(object sender, EventArgs e)
@@ -106,38 +110,38 @@ namespace QuanLyThuVienGUI
                 DataPropertyName = "HoTen",
                 HeaderText = "Họ tên"
             });
-            dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "NgaySinh",
-                DataPropertyName = "NgaySinh",
-                HeaderText = "Ngày sinh"
-            });
-            dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "GioiTinh",
-                DataPropertyName = "GioiTinh",
-                HeaderText = "Giới tính"
-            });
-            dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "DiaChi",
-                DataPropertyName = "DiaChi",
-                HeaderText = "Địa chỉ"
-            });
+            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "NgaySinh",
+            //    DataPropertyName = "NgaySinh",
+            //    HeaderText = "Ngày sinh"
+            //});
+            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "GioiTinh",
+            //    DataPropertyName = "GioiTinh",
+            //    HeaderText = "Giới tính"
+            //});
+            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "DiaChi",
+            //    DataPropertyName = "DiaChi",
+            //    HeaderText = "Địa chỉ"
+            //});
 
-            dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "SoDienThoai",
-                DataPropertyName = "SoDienThoai",
-                HeaderText = "Số điện thoại"
-            });
+            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "SoDienThoai",
+            //    DataPropertyName = "SoDienThoai",
+            //    HeaderText = "Số điện thoại"
+            //});
 
-            dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "Email",
-                DataPropertyName = "Email",
-                HeaderText = "Email"
-            });
+            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "Email",
+            //    DataPropertyName = "Email",
+            //    HeaderText = "Email"
+            //});
         }
         private void taoCotDgvSach()
         {
@@ -292,6 +296,7 @@ namespace QuanLyThuVienGUI
                 MessageBox.Show("Mỗi phiếu mượn chỉ được mượn tối đa 3 cuốn sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             if (dgv_DSS.CurrentRow != null)
             {
                 string maSach = dgv_DSS.CurrentRow.Cells["MaSach"].Value.ToString();
@@ -299,20 +304,27 @@ namespace QuanLyThuVienGUI
                 SachDTO sachDuocChon = danhSachSach.FirstOrDefault(s => s.maSach == maSach);
                 if (sachDuocChon != null)
                 {
-               
+                    // Đếm số lượng sách này đã chọn trong danh sách mượn
+                    int soLuongDaChon = danhSachSachMuon.Count(s => s.maSach == maSach);
+
+                    if (soLuongDaChon >= sachDuocChon.soLuong)
+                    {
+                        MessageBox.Show($"Sách \"{sachDuocChon.tenSach}\" chỉ còn {sachDuocChon.soLuong} cuốn, bạn đã chọn đủ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     if (sachDuocChon.trangThai.ToString().Trim().ToLower() != "có sẵn" && sachDuocChon.trangThai.ToString().Trim().ToLower() != "1")
                     {
                         MessageBox.Show("Sách này không có sẵn để mượn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
-               
                     if (sachDuocChon.soLuong <= 0)
                     {
                         MessageBox.Show("Sách này đã hết", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                  
+
                     danhSachSachMuon.Add(sachDuocChon);
 
                     dgv_DSSachMuon.DataSource = null;
@@ -320,8 +332,10 @@ namespace QuanLyThuVienGUI
                     txt_SoLuongSach.Text = danhSachSachMuon.Count.ToString();
                 }
             }
+
             dgv_DSSachMuon.ClearSelection();
             dgv_DSS.ClearSelection();
+
         }
         private void btn_xoa_Click(object sender, EventArgs e)
         {
@@ -360,19 +374,6 @@ namespace QuanLyThuVienGUI
         }
         private void getDuLieuPhieuMuon()
         {
-            // Kiểm tra đầu vào
-            if (string.IsNullOrEmpty(txt_maDocGia.Text))
-            {
-                MessageBox.Show("Vui lòng chọn độc giả trước khi tạo phiếu mượn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (danhSachSachMuon.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn ít nhất một sách để mượn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             phieuMuonDTO.maNhanVien = maNV;
             phieuMuonDTO.ngayLap = dtp_NgayMuon.Value;
             phieuMuonDTO.ngayTra = dtp_NgayTra.Value;
@@ -384,27 +385,37 @@ namespace QuanLyThuVienGUI
 
         private void btn_TaoPhieuMuon_Click(object sender, EventArgs e)
         {
+            // Lấy thông tin phiếu mượn từ giao diện
+            getDuLieuPhieuMuon();
+
             try
             {
-                if (danhSachSachMuon.Count == 0)
-                {
-                    MessageBox.Show("Vui lòng chọn sách để mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
+                // Kiểm tra mã độc giả
                 if (string.IsNullOrEmpty(txt_maDocGia.Text))
                 {
                     MessageBox.Show("Vui lòng chọn độc giả trước khi tạo phiếu mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                // Lấy thông tin phiếu mượn từ giao diện
-                getDuLieuPhieuMuon();
-
+                // Kiểm tra sách mượn có hay chưa
+                if (danhSachSachMuon.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn sách để mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // Kiểm tra mã nhân viên
                 if (string.IsNullOrEmpty(maNV))
                 {
                     MessageBox.Show("Lỗi: Mã nhân viên không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                }
+
+                string maDocGia = txt_maDocGia.Text.Trim();
+
+                // Kiểm tra độc giả còn phiếu chưa trả hay không
+                if (phieuMuonBUS.kiemTraMuon(maDocGia))
+                {
+                    MessageBox.Show("Độc giả này đã có phiếu mượn chưa trả sách! Vui lòng trả sách trước khi mượn tiếp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // ❗ Ngăn không cho mượn tiếp
                 }
 
                 // B1: Tạo phiếu mượn
@@ -416,7 +427,7 @@ namespace QuanLyThuVienGUI
                     return;
                 }
 
-                // B2: Tạo chi tiết phiếu mượn cho từng sách
+                // B2: Tạo chi tiết phiếu mượn
                 bool allCTInserted = true;
                 foreach (var sach in danhSachSachMuon)
                 {
@@ -438,7 +449,7 @@ namespace QuanLyThuVienGUI
                     }
                 }
 
-                // B3: Trừ số lượng sách
+                // B3: Cập nhật số lượng sách
                 bool updateSuccess = sachBUS.updateSachSauMuon(danhSachSachMuon.Select(s => s.maSach).ToList());
 
                 if (allCTInserted && updateSuccess)
@@ -463,6 +474,7 @@ namespace QuanLyThuVienGUI
             }
         }
 
+
         private void dgv_DSS_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgv_DSS.Columns[e.ColumnIndex].Name == "TrangThai")
@@ -480,6 +492,106 @@ namespace QuanLyThuVienGUI
                     }
                 }
             }
+        }
+
+        private void btn_TimKiemDG_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string keyword = txt_TKDocGia.Text.Trim(); // Giả sử bạn có một TextBox txt_TimKiem để nhập từ khóa tìm kiếm
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    // Gọi phương thức tìm kiếm
+                    List<DocGiaDTO> danhSachTimKiem = TimKiemDocGia(keyword);
+
+                    // Kiểm tra nếu có kết quả tìm kiếm
+                    if (danhSachTimKiem.Any())
+                    {
+                        // Hiển thị kết quả tìm kiếm vào DataGridView
+                        dgv_DSDG.DataSource = null;
+                        dgv_DSDG.DataSource = danhSachTimKiem;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy kết quả khớp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadDSDG(); // Nếu không có kết quả, tải lại toàn bộ danh sách nhân viên
+                    }
+
+                    // Tự động xóa lựa chọn
+                    dgv_DSDG.ClearSelection();
+                    txt_TKDocGia.Clear(); // Xóa nội dung tìm kiếm
+                }
+                else
+                {
+                    loadDSDG(); // Nếu không có từ khóa tìm kiếm, tải lại toàn bộ danh sách nhân viên
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm độc giả: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public List<DocGiaDTO> TimKiemDocGia(string keyword)
+        {
+            var danhSach = docGiaBUS.loadDSDG();
+            keyword = keyword.ToLower();
+
+            return danhSach.Where(nv =>
+                (!string.IsNullOrEmpty(nv.hoTen) && nv.hoTen.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(nv.maDocGia) && nv.maDocGia.ToLower().Contains(keyword))
+            ).ToList();
+        }
+
+        private void btn_TimKiemSach_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string keyword = txt_TKSach.Text.Trim();
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+
+                    List<SachDTO> danhSachTimKiem = TimKiemSach(keyword);
+
+
+                    if (danhSachTimKiem.Any())
+                    {
+
+                        dgv_DSS.DataSource = null;
+                        dgv_DSS.DataSource = danhSachTimKiem;
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy kết quả khớp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadDSSachMuon(); // Nếu không có kết quả, tải lại toàn bộ danh sách nhân viên
+                    }
+
+
+                    dgv_DSS.ClearSelection();
+                    txt_TKSach.Clear();
+                }
+                else
+                {
+                    loadDSSachMuon();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
+            }
+        }
+        public List<SachDTO> TimKiemSach(string keyword)
+        {
+            var danhSach = sachBUS.loadSach();
+            keyword = keyword.ToLower();
+
+            return danhSach.Where(sach =>
+                (!string.IsNullOrEmpty(sach.tenSach) && sach.tenSach.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(sach.maSach) && sach.maSach.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(sach.tenTheLoai) && sach.tenTheLoai.ToLower().Contains(keyword))
+            ).ToList();
         }
     }
 }

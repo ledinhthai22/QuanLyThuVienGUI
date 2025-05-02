@@ -20,6 +20,7 @@ namespace QuanLyThuVienGUI.admin
         PhieuPhatBUS phieuPhatBUS = new PhieuPhatBUS();
         List<PhieuMuonDTO> danhSachPhieuMuon = new List<PhieuMuonDTO>();
         public string manv;
+  
         public frmQuanLyMuonTra(string maNV)
         {
             this.manv = maNV;
@@ -34,6 +35,7 @@ namespace QuanLyThuVienGUI.admin
 
         private void btn_MuonSach_Click(object sender, EventArgs e)
         {
+            ;
             pn_Thongtin.Controls.Clear();
             ucMuonSach ucMuonTra = new ucMuonSach(this,manv);
             ucMuonTra.Dock = DockStyle.Fill;
@@ -114,12 +116,12 @@ namespace QuanLyThuVienGUI.admin
                 HeaderText = "Mã phiếu mượn"
             });
 
-            dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "MaNhanVien",
-                DataPropertyName = "MaNhanVien",
-                HeaderText = "Mã nhân viên"
-            });
+            //dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "MaNhanVien",
+            //    DataPropertyName = "MaNhanVien",
+            //    HeaderText = "Mã nhân viên"
+            //});
             dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "MaDocGia",
@@ -227,7 +229,7 @@ namespace QuanLyThuVienGUI.admin
             taoCotDgvPhieuMuon();
             loadDSPM(); 
         }
-
+       
         private void cbo_LocTheoDanhSach_SelectedIndexChanged(object sender, EventArgs e)
         {
             string luaChon = cbo_LocTheoDanhSach.SelectedItem.ToString();
