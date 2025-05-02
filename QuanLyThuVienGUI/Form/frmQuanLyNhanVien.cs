@@ -19,18 +19,147 @@ namespace QuanLyThuVienGUI.admin
     {
         NhanVienBUS nhanVienBUS = new NhanVienBUS();
         NhanVienDTO nhanVienDTO = new NhanVienDTO();
+        private int SoLuongTrang = 26;
+        private int TrangHienTai = 1;
+        private int TongTrang = 1;
+        private bool dangPhanTrang = true;
+        private const int nguongRong = 658;
+        private List<NhanVienDTO> danhSachNhanVien = new List<NhanVienDTO>();
         public frmQuanLyNhanVien()
         {
             InitializeComponent();
-           
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance |
+            System.Reflection.BindingFlags.SetProperty,
+            null, dgv_DSNhanVien, new object[] { true });
         }
            
-        private void loadDSNV()
+      
+        private void btn_Them_Click(object sender, EventArgs e)
+        {
+            frmThemNhanVien frmThemNV = new frmThemNhanVien();
+            frmThemNV.ShowDialog();
+            loadDSNV();
+
+        }
+
+        private void btn_LamMoi_Click(object sender, EventArgs e)
+        {
+            danhSachNhanVien = loadDSNV();
+            txt_TimKiem.Clear();
+            tinhTongTrang();
+            TrangHienTai = 1;
+            LoadTrang();
+        }
+
+        private void btn_CapNhat_Click(object sender, EventArgs e)
+        {
+            if (dgv_DSNhanVien.SelectedRows.Count > 0)
+            {
+                getDuLieu();
+                frmCapNhatNhanVien capNhatNhanVien = new frmCapNhatNhanVien(nhanVienDTO);
+                capNhatNhanVien.ShowDialog();
+                dgv_DSNhanVien.ClearSelection();
+                loadDSNV();
+            }
+        }
+
+        private void btn_TimKiem_Click(object sender, EventArgs e)
         {
             try
             {
-                dgv_DSNhanVien.DataSource = null;
-                dgv_DSNhanVien.DataSource = nhanVienBUS.loadDSNV();
+                string keyword = txt_TimKiem.Text.Trim(); 
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                   
+                    List<NhanVienDTO> danhSachTimKiem = TimKiemNhanVien(keyword);
+
+                    
+                    if (danhSachTimKiem.Any())
+                    {
+                       
+                        dgv_DSNhanVien.DataSource = null;
+                        dgv_DSNhanVien.DataSource = danhSachTimKiem;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy kết quả khớp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadDSNV(); 
+                    }
+
+                  
+                    dgv_DSNhanVien.ClearSelection();
+                }
+                else
+                {
+                    loadDSNV(); 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
+            }
+        }
+
+        private void dgv_DSNhanVien_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv_DSNhanVien.SelectedRows.Count > 0)
+            {
+                btn_Xoa.Enabled = true;
+                btn_CapNhat.Enabled = true;
+            }
+            else
+            {
+                btn_Xoa.Enabled = false;
+                btn_CapNhat.Enabled = false;
+            }
+        }
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+
+            if (dgv_DSNhanVien.SelectedRows.Count > 0)
+            {
+                getDuLieu();
+                frmXoaNhanVien xoaNV = new frmXoaNhanVien(nhanVienDTO);
+                xoaNV.ShowDialog();
+                dgv_DSNhanVien.ClearSelection();
+                loadDSNV();
+            }
+        }
+        private void frmQuanLyNhanVien_Load(object sender, EventArgs e)
+        {
+            loadDSNV();
+            dgv_DSNhanVien.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_DSNhanVien.MultiSelect = false;
+            dgv_DSNhanVien.ReadOnly = true;
+            dgv_DSNhanVien.AllowUserToAddRows = false;
+            dgv_DSNhanVien.AllowUserToDeleteRows = false;
+            taoCotDataGridView();
+            dgv_DSNhanVien.SelectionChanged += dgv_DSNhanVien_SelectionChanged;
+        }
+        private List<NhanVienDTO> loadDSNV()
+        {
+
+            try
+            {
+                List<NhanVienDTO> dsNhanVien = nhanVienBUS.loadDSNV();
+
+                if (dsNhanVien == null || dsNhanVien.Count == 0)
+                {
+                    MessageBox.Show("Không có sách để hiển thị.");
+                }
+                else
+                {
+                    danhSachNhanVien = dsNhanVien;
+                    dgv_DSNhanVien.DataSource = null;
+                    dgv_DSNhanVien.DataSource = danhSachNhanVien;
+                    tinhTongTrang();
+                    TrangHienTai = 1;
+                    LoadTrang();
+                }
+
                 this.BeginInvoke(new Action(() =>
                 {
                     dgv_DSNhanVien.ClearSelection();
@@ -41,10 +170,61 @@ namespace QuanLyThuVienGUI.admin
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải lại danh sách thể loại: " + ex.Message);
+                MessageBox.Show("Lỗi khi tải lại danh sách sách: " + ex.Message);
+            }
+            return danhSachNhanVien;
+        }
+        private void LoadTrang()
+        {
+            if (danhSachNhanVien == null || danhSachNhanVien.Count == 0)
+            {
+                danhSachNhanVien = loadDSNV();
+            }
+
+            if (!dangPhanTrang)
+            {
+                dgv_DSNhanVien.DataSource = danhSachNhanVien;
+                lbl_SoTrang.Text = "";
+                btn_TrangSau.Visible = false;
+                btn_TrangTruoc.Visible = false;
+                return;
+            }
+
+            int skip = (TrangHienTai - 1) * SoLuongTrang;
+            var duLieuTrang = danhSachNhanVien.Skip(skip).Take(SoLuongTrang).ToList();
+            dgv_DSNhanVien.DataSource = duLieuTrang;
+            lbl_SoTrang.Text = $"{TrangHienTai}/{TongTrang}";
+            btn_TrangSau.Enabled = TrangHienTai < TongTrang;
+            btn_TrangTruoc.Enabled = TrangHienTai > 1;
+        }
+
+        private void capNhatSoLuongTrang()
+        {
+            int chieuCaoHeader = dgv_DSNhanVien.ColumnHeadersHeight;
+            int chieuCaoRow = dgv_DSNhanVien.RowTemplate.Height;
+            int chieuCaoHienThi = dgv_DSNhanVien.ClientSize.Height - chieuCaoHeader;
+            SoLuongTrang = chieuCaoHienThi / chieuCaoRow;
+            if (SoLuongTrang <= 0)
+            {
+                SoLuongTrang = 1;
             }
         }
 
+      
+
+        private void tinhTongTrang()
+        {
+            if (danhSachNhanVien == null || danhSachNhanVien.Count <= SoLuongTrang)
+            {
+                dangPhanTrang = false;
+                TongTrang = 1;
+            }
+            else
+            {
+                dangPhanTrang = true;
+                TongTrang = (int)Math.Ceiling((double)danhSachNhanVien.Count / SoLuongTrang);
+            }
+        }
         private void taoCotDataGridView()
         {
             dgv_DSNhanVien.Columns.Clear();
@@ -123,49 +303,6 @@ namespace QuanLyThuVienGUI.admin
             });
 
         }
-        private void btn_Them_Click(object sender, EventArgs e)
-        {
-            frmThemNhanVien frmThemNV = new frmThemNhanVien();
-            frmThemNV.ShowDialog();
-            loadDSNV();
-
-        }
-
-        private void btn_LamMoi_Click(object sender, EventArgs e)
-        {
-            loadDSNV();
-        }
-
-
-
-        private void dgv_DSNhanVien_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgv_DSNhanVien.SelectedRows.Count > 0)
-            {
-                btn_Xoa.Enabled = true;
-                btn_CapNhat.Enabled = true;
-            }
-            else
-            {
-                btn_Xoa.Enabled = false;
-                btn_CapNhat.Enabled = false;
-            }
-        }
-
-        private void frmQuanLyNhanVien_Load(object sender, EventArgs e)
-        {
-            loadDSNV();
-            dgv_DSNhanVien.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_DSNhanVien.MultiSelect = false;
-            dgv_DSNhanVien.ReadOnly = true;
-            dgv_DSNhanVien.AllowUserToAddRows = false;
-            dgv_DSNhanVien.AllowUserToDeleteRows = false;
-            taoCotDataGridView();
-            huychontimer = new Timer();
-            huychontimer.Interval = 3000; 
-
-            dgv_DSNhanVien.SelectionChanged += dgv_DSNhanVien_SelectionChanged;
-        }
         private void getDuLieu()
         {
             int selectedRowIndex = dgv_DSNhanVien.SelectedRows[0].Index;
@@ -192,18 +329,7 @@ namespace QuanLyThuVienGUI.admin
             nhanVienDTO.trangThai = trangThai;
             nhanVienDTO.ngayTao = ngayTao;
         }
-        private void btn_Xoa_Click(object sender, EventArgs e)
-        {
-            
-            if (dgv_DSNhanVien.SelectedRows.Count > 0)
-            {
-                getDuLieu();
-                frmXoaNhanVien xoaNV = new frmXoaNhanVien(nhanVienDTO);
-                xoaNV.ShowDialog();
-                dgv_DSNhanVien.ClearSelection();
-                loadDSNV();
-            }
-        }
+       
 
         private void dgv_DSNhanVien_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -231,55 +357,7 @@ namespace QuanLyThuVienGUI.admin
             }    
         }
 
-        private void btn_CapNhat_Click(object sender, EventArgs e)
-        {
-            if (dgv_DSNhanVien.SelectedRows.Count > 0)
-            {
-                getDuLieu();
-                frmCapNhatNhanVien capNhatNhanVien = new frmCapNhatNhanVien(nhanVienDTO);
-                capNhatNhanVien.ShowDialog();
-                dgv_DSNhanVien.ClearSelection();
-                loadDSNV();
-            }
-        }
-
-        private void btn_TimKiem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string keyword = txt_TimKiem.Text.Trim(); // Giả sử bạn có một TextBox txt_TimKiem để nhập từ khóa tìm kiếm
-
-                if (!string.IsNullOrEmpty(keyword))
-                {
-                    // Gọi phương thức tìm kiếm
-                    List<NhanVienDTO> danhSachTimKiem = TimKiemNhanVien(keyword);
-
-                    // Kiểm tra nếu có kết quả tìm kiếm
-                    if (danhSachTimKiem.Any())
-                    {
-                        // Hiển thị kết quả tìm kiếm vào DataGridView
-                        dgv_DSNhanVien.DataSource = null;
-                        dgv_DSNhanVien.DataSource = danhSachTimKiem;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy kết quả khớp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        loadDSNV(); // Nếu không có kết quả, tải lại toàn bộ danh sách nhân viên
-                    }
-
-                    // Tự động xóa lựa chọn
-                    dgv_DSNhanVien.ClearSelection();
-                }
-                else
-                {
-                    loadDSNV(); // Nếu không có từ khóa tìm kiếm, tải lại toàn bộ danh sách nhân viên
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
-            }
-        }
+       
         public List<NhanVienDTO> TimKiemNhanVien(string keyword)
         {
             var danhSach = nhanVienBUS.loadDSNV();
@@ -291,6 +369,48 @@ namespace QuanLyThuVienGUI.admin
                 (!string.IsNullOrEmpty(nv.userName) && nv.userName.ToLower().Contains(keyword)) ||
                 (!string.IsNullOrEmpty(nv.SDT) && nv.SDT.ToLower().Contains(keyword))
             ).ToList();
+        }
+
+        private void btn_TrangTruoc_Click(object sender, EventArgs e)
+        {
+            if (TrangHienTai > 1)
+            {
+                TrangHienTai--;
+                LoadTrang();
+                dgv_DSNhanVien.ClearSelection();
+            }
+        }
+
+        private void btn_TrangSau_Click(object sender, EventArgs e)
+        {
+            if (TrangHienTai < TongTrang)
+            {
+                TrangHienTai++;
+                LoadTrang();
+                dgv_DSNhanVien.ClearSelection();
+            }
+        }
+
+        private void pn_ThongTinNhap_Resize(object sender, EventArgs e)
+        {
+            if (danhSachNhanVien == null || danhSachNhanVien.Count == 0)
+            {
+                danhSachNhanVien = loadDSNV();
+            }
+
+            if (pn_ThongTinNhap.Width > nguongRong)
+            {
+                dangPhanTrang = false;
+            }
+            else
+            {
+                dangPhanTrang = true;
+            }
+
+            capNhatSoLuongTrang();
+            tinhTongTrang();
+            TrangHienTai = 1;
+            LoadTrang();
         }
     }
 }

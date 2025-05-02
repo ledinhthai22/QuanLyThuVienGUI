@@ -70,7 +70,12 @@ namespace QuanLyThuVienGUI
 
         private void frmXoaDocGia_Load(object sender, EventArgs e)
         {
-
+            txt_MaDocGia.SelectionStart = txt_MaDocGia.Text.Length;
+            txt_HoTen.SelectionStart = txt_HoTen.Text.Length;
+            txt_Email.SelectionStart = txt_Email.Text.Length;
+            txt_DiaChi.SelectionStart = txt_DiaChi.Text.Length;
+            txt_SoDienThoai.SelectionStart = txt_SoDienThoai.Text.Length;
+            
         }
 
         private void btn_Thoat_Click(object sender, EventArgs e)

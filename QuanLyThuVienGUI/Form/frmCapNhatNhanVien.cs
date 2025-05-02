@@ -85,7 +85,19 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
 
         private void btn_CapNhat_Click(object sender, EventArgs e)
         {
+            if (selectedNhanVien.userName != txt_UserName.Text)
+            {
+                NhanVienDTO nhanVienTam = new NhanVienDTO();
+                nhanVienTam.userName = txt_UserName.Text;
+
+                if (nhanVienBUS.kiemTraTonTai(nhanVienTam))
+                {
+                    MessageBox.Show("Tên user name bạn cập nhật trùng username với username nhân viên khác");
+                    return;
+                }
+            }
             getDuLieu(selectedNhanVien);
+           
             if (nhanVienBUS.updateNV(selectedNhanVien))
             {
                 MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -109,6 +121,31 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
             nv.userName = txt_UserName.Text;
             nv.password = txt_PassWord.Text;
             nv.trangThai = 1;
+        }
+
+        private void txt_HoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txt_SoDienThoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txt_DiaChi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txt_UserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txt_PassWord_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

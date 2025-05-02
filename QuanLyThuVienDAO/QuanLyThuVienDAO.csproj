@@ -42,10 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CTPhieuMuonDAO.cs" />
     <Compile Include="DangNhapDAO.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="DocGiaDAO.cs" />
     <Compile Include="NhanVienDAO.cs" />
+    <Compile Include="PhieuMuonDAO.cs" />
+    <Compile Include="PhieuPhatDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SachDAO.cs" />
     <Compile Include="TheLoaiDAO.cs" />

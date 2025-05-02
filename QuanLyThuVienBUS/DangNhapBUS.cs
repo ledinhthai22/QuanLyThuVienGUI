@@ -31,5 +31,9 @@ namespace QuanLyThuVienBUS
         {
             return dangNhapDAO.getNameUser(dangNhapDTO);
         }
+        public string getyMaNV(DangNhapDTO dangNhapDTO)
+        {
+            return dangNhapDAO.getMaNV(dangNhapDTO);
+        }
     }
 }

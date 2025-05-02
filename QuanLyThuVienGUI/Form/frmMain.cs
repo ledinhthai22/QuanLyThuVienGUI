@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using QuanLyThuVienGUI.admin;
 using QuanLyThuVienBUS;
 using QuanLyThuVienDTO;
+using System.Drawing.Text;
 
 namespace QuanLyThuVienGUI
 {
@@ -23,6 +24,8 @@ namespace QuanLyThuVienGUI
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
+        private string chucVu;
+        public string maNV;
 
         // Windows API để hỗ trợ kéo form
         [DllImport("user32.dll")]
@@ -31,19 +34,22 @@ namespace QuanLyThuVienGUI
         public static extern bool ReleaseCapture();
 
     
-        public frmMain(string tenNV)
+        public frmMain(string tenNV,string chucVu,string maNV)
         {
             InitializeComponent();
             LoadFormIntoPanel(new frmTrangChu());
             lbl_Ten.Text = tenNV;
-            // Gắn sự kiện kéo thả cho thanh tiêu đề hoặc toàn bộ form
+            this.chucVu = chucVu;
+            this.maNV = maNV;
+
             this.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.MouseUp += new MouseEventHandler(Form_MouseUp);
-            // Gắn sự kiện kéo thả cho panel tiêu đề
+       
             this.pn_ControlTab.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.pn_ControlTab.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.pn_ControlTab.MouseUp += new MouseEventHandler(Form_MouseUp);
+            
         }
 
         private void Form_MouseDown(object sender, MouseEventArgs e)
@@ -97,7 +103,7 @@ namespace QuanLyThuVienGUI
             LoadFormIntoPanel(new frmTrangChu());
         }
 
-        private void btnReadersManagement_Click(object sender, EventArgs e)
+        private void btn_QLDocGia_Click(object sender, EventArgs e)
         {
             LoadFormIntoPanel(new frmQuanLyDocGia());
         }
@@ -107,6 +113,32 @@ namespace QuanLyThuVienGUI
             Application.Exit();
         }
 
+     
+
+        private void btn_QLTheLoai_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmQuanLyTheLoai());
+        }
+
+        private void frmAdminMain_Load(object sender, EventArgs e)
+        {
+            if (string.Equals(chucVu, "thuthu", StringComparison.OrdinalIgnoreCase))
+            {
+                btn_QLSach.Visible = false;
+                btn_QLTheLoai.Visible = false;
+                btn_QLNhanVien.Visible = false;
+                btn_QLDocGia.Visible = false;
+            }
+        }
+
+        private void btn_QLNhanVien_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmQuanLyNhanVien());
+        }
+        private void btn_QLMuonTra_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmQuanLyMuonTra(maNV));
+        }
         private void btnFullScreen_Click(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Normal)
@@ -118,34 +150,14 @@ namespace QuanLyThuVienGUI
                 WindowState = FormWindowState.Normal;
             }
         }
+        public void LoadChildForm(Form form)
+        {
+            LoadFormIntoPanel(form); 
+        }
 
         private void btnMinius_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
-        }
-
-        private void btnGenremanagement_Click(object sender, EventArgs e)
-        {
-            LoadFormIntoPanel(new frmQuanLyTheLoai());
-        }
-
-        private void frmAdminMain_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void btn_QLNhanVien_Click(object sender, EventArgs e)
-        {
-            LoadFormIntoPanel(new frmQuanLyNhanVien());
-        }
-
-        private void btn_QLThongKe_Click(object sender, EventArgs e)
-        {
-            LoadFormIntoPanel(new frmTrangChu());
-        }
-
-        private void btn_QLMuonTra_Click(object sender, EventArgs e)
-        {
-            LoadFormIntoPanel(new frmQuanLyMuonTra());
         }
     }
 }

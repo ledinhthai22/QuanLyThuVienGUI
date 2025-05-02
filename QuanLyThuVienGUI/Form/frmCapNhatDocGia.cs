@@ -28,22 +28,8 @@ namespace QuanLyThuVienGUI
             this.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.MouseUp += new MouseEventHandler(Form_MouseUp);
-            this.selectedDocGia = docGiaDTO;
-            txt_MaDocGia.Text = selectedDocGia.maDocGia;
-            txt_HoTen.Text = selectedDocGia.hoTen;
-            txt_Email.Text = selectedDocGia.email;
-            txt_DiaChi.Text = selectedDocGia.diaChi;
-            txt_SoDienThoai.Text = selectedDocGia.soDienThoai;
-            if (selectedDocGia.gioiTinh == "Nam")
-            {
-                rad_Nam.Checked = true;
-            }
-            else
-            {
-                rad_Nu.Checked = true;
-            }
-            dtpNgaySinh.Value = selectedDocGia.ngaySinh;
 
+            this.selectedDocGia = docGiaDTO;
             this.pn_Tab.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.pn_Tab.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.pn_Tab.MouseUp += new MouseEventHandler(Form_MouseUp);
@@ -170,10 +156,30 @@ namespace QuanLyThuVienGUI
 
         private void frmCapNhatDocGia_Load(object sender, EventArgs e)
         {
+
             dtpNgaySinh.MaxDate = DateTime.Now.AddYears(-14);
-
-
             dtpNgaySinh.MinDate = DateTime.Now.AddYears(-60);
+           
+            txt_MaDocGia.Text = selectedDocGia.maDocGia;
+            txt_HoTen.Text = selectedDocGia.hoTen;
+            txt_Email.Text = selectedDocGia.email;
+            txt_DiaChi.Text = selectedDocGia.diaChi;
+            txt_SoDienThoai.Text = selectedDocGia.soDienThoai;
+            if (selectedDocGia.gioiTinh == "Nam")
+            {
+                rad_Nam.Checked = true;
+            }
+            else
+            {
+                rad_Nu.Checked = true;
+            }
+            dtpNgaySinh.Value = selectedDocGia.ngaySinh;
+
+            txt_MaDocGia.SelectionStart = txt_MaDocGia.Text.Length;
+            txt_HoTen.SelectionStart = txt_HoTen.Text.Length;
+            txt_Email.SelectionStart = txt_Email.Text.Length;
+            txt_DiaChi.SelectionStart = txt_DiaChi.Text.Length;
+            txt_SoDienThoai.SelectionStart = txt_SoDienThoai.Text.Length;
         }
     }
 }

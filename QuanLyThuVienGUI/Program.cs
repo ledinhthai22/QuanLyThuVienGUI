@@ -13,9 +13,11 @@ namespace QuanLyThuVienGUI
         static void Main()
         {
             string tenNV = "";
+            string chucVu = "";
+            string maNV = "";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain(tenNV));
+            Application.Run(new frmMain(tenNV,chucVu,maNV));
         }
     }
 }

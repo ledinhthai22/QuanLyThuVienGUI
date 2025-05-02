@@ -14,19 +14,29 @@ namespace QuanLyThuVienGUI.admin
     {
         DocGiaBUS docGiaBUS = new DocGiaBUS();
         DocGiaDTO docGiaDTO = new DocGiaDTO();
-
+        private int SoLuongTrang = 26;
+        private int TrangHienTai = 1;
+        private int TongTrang = 1;
+        private bool dangPhanTrang = true;
+        private const int nguongRong = 658;
+        private List<DocGiaDTO> danhSachDocGia = new List<DocGiaDTO>();
         public frmQuanLyDocGia()
         {
             InitializeComponent();
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance |
+            System.Reflection.BindingFlags.SetProperty,
+            null, dgv_DSDocGia, new object[] { true });
         }
         private void btn_TaoMoi_Click(object sender, EventArgs e)
         {
-            LoadDS();
+            loadDSDG();
         }
 
         private void QuanLyDocGia_Load(object sender, EventArgs e)
         {
-            LoadDS();
+            loadDSDG();
             taoCotDataGridView();
             dgv_DSDocGia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_DSDocGia.MultiSelect = false;
@@ -38,23 +48,89 @@ namespace QuanLyThuVienGUI.admin
         {
             frmThemDocGia frmThemDocGia = new frmThemDocGia();
             frmThemDocGia.ShowDialog();
+            loadDSDG();
         }
-        private void LoadDS()
+        private List<DocGiaDTO> loadDSDG()
         {
             try
             {
-                dgv_DSDocGia.DataSource = null;
-                dgv_DSDocGia.DataSource = docGiaBUS.loadDSDG();
+                List<DocGiaDTO> dsDocgia = docGiaBUS.loadDSDG();
+
+                if (dsDocgia == null || dsDocgia.Count == 0)
+                {
+                    MessageBox.Show("Không có sách để hiển thị.");
+                }
+                else
+                {
+                    danhSachDocGia = dsDocgia;
+                    dgv_DSDocGia.DataSource = null;
+                    dgv_DSDocGia.DataSource = danhSachDocGia;
+                    tinhTongTrang();
+                    TrangHienTai = 1;
+                    LoadTrang();
+                }
+
                 this.BeginInvoke(new Action(() =>
                 {
                     dgv_DSDocGia.ClearSelection();
                     btn_Xoa.Enabled = false;
                     btn_CapNhat.Enabled = false;
                 }));
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải lại danh sách độc giả: " + ex.Message);
+                MessageBox.Show("Lỗi khi tải lại danh sách sách: " + ex.Message);
+            }
+            return danhSachDocGia;
+        }
+        private void capNhatSoLuongTrang()
+        {
+            int chieuCaoHeader = dgv_DSDocGia.ColumnHeadersHeight;
+            int chieuCaoRow = dgv_DSDocGia.RowTemplate.Height;
+            int chieuCaoHienThi = dgv_DSDocGia.ClientSize.Height - chieuCaoHeader;
+            SoLuongTrang = chieuCaoHienThi / chieuCaoRow;
+            if (SoLuongTrang <= 0)
+            {
+                SoLuongTrang = 1;
+            }
+        }
+
+        private void LoadTrang()
+        {
+            if (danhSachDocGia == null || danhSachDocGia.Count == 0)
+            {
+                danhSachDocGia = loadDSDG();
+            }
+
+            if (!dangPhanTrang)
+            {
+                dgv_DSDocGia.DataSource = danhSachDocGia;
+                lbl_SoTrang.Text = "";
+                btn_TrangSau.Visible = false;
+                btn_TrangTruoc.Visible = false;
+                return;
+            }
+
+            int skip = (TrangHienTai - 1) * SoLuongTrang;
+            var duLieuTrang = danhSachDocGia.Skip(skip).Take(SoLuongTrang).ToList();
+            dgv_DSDocGia.DataSource = duLieuTrang;
+            lbl_SoTrang.Text = $"{TrangHienTai}/{TongTrang}";
+            btn_TrangSau.Enabled = TrangHienTai < TongTrang;
+            btn_TrangTruoc.Enabled = TrangHienTai > 1;
+        }
+
+        private void tinhTongTrang()
+        {
+            if (danhSachDocGia == null || danhSachDocGia.Count <= SoLuongTrang)
+            {
+                dangPhanTrang = false;
+                TongTrang = 1;
+            }
+            else
+            {
+                dangPhanTrang = true;
+                TongTrang = (int)Math.Ceiling((double)danhSachDocGia.Count / SoLuongTrang);
             }
         }
         private void taoCotDataGridView()
@@ -174,6 +250,7 @@ namespace QuanLyThuVienGUI.admin
                 frmXoaDocGia xoaDG = new frmXoaDocGia(docGiaDTO);
                 xoaDG.ShowDialog();
                 dgv_DSDocGia.ClearSelection();
+                loadDSDG();
             }
         }
 
@@ -185,50 +262,102 @@ namespace QuanLyThuVienGUI.admin
                 frmCapNhatDocGia capNhatDG = new frmCapNhatDocGia(docGiaDTO);
                 capNhatDG.ShowDialog();
                 dgv_DSDocGia.ClearSelection();
+                loadDSDG();
             }
         }
 
         private void btn_TimKiem_Click(object sender, EventArgs e)
         {
-            string keyWord = txt_TimKiem.Text.Trim().ToLower();
-            if (string.IsNullOrEmpty(keyWord))
+            try
             {
-                return;
+                string keyword = txt_TimKiem.Text.Trim(); // Giả sử bạn có một TextBox txt_TimKiem để nhập từ khóa tìm kiếm
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    // Gọi phương thức tìm kiếm
+                    List<DocGiaDTO> danhSachTimKiem = TimKiemDocGia(keyword);
+
+                    // Kiểm tra nếu có kết quả tìm kiếm
+                    if (danhSachTimKiem.Any())
+                    {
+                        // Hiển thị kết quả tìm kiếm vào DataGridView
+                        dgv_DSDocGia.DataSource = null;
+                        dgv_DSDocGia.DataSource = danhSachTimKiem;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy kết quả khớp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadDSDG(); // Nếu không có kết quả, tải lại toàn bộ danh sách nhân viên
+                    }
+
+                    // Tự động xóa lựa chọn
+                    dgv_DSDocGia.ClearSelection();
+                }
+                else
+                {
+                    loadDSDG(); // Nếu không có từ khóa tìm kiếm, tải lại toàn bộ danh sách nhân viên
+                }
+
+            }
+            catch (Exception ex)
+            {
+                loadDSDG();
             }
 
-            List<DocGiaDTO> dsDocGia = docGiaBUS.loadDSDG();
-
-            var ketQua = dsDocGia
-                .Where(dg => dg.hoTen != null && dg.hoTen.ToLower().Contains(keyWord))
-                .ToList();
-
-            dgv_DSDocGia.DataSource = null;
-            dgv_DSDocGia.DataSource = ketQua;
-
-            // Nếu muốn cập nhật lại header (nếu cột bị mất format):
-            dgv_DSDocGia.Columns[0].HeaderText = "Mã độc giả";
-            dgv_DSDocGia.Columns[1].HeaderText = "Họ tên";
-            dgv_DSDocGia.Columns[2].HeaderText = "Ngày sinh";
-            dgv_DSDocGia.Columns[3].HeaderText = "Giới tính";
-            dgv_DSDocGia.Columns[4].HeaderText = "Địa chỉ";
-            dgv_DSDocGia.Columns[5].HeaderText = "Số điện thoại";
-            dgv_DSDocGia.Columns[6].HeaderText = "Email";
-            dgv_DSDocGia.Columns[7].HeaderText = "Trạng thái";
-
-            dgv_DSDocGia.ClearSelection();
-
         }
-        public List<DocGiaDTO> TimKiemNhanVien(string keyword)
+        public List<DocGiaDTO> TimKiemDocGia(string keyword)
         {
             var danhSach = docGiaBUS.loadDSDG();
             keyword = keyword.ToLower();
 
-            return danhSach.Where(dg =>
-                (!string.IsNullOrEmpty(dg.hoTen) && dg.hoTen.ToLower().Contains(keyword)) ||
-                (!string.IsNullOrEmpty(dg.maDocGia) && dg.maDocGia.ToLower().Contains(keyword)) ||
-                (!string.IsNullOrEmpty(dg.soDienThoai) && dg.soDienThoai.ToLower().Contains(keyword))
-             
+            return danhSach.Where(nv =>
+                (!string.IsNullOrEmpty(nv.hoTen) && nv.hoTen.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(nv.maDocGia) && nv.maDocGia.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(nv.diaChi) && nv.diaChi.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(nv.soDienThoai) && nv.soDienThoai.Contains(keyword))
             ).ToList();
+        }
+
+        private void btn_TrangSau_Click(object sender, EventArgs e)
+        {
+            if (TrangHienTai < TongTrang)
+            {
+                TrangHienTai++;
+                LoadTrang();
+                dgv_DSDocGia.ClearSelection();
+            }
+        }
+
+        private void pn_ThongTinDocGia_Resize(object sender, EventArgs e)
+        {
+            if (danhSachDocGia == null || danhSachDocGia.Count == 0)
+            {
+                danhSachDocGia = loadDSDG();
+            }
+
+            if (pn_ThongTinDocGia.Width > nguongRong)
+            {
+                dangPhanTrang = false;
+            }
+            else
+            {
+                dangPhanTrang = true;
+            }
+
+            capNhatSoLuongTrang();
+            tinhTongTrang();
+            TrangHienTai = 1;
+            LoadTrang();
+        }
+
+        private void btn_TrangTruoc_Click(object sender, EventArgs e)
+        {
+            if (TrangHienTai > 1)
+            {
+                TrangHienTai--;
+                LoadTrang();
+                dgv_DSDocGia.ClearSelection();
+            }
         }
     }
 }

@@ -136,15 +136,20 @@ namespace QuanLyThuVienDAO
         }
         public static bool kiemTraTonTai(NhanVienDTO nhanVienDTO)
         {
-            string query = "SELECT COUNT(*) FROM NhanVien WHERE Username = @userName";
-            dp.Open();
-            using (SqlCommand cmd = new SqlCommand(query, dp.GetConnection()))
+            string query = "SELECT COUNT(*) FROM NhanVien WHERE Username = @userName ";
+            if (nhanVienDTO.maNV != null)
             {
-                cmd.Parameters.AddWithValue("@userName", nhanVienDTO.userName);
-                int count = (int)cmd.ExecuteScalar();
-                dp.Close();
-                return count > 0; 
+                query += " AND MaNV != @maNV";
             }
+
+            SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
+            cmd.Parameters.AddWithValue("@userName", nhanVienDTO.userName);
+
+            if (nhanVienDTO.maNV != null)
+                cmd.Parameters.AddWithValue("@maNV", nhanVienDTO.maNV);
+
+            int count = (int)cmd.ExecuteScalar();
+            return count > 0;
         }
     }
 }

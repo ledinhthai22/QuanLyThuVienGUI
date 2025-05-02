@@ -99,7 +99,7 @@
             this.cbo_MaTheLoai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbo_MaTheLoai.ItemHeight = 30;
             this.cbo_MaTheLoai.Location = new System.Drawing.Point(132, 79);
-            this.cbo_MaTheLoai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbo_MaTheLoai.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_MaTheLoai.Name = "cbo_MaTheLoai";
             this.cbo_MaTheLoai.Size = new System.Drawing.Size(267, 36);
             this.cbo_MaTheLoai.TabIndex = 43;
@@ -129,6 +129,7 @@
             this.txt_NXB.Size = new System.Drawing.Size(267, 37);
             this.txt_NXB.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_NXB.TabIndex = 42;
+            this.txt_NXB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_NXB_KeyPress);
             // 
             // lblPublisher
             // 
@@ -167,6 +168,7 @@
             this.txt_TenSach.Size = new System.Drawing.Size(267, 34);
             this.txt_TenSach.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_TenSach.TabIndex = 40;
+            this.txt_TenSach.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TenSach_KeyPress);
             // 
             // lbl_TenSach
             // 
@@ -204,6 +206,7 @@
             this.txt_TacGia.Size = new System.Drawing.Size(267, 36);
             this.txt_TacGia.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_TacGia.TabIndex = 41;
+            this.txt_TacGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TacGia_KeyPress);
             // 
             // lbl_TacGia
             // 
@@ -292,6 +295,7 @@
             this.txt_MoTa.SelectedText = "";
             this.txt_MoTa.Size = new System.Drawing.Size(273, 90);
             this.txt_MoTa.TabIndex = 46;
+            this.txt_MoTa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MoTa_KeyPress);
             // 
             // lbl_MoTa
             // 
@@ -365,6 +369,7 @@
             this.txt_NhaCungCap.Size = new System.Drawing.Size(267, 36);
             this.txt_NhaCungCap.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_NhaCungCap.TabIndex = 51;
+            this.txt_NhaCungCap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_NhaCungCap_KeyPress);
             // 
             // lbl_nhaCungCap
             // 

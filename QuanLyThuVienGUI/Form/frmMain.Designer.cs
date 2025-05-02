@@ -58,8 +58,8 @@
             this.Pn_LoadFrm.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Pn_LoadFrm.BorderColor = System.Drawing.Color.Gray;
             this.Pn_LoadFrm.BorderRadius = 15;
-            this.Pn_LoadFrm.Location = new System.Drawing.Point(199, 22);
-            this.Pn_LoadFrm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Pn_LoadFrm.Location = new System.Drawing.Point(199, 23);
+            this.Pn_LoadFrm.Margin = new System.Windows.Forms.Padding(2);
             this.Pn_LoadFrm.Name = "Pn_LoadFrm";
             this.Pn_LoadFrm.Size = new System.Drawing.Size(889, 614);
             this.Pn_LoadFrm.TabIndex = 3;
@@ -107,10 +107,10 @@
             this.btn_QLMuonTra.ForeColor = System.Drawing.Color.White;
             this.btn_QLMuonTra.Image = global::QuanLyThuVienGUI.Properties.Resources.borrow_book_32px;
             this.btn_QLMuonTra.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_QLMuonTra.Location = new System.Drawing.Point(-1, 106);
-            this.btn_QLMuonTra.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_QLMuonTra.Location = new System.Drawing.Point(-1, 107);
+            this.btn_QLMuonTra.Margin = new System.Windows.Forms.Padding(2);
             this.btn_QLMuonTra.Name = "btn_QLMuonTra";
-            this.btn_QLMuonTra.Size = new System.Drawing.Size(201, 50);
+            this.btn_QLMuonTra.Size = new System.Drawing.Size(200, 50);
             this.btn_QLMuonTra.TabIndex = 9;
             this.btn_QLMuonTra.Text = "Quản lý mượn trả";
             this.btn_QLMuonTra.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -130,8 +130,8 @@
             this.btn_QLNhanVien.ForeColor = System.Drawing.Color.White;
             this.btn_QLNhanVien.Image = global::QuanLyThuVienGUI.Properties.Resources.staff_32px;
             this.btn_QLNhanVien.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_QLNhanVien.Location = new System.Drawing.Point(-1, 306);
-            this.btn_QLNhanVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_QLNhanVien.Location = new System.Drawing.Point(-2, 215);
+            this.btn_QLNhanVien.Margin = new System.Windows.Forms.Padding(2);
             this.btn_QLNhanVien.Name = "btn_QLNhanVien";
             this.btn_QLNhanVien.Size = new System.Drawing.Size(202, 50);
             this.btn_QLNhanVien.TabIndex = 10;
@@ -153,15 +153,15 @@
             this.btn_QLDocGia.ForeColor = System.Drawing.Color.White;
             this.btn_QLDocGia.Image = global::QuanLyThuVienGUI.Properties.Resources.reading_32px;
             this.btn_QLDocGia.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_QLDocGia.Location = new System.Drawing.Point(-1, 256);
-            this.btn_QLDocGia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_QLDocGia.Location = new System.Drawing.Point(-1, 161);
+            this.btn_QLDocGia.Margin = new System.Windows.Forms.Padding(2);
             this.btn_QLDocGia.Name = "btn_QLDocGia";
             this.btn_QLDocGia.Size = new System.Drawing.Size(201, 50);
             this.btn_QLDocGia.TabIndex = 8;
             this.btn_QLDocGia.Text = "Quản lý độc giả";
             this.btn_QLDocGia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_QLDocGia.TextFormatNoPrefix = true;
-            this.btn_QLDocGia.Click += new System.EventHandler(this.btnReadersManagement_Click);
+            this.btn_QLDocGia.Click += new System.EventHandler(this.btn_QLDocGia_Click);
             // 
             // btn_DangXuat
             // 
@@ -178,7 +178,7 @@
             this.btn_DangXuat.Image = global::QuanLyThuVienGUI.Properties.Resources.exit;
             this.btn_DangXuat.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_DangXuat.Location = new System.Drawing.Point(-1, 584);
-            this.btn_DangXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_DangXuat.Margin = new System.Windows.Forms.Padding(2);
             this.btn_DangXuat.Name = "btn_DangXuat";
             this.btn_DangXuat.Size = new System.Drawing.Size(201, 50);
             this.btn_DangXuat.TabIndex = 7;
@@ -200,15 +200,15 @@
             this.btn_QLTheLoai.ForeColor = System.Drawing.Color.White;
             this.btn_QLTheLoai.Image = global::QuanLyThuVienGUI.Properties.Resources.sorting_32px1;
             this.btn_QLTheLoai.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_QLTheLoai.Location = new System.Drawing.Point(0, 206);
-            this.btn_QLTheLoai.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_QLTheLoai.Location = new System.Drawing.Point(0, 320);
+            this.btn_QLTheLoai.Margin = new System.Windows.Forms.Padding(2);
             this.btn_QLTheLoai.Name = "btn_QLTheLoai";
             this.btn_QLTheLoai.Size = new System.Drawing.Size(201, 50);
             this.btn_QLTheLoai.TabIndex = 4;
             this.btn_QLTheLoai.Text = "Quản lý thể loại";
             this.btn_QLTheLoai.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_QLTheLoai.TextFormatNoPrefix = true;
-            this.btn_QLTheLoai.Click += new System.EventHandler(this.btnGenremanagement_Click);
+            this.btn_QLTheLoai.Click += new System.EventHandler(this.btn_QLTheLoai_Click);
             // 
             // btn_QLSach
             // 
@@ -223,8 +223,8 @@
             this.btn_QLSach.ForeColor = System.Drawing.Color.White;
             this.btn_QLSach.Image = global::QuanLyThuVienGUI.Properties.Resources.book_32px;
             this.btn_QLSach.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_QLSach.Location = new System.Drawing.Point(0, 156);
-            this.btn_QLSach.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_QLSach.Location = new System.Drawing.Point(-1, 269);
+            this.btn_QLSach.Margin = new System.Windows.Forms.Padding(2);
             this.btn_QLSach.Name = "btn_QLSach";
             this.btn_QLSach.Size = new System.Drawing.Size(199, 50);
             this.btn_QLSach.TabIndex = 3;
@@ -247,7 +247,7 @@
             this.btn_TrangChu.Image = global::QuanLyThuVienGUI.Properties.Resources.home_32px;
             this.btn_TrangChu.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btn_TrangChu.Location = new System.Drawing.Point(-1, 56);
-            this.btn_TrangChu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_TrangChu.Margin = new System.Windows.Forms.Padding(2);
             this.btn_TrangChu.Name = "btn_TrangChu";
             this.btn_TrangChu.Size = new System.Drawing.Size(201, 50);
             this.btn_TrangChu.TabIndex = 2;
@@ -348,7 +348,7 @@
             this.btn_Close.TabIndex = 9;
             this.btn_Close.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // frmAdminMain
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -359,7 +359,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmAdminMain";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "adminMain";
             this.Load += new System.EventHandler(this.frmAdminMain_Load);

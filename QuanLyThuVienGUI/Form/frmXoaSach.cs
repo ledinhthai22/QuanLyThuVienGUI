@@ -39,6 +39,8 @@ namespace QuanLyThuVienGUI
             dtp_NamXB.Value = selectedSach.namXuatBan;
             cbo_MaTheLoai.Text = selectedSach.maTheLoai;
             numSoLuong.Value = selectedSach.soLuong;
+            txt_NhaCungCap .Text = selectedSach.nhaCungCap;
+            cbo_MaTheLoai.SelectedValue = selectedSach.maTheLoai;
         }
         private void cboTheLoai()
         {

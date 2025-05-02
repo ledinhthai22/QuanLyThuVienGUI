@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangNhap));
             this.txt_Username = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_Login = new Guna.UI2.WinForms.Guna2Button();
@@ -37,6 +38,8 @@
             this.btn_Minius = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Close = new Guna.UI2.WinForms.Guna2Button();
             this.pn_Image = new System.Windows.Forms.Panel();
+            this.lbl_Message = new System.Windows.Forms.Label();
+            this.messageTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // txt_Username
@@ -59,11 +62,12 @@
             this.txt_Username.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Username.Name = "txt_Username";
             this.txt_Username.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txt_Username.PlaceholderText = "Username";
+            this.txt_Username.PlaceholderText = "Tên tài khoản";
             this.txt_Username.SelectedText = "";
             this.txt_Username.Size = new System.Drawing.Size(272, 35);
             this.txt_Username.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_Username.TabIndex = 1;
+            this.txt_Username.Enter += new System.EventHandler(this.txt_Username_Enter);
             // 
             // btn_Login
             // 
@@ -80,7 +84,7 @@
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(159, 41);
             this.btn_Login.TabIndex = 3;
-            this.btn_Login.Text = "LOGIN";
+            this.btn_Login.Text = "ĐĂNG NHẬP";
             this.btn_Login.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // txt_Password
@@ -103,22 +107,23 @@
             this.txt_Password.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txt_Password.PlaceholderText = "Password";
+            this.txt_Password.PlaceholderText = "Mật khẩu";
             this.txt_Password.SelectedText = "";
             this.txt_Password.Size = new System.Drawing.Size(272, 34);
             this.txt_Password.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txt_Password.TabIndex = 4;
             this.txt_Password.UseSystemPasswordChar = true;
+            this.txt_Password.Enter += new System.EventHandler(this.txt_Password_Enter);
             // 
             // lbl_Title
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.Location = new System.Drawing.Point(672, 54);
+            this.lbl_Title.Location = new System.Drawing.Point(638, 56);
             this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(107, 32);
+            this.lbl_Title.Size = new System.Drawing.Size(183, 32);
             this.lbl_Title.TabIndex = 0;
-            this.lbl_Title.Text = "LOGIN";
+            this.lbl_Title.Text = "ĐĂNG NHẬP";
             // 
             // chk_ShowPass
             // 
@@ -178,12 +183,27 @@
             this.pn_Image.Size = new System.Drawing.Size(571, 443);
             this.pn_Image.TabIndex = 0;
             // 
+            // lbl_Message
+            // 
+            this.lbl_Message.AutoSize = true;
+            this.lbl_Message.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Message.Location = new System.Drawing.Point(584, 333);
+            this.lbl_Message.Name = "lbl_Message";
+            this.lbl_Message.Size = new System.Drawing.Size(26, 22);
+            this.lbl_Message.TabIndex = 9;
+            this.lbl_Message.Text = "\"\"";
+            // 
+            // messageTimer
+            // 
+            this.messageTimer.Tick += new System.EventHandler(this.messageTimer_Tick);
+            // 
             // frmDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(877, 443);
+            this.Controls.Add(this.lbl_Message);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.btn_Minius);
             this.Controls.Add(this.btn_Close);
@@ -213,6 +233,8 @@
         private System.Windows.Forms.CheckBox chk_ShowPass;
         private Guna.UI2.WinForms.Guna2Button btn_Close;
         private Guna.UI2.WinForms.Guna2Button btn_Minius;
+        private System.Windows.Forms.Label lbl_Message;
+        private System.Windows.Forms.Timer messageTimer;
     }
 }
 

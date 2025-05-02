@@ -19,6 +19,7 @@ namespace QuanLyThuVienDTO
         public string moTa { get; set; }
         public int trangThai { get; set; } 
         public string nhaCungCap { get; set; }
+        public string tenTheLoai { get; set; }
 
     }
 }

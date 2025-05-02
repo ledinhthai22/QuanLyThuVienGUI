@@ -28,33 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pn_Thongtin = new System.Windows.Forms.Panel();
+            this.cbo_LocTheoDanhSach = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txt_TimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_TimKiem = new Guna.UI2.WinForms.Guna2Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_LoadDuLieu = new System.Windows.Forms.DataGridView();
             this.btn_TraSach = new Guna.UI2.WinForms.Guna2Button();
             this.btn_MuonSach = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pn_Thongtin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_LoadDuLieu)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // pn_Thongtin
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pn_Thongtin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.guna2ComboBox1);
-            this.panel1.Controls.Add(this.txt_TimKiem);
-            this.panel1.Controls.Add(this.btn_TimKiem);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.btn_TraSach);
-            this.panel1.Controls.Add(this.btn_MuonSach);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(889, 615);
-            this.panel1.TabIndex = 26;
+            this.pn_Thongtin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pn_Thongtin.Controls.Add(this.cbo_LocTheoDanhSach);
+            this.pn_Thongtin.Controls.Add(this.txt_TimKiem);
+            this.pn_Thongtin.Controls.Add(this.btn_TimKiem);
+            this.pn_Thongtin.Controls.Add(this.dgv_LoadDuLieu);
+            this.pn_Thongtin.Controls.Add(this.btn_TraSach);
+            this.pn_Thongtin.Controls.Add(this.btn_MuonSach);
+            this.pn_Thongtin.Location = new System.Drawing.Point(-1, 0);
+            this.pn_Thongtin.Margin = new System.Windows.Forms.Padding(4);
+            this.pn_Thongtin.Name = "pn_Thongtin";
+            this.pn_Thongtin.Size = new System.Drawing.Size(1186, 756);
+            this.pn_Thongtin.TabIndex = 26;
+            // 
+            // cbo_LocTheoDanhSach
+            // 
+            this.cbo_LocTheoDanhSach.BackColor = System.Drawing.Color.Transparent;
+            this.cbo_LocTheoDanhSach.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.cbo_LocTheoDanhSach.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbo_LocTheoDanhSach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo_LocTheoDanhSach.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbo_LocTheoDanhSach.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbo_LocTheoDanhSach.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbo_LocTheoDanhSach.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbo_LocTheoDanhSach.ItemHeight = 30;
+            this.cbo_LocTheoDanhSach.Items.AddRange(new object[] {
+            "Danh sách phiếu mượn",
+            "Danh sách phiếu phạt"});
+            this.cbo_LocTheoDanhSach.Location = new System.Drawing.Point(320, 10);
+            this.cbo_LocTheoDanhSach.Margin = new System.Windows.Forms.Padding(4);
+            this.cbo_LocTheoDanhSach.Name = "cbo_LocTheoDanhSach";
+            this.cbo_LocTheoDanhSach.Size = new System.Drawing.Size(244, 36);
+            this.cbo_LocTheoDanhSach.TabIndex = 48;
+            this.cbo_LocTheoDanhSach.SelectedIndexChanged += new System.EventHandler(this.cbo_LocTheoDanhSach_SelectedIndexChanged);
             // 
             // txt_TimKiem
             // 
@@ -70,12 +92,12 @@
             this.txt_TimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt_TimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_TimKiem.HoverState.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.txt_TimKiem.Location = new System.Drawing.Point(398, 3);
-            this.txt_TimKiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txt_TimKiem.Location = new System.Drawing.Point(570, 4);
+            this.txt_TimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_TimKiem.Name = "txt_TimKiem";
             this.txt_TimKiem.PlaceholderText = "Tìm kiếm";
             this.txt_TimKiem.SelectedText = "";
-            this.txt_TimKiem.Size = new System.Drawing.Size(389, 36);
+            this.txt_TimKiem.Size = new System.Drawing.Size(480, 44);
             this.txt_TimKiem.TabIndex = 46;
             // 
             // btn_TimKiem
@@ -88,23 +110,33 @@
             this.btn_TimKiem.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_TimKiem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_TimKiem.ForeColor = System.Drawing.Color.White;
-            this.btn_TimKiem.Location = new System.Drawing.Point(787, 3);
-            this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_TimKiem.Location = new System.Drawing.Point(1050, 4);
+            this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_TimKiem.Name = "btn_TimKiem";
-            this.btn_TimKiem.Size = new System.Drawing.Size(98, 36);
+            this.btn_TimKiem.Size = new System.Drawing.Size(131, 44);
             this.btn_TimKiem.TabIndex = 47;
             this.btn_TimKiem.Text = "Tìm kiếm";
             // 
-            // dataGridView1
+            // dgv_LoadDuLieu
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgv_LoadDuLieu.AllowUserToAddRows = false;
+            this.dgv_LoadDuLieu.AllowUserToDeleteRows = false;
+            this.dgv_LoadDuLieu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 44);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(889, 570);
-            this.dataGridView1.TabIndex = 30;
+            this.dgv_LoadDuLieu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_LoadDuLieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_LoadDuLieu.Location = new System.Drawing.Point(-1, 54);
+            this.dgv_LoadDuLieu.Margin = new System.Windows.Forms.Padding(4);
+            this.dgv_LoadDuLieu.MultiSelect = false;
+            this.dgv_LoadDuLieu.Name = "dgv_LoadDuLieu";
+            this.dgv_LoadDuLieu.ReadOnly = true;
+            this.dgv_LoadDuLieu.RowHeadersWidth = 51;
+            this.dgv_LoadDuLieu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_LoadDuLieu.Size = new System.Drawing.Size(1186, 702);
+            this.dgv_LoadDuLieu.TabIndex = 30;
+          
+            this.dgv_LoadDuLieu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_LoadDuLieu_CellFormatting);
             // 
             // btn_TraSach
             // 
@@ -115,12 +147,13 @@
             this.btn_TraSach.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_TraSach.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_TraSach.ForeColor = System.Drawing.Color.White;
-            this.btn_TraSach.Location = new System.Drawing.Point(104, 3);
-            this.btn_TraSach.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_TraSach.Location = new System.Drawing.Point(161, 4);
+            this.btn_TraSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_TraSach.Name = "btn_TraSach";
-            this.btn_TraSach.Size = new System.Drawing.Size(94, 36);
+            this.btn_TraSach.Size = new System.Drawing.Size(152, 44);
             this.btn_TraSach.TabIndex = 27;
-            this.btn_TraSach.Text = "Trả Sách";
+            this.btn_TraSach.Text = "Trả sách";
+            this.btn_TraSach.Click += new System.EventHandler(this.btn_TraSach_Click);
             // 
             // btn_MuonSach
             // 
@@ -131,51 +164,39 @@
             this.btn_MuonSach.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_MuonSach.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_MuonSach.ForeColor = System.Drawing.Color.White;
-            this.btn_MuonSach.Location = new System.Drawing.Point(2, 3);
-            this.btn_MuonSach.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_MuonSach.Location = new System.Drawing.Point(3, 4);
+            this.btn_MuonSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_MuonSach.Name = "btn_MuonSach";
-            this.btn_MuonSach.Size = new System.Drawing.Size(98, 36);
+            this.btn_MuonSach.Size = new System.Drawing.Size(152, 44);
             this.btn_MuonSach.TabIndex = 26;
             this.btn_MuonSach.Text = "Mượn sách";
-            // 
-            // guna2ComboBox1
-            // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(203, 3);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(190, 36);
-            this.guna2ComboBox1.TabIndex = 48;
+            this.btn_MuonSach.Click += new System.EventHandler(this.btn_MuonSach_Click);
             // 
             // frmQuanLyMuonTra
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 614);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1185, 756);
+            this.Controls.Add(this.pn_Thongtin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQuanLyMuonTra";
             this.Text = "frmQuanLyMuonTra";
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmQuanLyMuonTra_Load);
+            this.pn_Thongtin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_LoadDuLieu)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel pn_Thongtin;
+        private System.Windows.Forms.DataGridView dgv_LoadDuLieu;
         private Guna.UI2.WinForms.Guna2Button btn_TraSach;
         private Guna.UI2.WinForms.Guna2Button btn_MuonSach;
         private Guna.UI2.WinForms.Guna2TextBox txt_TimKiem;
         private Guna.UI2.WinForms.Guna2Button btn_TimKiem;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2ComboBox cbo_LocTheoDanhSach;
     }
 }

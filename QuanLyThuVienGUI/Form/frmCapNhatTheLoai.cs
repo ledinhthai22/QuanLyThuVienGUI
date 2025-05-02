@@ -61,14 +61,13 @@ namespace QuanLyThuVienGUI.CacFormNhanVien
 
             bool tonTai = theLoaiBUS.kiemTraTonTai(theLoaiDTO);
 
-            // Nếu tên thể loại mới đã tồn tại (trùng với thể loại khác)
+            
             if (tonTai)
             {
                 MessageBox.Show("Tên thể loại đã tồn tại. Không thể cập nhật.");
                 return;
             }
 
-            // Cập nhật nếu tên chưa trùng
             bool capNhatThanhCong = theLoaiBUS.updateTheLoai(theLoaiDTO);
 
             if (capNhatThanhCong)

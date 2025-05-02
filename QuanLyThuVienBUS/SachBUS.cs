@@ -12,9 +12,13 @@ namespace QuanLyThuVienBUS
     public class SachBUS
     {
         SachDAO sachDAO = new SachDAO();
-        public DataTable loadSach()
+        public List<SachDTO> loadSach()
         {
-            return sachDAO.loadSach();
+             return sachDAO.loadSach();
+        }
+        public List<SachDTO> loadSachMuon()
+        {
+            return sachDAO.loadSachMuon();
         }
         public bool addSach(SachDTO sachDTO)
         {
@@ -24,6 +28,10 @@ namespace QuanLyThuVienBUS
         {
             return SachDAO.deteleSach(maSach);
         }
+        public bool updateSach(SachDTO sachDTO)
+        {
+            return SachDAO.updateSach(sachDTO);
+        }
         public bool kiemTraSachDangDuocMuon(SachDTO sachDTO)
         {
             return SachDAO.kiemTraSachDangDuocMuon(sachDTO);
@@ -31,6 +39,10 @@ namespace QuanLyThuVienBUS
         public bool kiemTraTonTai(SachDTO sachDTO)
         {
             return SachDAO.kiemTraTonTai(sachDTO);
+        }
+        public bool updateSachSauMuon(List<string> danhSachMaSach)
+        {
+            return sachDAO.updateSachSauMuon(danhSachMaSach);
         }
     }
 }
