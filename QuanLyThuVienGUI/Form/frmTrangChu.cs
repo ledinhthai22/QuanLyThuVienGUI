@@ -30,7 +30,7 @@ namespace QuanLyThuVienGUI.admin
 
         private void loadThongKeChart()
         {
-            List<ThongKeDTO> danhSach = thongKeBUS.layThongKeNguoiMuonTheoNgay();
+            //List<ThongKeDTO> danhSach = thongKeBUS.layThongKeNguoiMuonTheoNgay();
 
             chart1.Series.Clear();
             chart1.Titles.Clear();
@@ -62,12 +62,12 @@ namespace QuanLyThuVienGUI.admin
             series.BorderWidth = 2;
             series.Font = new Font("Segoe UI", 9);
 
-            foreach (var item in danhSach)
-            {
-                series.Points.AddXY(item.NgayMuon.ToString("dd/MM/yyyy"), item.SoNguoiMuon);
-            }
+            //foreach (var item in danhSach)
+            //{
+            //    series.Points.AddXY(item.NgayMuon.ToString("dd/MM/yyyy"), item.SoNguoiMuon);
+            //}
 
-            chart1.Series.Add(series);
+            //chart1.Series.Add(series);
 
             // Thêm tiêu đề
             Title title = new Title("Thống kê số người mượn theo ngày", Docking.Top, new Font("Segoe UI", 12, FontStyle.Bold), Color.Black);
@@ -81,6 +81,11 @@ namespace QuanLyThuVienGUI.admin
         private void frmTrangChu_Load(object sender, EventArgs e)
         {
             loadThongKeChart();
+        }
+
+        private void btn_ThongKe_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

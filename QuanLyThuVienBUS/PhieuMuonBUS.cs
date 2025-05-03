@@ -15,9 +15,17 @@ namespace QuanLyThuVienBUS
         {
             return phieuMuonDAO.loadDSPM();
         }
+        public List<PhieuMuonDTO> loadDanhSachPhieuMuonVaCTPhieuMuon()
+        {
+            return phieuMuonDAO.loadDanhSachPhieuMuonVaCTPhieuMuon();
+        }
         public string createPhieuMuon(PhieuMuonDTO phieuMuonDTO)
         {
             return PhieuMuonDAO.createPhieuMuon(phieuMuonDTO);
+        }
+        public bool traSach(PhieuMuonDTO phieuMuonDTO)
+        {
+            return PhieuMuonDAO.traSach(phieuMuonDTO);
         }
         public bool kiemTraMuon(string maDocGia)
         {

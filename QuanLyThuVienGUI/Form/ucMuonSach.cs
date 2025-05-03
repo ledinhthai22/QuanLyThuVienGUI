@@ -27,7 +27,7 @@ namespace QuanLyThuVienGUI
         PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO();
         CTPhieuMuonBUS ctPhieuMuonBUS = new CTPhieuMuonBUS(); // Thêm đối tượng CTPhieuMuon BUS
         private string maNV;
-        private string maphieuMuon;
+        
         
         public ucMuonSach(admin.frmQuanLyMuonTra parent, string maNV)
         {
@@ -385,7 +385,7 @@ namespace QuanLyThuVienGUI
 
         private void btn_TaoPhieuMuon_Click(object sender, EventArgs e)
         {
-            // Lấy thông tin phiếu mượn từ giao diện
+            
             getDuLieuPhieuMuon();
 
             try

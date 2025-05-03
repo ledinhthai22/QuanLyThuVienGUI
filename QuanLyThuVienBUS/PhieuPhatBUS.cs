@@ -11,9 +11,9 @@ namespace QuanLyThuVienBUS
     public class PhieuPhatBUS
     {
         PhieuPhatDAO phieuPhatDAO = new PhieuPhatDAO();
-        public List<PhieuPhatDTO> loadDSPP()
+        public List<PhieuPhatDTO> loadDSPPAll()
         {
-            return phieuPhatDAO.loadDSPP();
+            return phieuPhatDAO.loadDSPPAll();
         }
     }
 }

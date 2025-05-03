@@ -374,6 +374,12 @@
     <Compile Include="Form\ucTraSach.Designer.cs">
       <DependentUpon>ucTraSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\ucPhieuPhat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\ucPhieuPhat.Designer.cs">
+      <DependentUpon>ucPhieuPhat.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -427,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\ucMuonSach.resx">
       <DependentUpon>ucMuonSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\ucPhieuPhat.resx">
+      <DependentUpon>ucPhieuPhat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\ucTraSach.resx">
       <DependentUpon>ucTraSach.cs</DependentUpon>

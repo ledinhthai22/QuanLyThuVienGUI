@@ -44,5 +44,9 @@ namespace QuanLyThuVienBUS
         {
             return sachDAO.updateSachSauMuon(danhSachMaSach);
         }
+        public bool updateSachSauKhiTra(string maSach)
+        {
+            return sachDAO.updateSachSauKhiTra(maSach);
+        }
     }
 }

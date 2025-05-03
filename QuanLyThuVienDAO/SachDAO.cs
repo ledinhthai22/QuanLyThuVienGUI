@@ -238,6 +238,48 @@ namespace QuanLyThuVienDAO
             }
         }
 
+        public bool updateSachSauKhiTra(string maSach)
+        {
+            try
+            {
+                dp.Open();
+
+                // Tăng số lượng sách lên 1
+                string updateQuery = "UPDATE SACH SET SoLuong = SoLuong + 1 WHERE MaSach = @MaSach";
+                SqlCommand updateCmd = new SqlCommand(updateQuery, dp.GetConnection());
+                updateCmd.Parameters.AddWithValue("@MaSach", maSach);
+                updateCmd.ExecuteNonQuery();
+
+                // Kiểm tra số lượng mới sau khi tăng
+                string kiemtrasoluongsach = "SELECT SoLuong FROM SACH WHERE MaSach = @MaSach";
+                SqlCommand checkCmd = new SqlCommand(kiemtrasoluongsach, dp.GetConnection());
+                checkCmd.Parameters.AddWithValue("@MaSach", maSach);
+
+                int soluong = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                // Nếu số lượng > 0 thì cập nhật trạng thái thành "Còn"
+                if (soluong > 0)
+                {
+                    string updateStatusQuery = "UPDATE SACH SET TrangThai = 1 WHERE MaSach = @MaSach";
+                    SqlCommand statusCmd = new SqlCommand(updateStatusQuery, dp.GetConnection());
+                    statusCmd.Parameters.AddWithValue("@MaSach", maSach);
+                    statusCmd.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi cập nhật sách sau khi trả: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                dp.Close();
+            }
+        }
+
+
         public static bool kiemTraTonTai(SachDTO sachDTO)
         {
             string query = "SELECT COUNT(*) FROM Sach WHERE TenSach = @TenSach";

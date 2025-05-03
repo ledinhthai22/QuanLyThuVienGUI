@@ -11,7 +11,7 @@ namespace QuanLyThuVienDAO
     public class ThongKeDAO
     {
         DataProvider dp = new DataProvider();
-        public List<ThongKeDTO> thongKeNguoiMuonTheoNgay()
+        public List<ThongKeDTO> thongKeNguoiMuonTheoNgay(DateTime ngaybat,DateTime ngayketthuc)
         {
             List<ThongKeDTO> danhSach = new List<ThongKeDTO>();
             string query = "SELECT CONVERT(DATE, NgayLap) AS Ngay, COUNT(DISTINCT MaDocGia) AS SoNguoiMuon " +

@@ -14,6 +14,7 @@ namespace QuanLyThuVienDAO
     {
         private static DataProvider dp = new DataProvider();
         private List<PhieuMuonDTO> listPhieuMuon = new List<PhieuMuonDTO>();
+        PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO();
         public List<PhieuMuonDTO> loadDSPM()
         {
             string select = "SELECT * FROM PhieuMuon";
@@ -46,6 +47,56 @@ namespace QuanLyThuVienDAO
                 return null;
             }
         }
+        public List<PhieuMuonDTO> loadDanhSachPhieuMuonVaCTPhieuMuon()
+        {
+            string select = @"SELECT PM.MaPhieuMuon, PM.MaDocGia, PM.HoTenDocGia, PM.MaNhanVien,
+                              PM.NgayLap, PM.NgayTra, CTPM.NgayThucTe, PM.TrangThai,
+                              COUNT(CTPM.MaSach) AS SoLuongSach
+                              FROM PhieuMuon PM
+                              JOIN CTPhieuMuon CTPM ON PM.MaPhieuMuon = CTPM.MaPhieuMuon
+                              WHERE PM.TrangThai = 1
+                              GROUP BY PM.MaPhieuMuon, PM.MaDocGia, PM.HoTenDocGia, PM.MaNhanVien,
+                              PM.NgayLap, PM.NgayTra, CTPM.NgayThucTe, PM.TrangThai";
+
+            try
+            {
+                listPhieuMuon.Clear();
+
+                
+                    dp.Open();
+                    using (SqlCommand cmd = new SqlCommand(select, dp.GetConnection()))
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO
+                            {
+                                maPhieuMuon = dr["MaPhieuMuon"].ToString(),
+                                maDocGia = dr["MaDocGia"].ToString(),
+                                hoTenDocGia = dr["HoTenDocGia"].ToString(),
+                                maNhanVien = dr["MaNhanVien"].ToString(),
+                                ngayLap = dr["NgayLap"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayLap"]),
+                                ngayTra = dr["NgayTra"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTra"]),
+                                ngayTraThucTe = dr["NgayThucTe"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayThucTe"]),
+                                soLuongSach = Convert.ToInt32(dr["SoLuongSach"]),
+                                trangThai = Convert.ToInt32(dr["TrangThai"])
+                            };
+
+                            listPhieuMuon.Add(phieuMuonDTO);
+                        }
+                    }
+                
+
+                return listPhieuMuon;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi load danh sách phiếu mượn: " + ex.Message);
+                return null;
+            }
+        }
+
+
 
         // Thay đổi kiểu trả về từ bool sang string để trả về mã phiếu mượn
         public static string createPhieuMuon(PhieuMuonDTO phieuMuonDTO)
@@ -98,6 +149,41 @@ namespace QuanLyThuVienDAO
            
           
         }
+        public static bool traSach(PhieuMuonDTO phieuMuonDTO)
+        {
+            string updateCTPhieuMuon = "UPDATE CTPhieuMuon SET NgayThucTe = @ngayThucTe, TrangThai = 0 WHERE MaPhieuMuon = @maPhieuMuon";
+            string updatePhieuMuon = "UPDATE PhieuMuon SET TrangThai = 0 ,GhiChu = @ghiChu WHERE MaPhieuMuon = @maPhieuMuon";
+
+            try
+            {
+                dp.Open();
+
+                // Cập nhật CTPhieuMuon
+                SqlCommand cmdCT = new SqlCommand(updateCTPhieuMuon, dp.GetConnection());
+                cmdCT.Parameters.AddWithValue("@maPhieuMuon", phieuMuonDTO.maPhieuMuon);
+                cmdCT.Parameters.AddWithValue("@ngayThucTe", phieuMuonDTO.ngayTraThucTe);
+                int result1 = cmdCT.ExecuteNonQuery();
+
+                // Cập nhật PhieuMuon
+                SqlCommand cmdPM = new SqlCommand(updatePhieuMuon, dp.GetConnection());
+                cmdPM.Parameters.AddWithValue("@maPhieuMuon", phieuMuonDTO.maPhieuMuon);
+                cmdPM.Parameters.AddWithValue("@ghiChu",phieuMuonDTO.ghiChu);
+                int result2 = cmdPM.ExecuteNonQuery();
+
+                // Trả về true nếu cả hai cập nhật đều thành công
+                return result1 > 0 && result2 > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi cập nhật trạng thái trả sách: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                dp.Close();
+            }
+        }
+
         public static bool kiemTraMuon(string maDocGia)
         {
             string select = "SELECT COUNT(*) FROM PhieuMuon WHERE MaDocGia = @maDocGia AND TrangThai = 1";
@@ -115,6 +201,7 @@ namespace QuanLyThuVienDAO
                 dp.Close();
             }
         }
+
 
     }
 }

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.pn_Thongtin = new System.Windows.Forms.Panel();
+            this.btn_PhieuPhat = new Guna.UI2.WinForms.Guna2Button();
             this.cbo_LocTheoDanhSach = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txt_TimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_TimKiem = new Guna.UI2.WinForms.Guna2Button();
             this.dgv_LoadDuLieu = new System.Windows.Forms.DataGridView();
             this.btn_TraSach = new Guna.UI2.WinForms.Guna2Button();
             this.btn_MuonSach = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_PhieuPhat = new Guna.UI2.WinForms.Guna2Button();
             this.pn_Thongtin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_LoadDuLieu)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +58,22 @@
             this.pn_Thongtin.Name = "pn_Thongtin";
             this.pn_Thongtin.Size = new System.Drawing.Size(1186, 756);
             this.pn_Thongtin.TabIndex = 26;
+            // 
+            // btn_PhieuPhat
+            // 
+            this.btn_PhieuPhat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_PhieuPhat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_PhieuPhat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_PhieuPhat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_PhieuPhat.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btn_PhieuPhat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_PhieuPhat.ForeColor = System.Drawing.Color.White;
+            this.btn_PhieuPhat.Location = new System.Drawing.Point(319, 4);
+            this.btn_PhieuPhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_PhieuPhat.Name = "btn_PhieuPhat";
+            this.btn_PhieuPhat.Size = new System.Drawing.Size(152, 44);
+            this.btn_PhieuPhat.TabIndex = 49;
+            this.btn_PhieuPhat.Text = "Phiếu phạt";
             // 
             // cbo_LocTheoDanhSach
             // 
@@ -137,6 +153,7 @@
             this.dgv_LoadDuLieu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_LoadDuLieu.Size = new System.Drawing.Size(1186, 702);
             this.dgv_LoadDuLieu.TabIndex = 30;
+            this.dgv_LoadDuLieu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_LoadDuLieu_CellContentClick);
             this.dgv_LoadDuLieu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_LoadDuLieu_CellFormatting);
             // 
             // btn_TraSach
@@ -172,22 +189,6 @@
             this.btn_MuonSach.TabIndex = 26;
             this.btn_MuonSach.Text = "Mượn sách";
             this.btn_MuonSach.Click += new System.EventHandler(this.btn_MuonSach_Click);
-            // 
-            // btn_PhieuPhat
-            // 
-            this.btn_PhieuPhat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_PhieuPhat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_PhieuPhat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_PhieuPhat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_PhieuPhat.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btn_PhieuPhat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btn_PhieuPhat.ForeColor = System.Drawing.Color.White;
-            this.btn_PhieuPhat.Location = new System.Drawing.Point(319, 4);
-            this.btn_PhieuPhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_PhieuPhat.Name = "btn_PhieuPhat";
-            this.btn_PhieuPhat.Size = new System.Drawing.Size(152, 44);
-            this.btn_PhieuPhat.TabIndex = 49;
-            this.btn_PhieuPhat.Text = "Phiếu phạt";
             // 
             // frmQuanLyMuonTra
             // 

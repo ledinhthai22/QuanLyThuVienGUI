@@ -10,6 +10,15 @@ namespace QuanLyThuVienBUS
 {
     public class CTPhieuMuonBUS
     {
+        CTPhieuMuonDAO CTPhieuMuonDAO = new CTPhieuMuonDAO();
+        public  List<CTPhieuMuonDTO> GetDanhSachDangMuonTheoMaDocGia(string maDocGia)
+        {
+            return CTPhieuMuonDAO.GetDanhSachDangMuonTheoMaDocGia(maDocGia);
+        }
+        public List<string> LayDanhSachMaSachDaMuon(string maPhieuMuon)
+        {
+            return CTPhieuMuonDAO.LayDanhSachMaSachDaMuon(maPhieuMuon);
+        }
         public bool createCTPhieuMuon(CTPhieuMuonDTO phieuMuonDTO)
         {
             return CTPhieuMuonDAO.createCThieuMuon(phieuMuonDTO);

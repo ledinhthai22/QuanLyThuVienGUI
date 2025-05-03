@@ -35,7 +35,7 @@ namespace QuanLyThuVienGUI.admin
 
         private void btn_MuonSach_Click(object sender, EventArgs e)
         {
-            ;
+          
             pn_Thongtin.Controls.Clear();
             ucMuonSach ucMuonTra = new ucMuonSach(this,manv);
             ucMuonTra.Dock = DockStyle.Fill;
@@ -45,7 +45,7 @@ namespace QuanLyThuVienGUI.admin
         private void btn_TraSach_Click(object sender, EventArgs e)
         {
             pn_Thongtin.Controls.Clear();
-            ucTraSach ucTra = new ucTraSach();
+            ucTraSach ucTra = new ucTraSach(this,manv);
             ucTra.Dock = DockStyle.Fill;
             pn_Thongtin.Controls.Add(ucTra);
         }
@@ -88,7 +88,7 @@ namespace QuanLyThuVienGUI.admin
         {
             try
             {
-                List<PhieuPhatDTO> danhSachPhieuPhat = phieuPhatBUS.loadDSPP(); // Gọi từ BUS
+                List<PhieuPhatDTO> danhSachPhieuPhat = phieuPhatBUS.loadDSPPAll(); // Gọi từ BUS
                 if (danhSachPhieuPhat == null || danhSachPhieuPhat.Count == 0)
                 {
                     MessageBox.Show("Không có phiếu phạt để hiển thị.");
@@ -285,6 +285,20 @@ namespace QuanLyThuVienGUI.admin
                         }
                     }
                 }
+                if (dgv_LoadDuLieu.Columns[e.ColumnIndex].Name == "SoTien" && e.Value != null)
+                {
+                    try
+                    {
+                        decimal soTien = Convert.ToDecimal(e.Value);
+                        e.Value = soTien.ToString("N0") + " đ"; // Ví dụ: 10,000 đ
+                        e.FormattingApplied = true;
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    
+                }
             }
             if (dgv_LoadDuLieu.Columns[e.ColumnIndex].Name == "NgayLap" || dgv_LoadDuLieu.Columns[e.ColumnIndex].Name == "NgayTra")
             {
@@ -296,7 +310,10 @@ namespace QuanLyThuVienGUI.admin
             }
         }
 
-        
+        private void dgv_LoadDuLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

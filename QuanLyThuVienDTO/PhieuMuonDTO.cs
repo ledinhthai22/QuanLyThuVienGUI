@@ -14,7 +14,9 @@ namespace QuanLyThuVienDTO
         public string hoTenDocGia { get; set; }
         public DateTime ngayLap { get; set; }
         public DateTime ngayTra { get; set; }
+        public DateTime ngayTraThucTe { get; set; }
         public int soLuongSach {  get; set; }
+        public string ghiChu { get; set; }
         public int trangThai { get; set; }
     }
 }

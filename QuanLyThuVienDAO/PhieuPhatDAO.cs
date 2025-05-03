@@ -13,7 +13,7 @@ namespace QuanLyThuVienDAO
     {
         private static DataProvider dp = new DataProvider();
         private List<PhieuPhatDTO> listPhieuPhat= new List<PhieuPhatDTO>();
-        public List<PhieuPhatDTO> loadDSPP()
+        public List<PhieuPhatDTO> loadDSPPAll()
         {
             string select = "SELECT MaPhieuPhat, pm.MaPhieuMuon, MaCTPhieuMuon, dg.HoTen, SoTien, LyDoPhat, NgayThanhToan, pp.TrangThai " +
                 "FROM PhieuPhat pp " +
@@ -34,7 +34,7 @@ namespace QuanLyThuVienDAO
                     phieuPhatDTO.mactPhieuMuon = dr["MaCTPhieuMuon"].ToString();
                     phieuPhatDTO.hoTenDocGia = dr["HoTen"].ToString();
                     phieuPhatDTO.soTien = Convert.ToInt32(dr["SoTien"]);
-                    phieuPhatDTO.lyDoPhat = dr["LyDoPhat"].ToString(); // <- thêm dòng này
+                    phieuPhatDTO.lyDoPhat = dr["LyDoPhat"].ToString();
                     phieuPhatDTO.ngayThanhToan = dr["NgayThanhToan"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayThanhToan"]);
                     phieuPhatDTO.trangThai = Convert.ToInt32(dr["TrangThai"]);
                     listPhieuPhat.Add(phieuPhatDTO);
