@@ -26,5 +26,11 @@ namespace QuanLyThuVienGUI
         {
 
         }
+
+
+        private void txt_Thoat_Click(object sender, EventArgs e)
+        {
+            parentForm.ShowDefaultView();
+        }
     }
 }

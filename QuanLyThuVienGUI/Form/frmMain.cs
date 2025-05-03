@@ -42,6 +42,14 @@ namespace QuanLyThuVienGUI
             this.chucVu = chucVu;
             this.maNV = maNV;
 
+            if (string.Equals(chucVu, "admin", StringComparison.OrdinalIgnoreCase))
+            {
+                LoadFormIntoPanel(new frmTrangChu());
+            }
+            else if (string.Equals(chucVu, "thuthu", StringComparison.OrdinalIgnoreCase))
+            {
+                LoadFormIntoPanel(new frmTimKiem());
+            }
             this.MouseDown += new MouseEventHandler(Form_MouseDown);
             this.MouseMove += new MouseEventHandler(Form_MouseMove);
             this.MouseUp += new MouseEventHandler(Form_MouseUp);
@@ -90,6 +98,7 @@ namespace QuanLyThuVienGUI
             form.Dock = DockStyle.Fill;
             Pn_LoadFrm.Controls.Add(form);
             form.Show();
+            
             Pn_LoadFrm.ResumeLayout();
         }
 
@@ -127,7 +136,11 @@ namespace QuanLyThuVienGUI
                 btn_QLSach.Visible = false;
                 btn_QLTheLoai.Visible = false;
                 btn_QLNhanVien.Visible = false;
-                
+                btn_TrangChu.Visible = false;
+            }
+            if (string.Equals(chucVu, "admin", StringComparison.OrdinalIgnoreCase))
+            {
+                btn_TimKiem.Visible = false;
             }
         }
 
@@ -152,12 +165,17 @@ namespace QuanLyThuVienGUI
         }
         public void LoadChildForm(Form form)
         {
-            LoadFormIntoPanel(form); 
+            LoadFormIntoPanel(form);    
         }
 
         private void btnMinius_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void btn_TimKiem_Click(object sender, EventArgs e)
+        {
+            LoadFormIntoPanel(new frmTimKiem());
         }
     }
 }

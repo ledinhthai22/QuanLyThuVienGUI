@@ -11,9 +11,13 @@ namespace QuanLyThuVienBUS
     public class PhieuMuonBUS
     {
         private PhieuMuonDAO phieuMuonDAO = new PhieuMuonDAO();
-        public List<PhieuMuonDTO> loadDSPM()
+        public List<PhieuMuonDTO> loadDSPMDangMuon()
         {
-            return phieuMuonDAO.loadDSPM();
+            return phieuMuonDAO.loadDSPMDangMuon();
+        }
+        public List<PhieuMuonDTO> loadDSPMDaTra()
+        {
+            return phieuMuonDAO.loadDSPMDaTra();
         }
         public List<PhieuMuonDTO> loadDanhSachPhieuMuonVaCTPhieuMuon()
         {

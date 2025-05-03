@@ -401,5 +401,25 @@ namespace QuanLyThuVienGUI
                 TinhSoNgayTre();
             }
         }
+
+        private void btn_TimKiemSach_Click(object sender, EventArgs e)
+        {
+            
+           
+                string keyword = txt_TKPhieuMuon.Text.Trim();
+                List<PhieuMuonDTO> dsPhieuMuon = danhSachPhieuMuon.Where(pm => pm.maPhieuMuon.Contains(keyword)
+                                                                            || pm.maDocGia.Contains(keyword)
+                                                                            || pm.hoTenDocGia.Contains(keyword)).ToList();
+                if (dsPhieuMuon.Count > 0)
+                {
+                    dgv_PhieuMuon.DataSource = dsPhieuMuon;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy phiếu mượn nào với mã: " + keyword);
+                    loadCTPhieuMuon();
+                }
+                txt_TKPhieuMuon.Clear();
+        }
     }
 }

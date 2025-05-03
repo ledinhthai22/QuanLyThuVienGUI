@@ -28,59 +28,59 @@ namespace QuanLyThuVienGUI.admin
 
 
 
-        private void loadThongKeChart()
-        {
-            //List<ThongKeDTO> danhSach = thongKeBUS.layThongKeNguoiMuonTheoNgay();
+        //private void loadThongKeChart()
+        //{
+        //    //List<ThongKeDTO> danhSach = thongKeBUS.layThongKeNguoiMuonTheoNgay();
 
-            chart1.Series.Clear();
-            chart1.Titles.Clear();
-            chart1.ChartAreas.Clear();
+        //    chart1.Series.Clear();
+        //    chart1.Titles.Clear();
+        //    chart1.ChartAreas.Clear();
 
-            // Thiết lập vùng biểu đồ
-            ChartArea chartArea = new ChartArea("ChartArea1");
-            chart1.ChartAreas.Add(chartArea);
+        //    // Thiết lập vùng biểu đồ
+        //    ChartArea chartArea = new ChartArea("ChartArea1");
+        //    chart1.ChartAreas.Add(chartArea);
 
-            chartArea.BackColor = Color.White;
-            chartArea.BorderColor = Color.LightGray;
-            chartArea.AxisX.MajorGrid.LineColor = Color.LightGray;
-            chartArea.AxisY.MajorGrid.LineColor = Color.LightGray;
+        //    chartArea.BackColor = Color.White;
+        //    chartArea.BorderColor = Color.LightGray;
+        //    chartArea.AxisX.MajorGrid.LineColor = Color.LightGray;
+        //    chartArea.AxisY.MajorGrid.LineColor = Color.LightGray;
 
-            chartArea.AxisX.Title = "Ngày mượn";
-            chartArea.AxisY.Title = "Số người mượn";
+        //    chartArea.AxisX.Title = "Ngày mượn";
+        //    chartArea.AxisY.Title = "Số người mượn";
 
-            chartArea.AxisX.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
-            chartArea.AxisY.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+        //    chartArea.AxisX.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+        //    chartArea.AxisY.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
 
-            chartArea.AxisX.LabelStyle.Angle = -45;
-            chartArea.AxisX.Interval = 1;
+        //    chartArea.AxisX.LabelStyle.Angle = -45;
+        //    chartArea.AxisX.Interval = 1;
 
-            // Tạo series
-            Series series = new Series("Số người mượn");
-            series.ChartType = SeriesChartType.Column;
-            series.XValueType = ChartValueType.String;
-            series.Color = Color.DodgerBlue;
-            series.BorderWidth = 2;
-            series.Font = new Font("Segoe UI", 9);
+        //    // Tạo series
+        //    Series series = new Series("Số người mượn");
+        //    series.ChartType = SeriesChartType.Column;
+        //    series.XValueType = ChartValueType.String;
+        //    series.Color = Color.DodgerBlue;
+        //    series.BorderWidth = 2;
+        //    series.Font = new Font("Segoe UI", 9);
 
-            //foreach (var item in danhSach)
-            //{
-            //    series.Points.AddXY(item.NgayMuon.ToString("dd/MM/yyyy"), item.SoNguoiMuon);
-            //}
+        //    //foreach (var item in danhSach)
+        //    //{
+        //    //    series.Points.AddXY(item.NgayMuon.ToString("dd/MM/yyyy"), item.SoNguoiMuon);
+        //    //}
 
-            //chart1.Series.Add(series);
+        //    //chart1.Series.Add(series);
 
-            // Thêm tiêu đề
-            Title title = new Title("Thống kê số người mượn theo ngày", Docking.Top, new Font("Segoe UI", 12, FontStyle.Bold), Color.Black);
-            chart1.Titles.Add(title);
+        //    // Thêm tiêu đề
+        //    Title title = new Title("Thống kê số người mượn theo ngày", Docking.Top, new Font("Segoe UI", 12, FontStyle.Bold), Color.Black);
+        //    chart1.Titles.Add(title);
 
-            // Hiển thị label giá trị trên mỗi cột
-            series.IsValueShownAsLabel = true;
-            series.LabelForeColor = Color.Black;
-        }
+        //    // Hiển thị label giá trị trên mỗi cột
+        //    series.IsValueShownAsLabel = true;
+        //    series.LabelForeColor = Color.Black;
+        //}
 
         private void frmTrangChu_Load(object sender, EventArgs e)
         {
-            loadThongKeChart();
+            //loadThongKeChart();
         }
 
         private void btn_ThongKe_Click(object sender, EventArgs e)

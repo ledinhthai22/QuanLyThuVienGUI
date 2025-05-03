@@ -15,9 +15,41 @@ namespace QuanLyThuVienDAO
         private static DataProvider dp = new DataProvider();
         private List<PhieuMuonDTO> listPhieuMuon = new List<PhieuMuonDTO>();
         PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO();
-        public List<PhieuMuonDTO> loadDSPM()
+        public List<PhieuMuonDTO> loadDSPMDangMuon()
         {
-            string select = "SELECT * FROM PhieuMuon";
+            string select = "SELECT * FROM PhieuMuon WHERE TrangThai = 1";
+            try
+            {
+                SqlCommand cmd = new SqlCommand(select, dp.GetConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                listPhieuMuon.Clear();
+
+                while (dr.Read())
+                {
+                    PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO();
+                    phieuMuonDTO.maPhieuMuon = dr["MaPhieuMuon"].ToString();
+                    phieuMuonDTO.maDocGia = dr["MaDocGia"].ToString();
+                    phieuMuonDTO.hoTenDocGia = dr["HoTenDocGia"].ToString();
+                    phieuMuonDTO.maNhanVien = dr["MaNhanVien"].ToString();
+                    phieuMuonDTO.ngayLap = dr["NgayLap"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayLap"]);
+                    phieuMuonDTO.ngayTra = dr["NgayTra"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTra"]);
+                    phieuMuonDTO.soLuongSach = Convert.ToInt32(dr["SoLuongSach"]);
+                    phieuMuonDTO.trangThai = Convert.ToInt32(dr["TrangThai"]);
+                    listPhieuMuon.Add(phieuMuonDTO);
+                }
+
+                dp.Close();
+                return listPhieuMuon;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi load danh sách phiếu mượn: " + ex.Message);
+                return null;
+            }
+        }
+        public List<PhieuMuonDTO> loadDSPMDaTra()
+        {
+            string select = "SELECT * FROM PhieuMuon WHERE TrangThai = 0";
             try
             {
                 SqlCommand cmd = new SqlCommand(select, dp.GetConnection());

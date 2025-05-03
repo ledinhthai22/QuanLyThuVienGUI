@@ -49,6 +49,14 @@ namespace QuanLyThuVienGUI.admin
             ucTra.Dock = DockStyle.Fill;
             pn_Thongtin.Controls.Add(ucTra);
         }
+        private void btn_PhieuPhat_Click(object sender, EventArgs e)
+        {
+
+            pn_Thongtin.Controls.Clear();
+            ucPhieuPhat ucPhieuPhat = new ucPhieuPhat(this, manv);
+            ucPhieuPhat.Dock = DockStyle.Fill;
+            pn_Thongtin.Controls.Add(ucPhieuPhat);
+        }
 
         public void ShowDefaultView()
         {
@@ -60,11 +68,11 @@ namespace QuanLyThuVienGUI.admin
             pn_Thongtin.Controls.Add(frmMuonTra);
             frmMuonTra.Show(); 
         }
-        private List<PhieuMuonDTO> loadDSPM()
+        private List<PhieuMuonDTO> loadDSPMDangMuon()
         {
             try
             {
-                List<PhieuMuonDTO> dsPhieuMuon = phieuMuonBUS.loadDSPM();
+                List<PhieuMuonDTO> dsPhieuMuon = phieuMuonBUS.loadDSPMDangMuon();
 
                 if (dsPhieuMuon == null || dsPhieuMuon.Count == 0)
                 {
@@ -75,7 +83,41 @@ namespace QuanLyThuVienGUI.admin
                     danhSachPhieuMuon = dsPhieuMuon;
                     dgv_LoadDuLieu.DataSource = null;
                     dgv_LoadDuLieu.DataSource = danhSachPhieuMuon;
-                    
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        dgv_LoadDuLieu.ClearSelection();
+
+                    }));
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải lại danh sách sách: " + ex.Message);
+            }
+            return danhSachPhieuMuon;
+        }
+        private List<PhieuMuonDTO> loadDSPMDaTra()
+        {
+            try
+            {
+                List<PhieuMuonDTO> dsPhieuMuon = phieuMuonBUS.loadDSPMDaTra();
+
+                if (dsPhieuMuon == null || dsPhieuMuon.Count == 0)
+                {
+                    MessageBox.Show("Không có sách để hiển thị.");
+                }
+                else
+                {
+                    danhSachPhieuMuon = dsPhieuMuon;
+                    dgv_LoadDuLieu.DataSource = null;
+                    dgv_LoadDuLieu.DataSource = danhSachPhieuMuon;
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        dgv_LoadDuLieu.ClearSelection();
+
+                    }));
+
                 }
             }
             catch (Exception ex)
@@ -97,6 +139,11 @@ namespace QuanLyThuVienGUI.admin
                 {
                     dgv_LoadDuLieu.DataSource = null;
                     dgv_LoadDuLieu.DataSource = danhSachPhieuPhat;
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        dgv_LoadDuLieu.ClearSelection();
+                        
+                    }));
                 }
             }
             catch (Exception ex)
@@ -227,19 +274,24 @@ namespace QuanLyThuVienGUI.admin
         {
             loadCbo();
             taoCotDgvPhieuMuon();
-            loadDSPM(); 
+            loadDSPMDangMuon(); 
         }
        
         private void cbo_LocTheoDanhSach_SelectedIndexChanged(object sender, EventArgs e)
         {
             string luaChon = cbo_LocTheoDanhSach.SelectedItem.ToString();
 
-            if (luaChon == "Danh sách phiếu mượn")
+            if (luaChon == "DS Phiếu mượn đang mượn")
             {
                 taoCotDgvPhieuMuon();
-                loadDSPM();
+                loadDSPMDangMuon();
             }
-            else if (luaChon == "Danh sách phiếu phạt")
+            else if(luaChon == "DS Phiếu mượn đã Trả")
+            {
+                taoCotDgvPhieuMuon();
+                loadDSPMDaTra();
+            }
+            else if (luaChon == "DS phiếu phạt ")
             {
                 taoCotDgvPhieuPhat();
                 loadDSPP();
@@ -249,7 +301,7 @@ namespace QuanLyThuVienGUI.admin
         private void dgv_LoadDuLieu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             string luaChon = cbo_LocTheoDanhSach.SelectedItem.ToString();
-            if (luaChon == "Danh sách phiếu mượn")
+            if (luaChon == "DS Phiếu mượn đang mượn")
             {
                 if (dgv_LoadDuLieu.Columns[e.ColumnIndex].Name == "TrangThai")
                 {
@@ -260,15 +312,26 @@ namespace QuanLyThuVienGUI.admin
                         {
                             e.Value = "Đang mượn";
                         }
-                        else
+                      
+                    }
+                }
+                
+            }
+            if( luaChon == "DS Phiếu mượn đã Trả")
+            {
+                if (dgv_LoadDuLieu.Columns[e.ColumnIndex].Name == "TrangThai")
+                {
+                    if (e.Value != null)
+                    {
+                        int trangThai = Convert.ToInt32(e.Value);
+                        if (trangThai == 0)
                         {
                             e.Value = "Đã trả";
                         }
                     }
                 }
-                
             }
-            if (luaChon == "Danh sách phiếu phạt")
+            if (luaChon == "DS phiếu phạt ")
             {
                 if (dgv_LoadDuLieu.Columns[e.ColumnIndex].Name == "TrangThai")
                 {
@@ -314,6 +377,104 @@ namespace QuanLyThuVienGUI.admin
         {
 
         }
+
+        private void btn_TimKiem_Click(object sender, EventArgs e)
+        {
+
+            string luaChon = cbo_LocTheoDanhSach.SelectedItem.ToString();
+            if (luaChon == "DS Phiếu mượn đang mượn")
+            {
+                string keyword = txt_TimKiem.Text.Trim();
+                List<PhieuMuonDTO> dsPhieuMuon = danhSachPhieuMuon.Where(pm => pm.maPhieuMuon.Contains(keyword)
+                                                                            || pm.maNhanVien.Contains(keyword)
+                                                                            || pm.hoTenDocGia.Contains(keyword)).ToList();
+                if (dsPhieuMuon.Count > 0)
+                {
+                    dgv_LoadDuLieu.DataSource = dsPhieuMuon;
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        dgv_LoadDuLieu.ClearSelection();
+
+                    }));
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy phiếu mượn nào với mã: " + keyword);
+                    loadDSPMDangMuon();
+                }
+            }
+            else if (luaChon == "DS phiếu phạt ")
+            {
+                string keyword = txt_TimKiem.Text.Trim();
+                List<PhieuPhatDTO> dsPhieuPhat = phieuPhatBUS.loadDSPPAll().Where(pp => pp.maPhieuPhat.Contains(keyword)
+                                                                                     || pp.hoTenDocGia.Contains(keyword)
+                                                                                     ).ToList();
+                if (dsPhieuPhat.Count > 0)
+                {
+                    dgv_LoadDuLieu.DataSource = dsPhieuPhat;
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        dgv_LoadDuLieu.ClearSelection();
+
+                    }));
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy phiếu phạt nào với mã: " + keyword);
+                    loadDSPP();
+                }
+            }
+            else if (luaChon == "DS Phiếu mượn đã Trả")
+            {
+                string keyword = txt_TimKiem.Text.Trim();
+                List<PhieuMuonDTO> dsPhieuMuon = danhSachPhieuMuon.Where(pm => pm.maPhieuMuon.Contains(keyword)
+                                                                            || pm.maNhanVien.Contains(keyword)
+                                                                            || pm.hoTenDocGia.Contains(keyword)).ToList();
+                if (dsPhieuMuon.Count > 0)
+                {
+                    dgv_LoadDuLieu.DataSource = dsPhieuMuon;
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        dgv_LoadDuLieu.ClearSelection();
+                    }));
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy phiếu mượn nào với mã: " + keyword);
+                    loadDSPMDaTra();
+                }
+            }    
+                txt_TimKiem.Clear();
+        }
+
+        private void txt_LamMoi_Click(object sender, EventArgs e)
+        {
+            string luaChon = cbo_LocTheoDanhSach.SelectedItem.ToString();
+            if (luaChon == "DS Phiếu mượn đang mượn")
+            {
+                txt_TimKiem.Clear();
+                loadDSPMDangMuon();
+                this.BeginInvoke(new Action(() =>
+                {
+                    dgv_LoadDuLieu.ClearSelection();
+
+                }));
+            }
+            else if (luaChon == "DS Phiếu mượn đã Trả")
+            {
+                txt_TimKiem.Clear();
+                taoCotDgvPhieuMuon();
+                loadDSPMDaTra();
+            }
+            else if (luaChon == "DS phiếu phạt ")
+            {
+                txt_TimKiem.Clear();
+                taoCotDgvPhieuPhat();
+                loadDSPP();
+            }
+        }
+
+        
     }
 }
 
