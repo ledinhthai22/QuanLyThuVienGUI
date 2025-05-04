@@ -8,15 +8,19 @@ namespace QuanLyThuVienDTO
 {
     public class PhieuMuonDTO
     {
-        public string maPhieuMuon { get; set; }
-        public string maDocGia {  get; set; }
-        public string maNhanVien { get; set; }
-        public string hoTenDocGia { get; set; }
-        public DateTime ngayLap { get; set; }
-        public DateTime ngayTra { get; set; }
-        public DateTime ngayTraThucTe { get; set; }
-        public int soLuongSach {  get; set; }
-        public string ghiChu { get; set; }
+        public string MaPhieuMuon { get; set; }
+        public string MaCTPhieuMuon { get; set; }
+        public string MaDocGia { get; set; }
+        public string HoTenDocGia { get; set; }
+        public string MaNhanVien { get; set; }
+        public DateTime NgayLap { get; set; }
+        public DateTime NgayTra { get; set; }
+        public DateTime NgayTraThucTe { get; set; }
+        public string GhiChu { get; set; }
+        public int SoLuongSach { get; set; }
+        public int TrangThaiPhieuMuon { get; set; }
+        public string MaPhieuPhat { get; set; }
+        public int TrangThaiPhieuPhat { get; set; }
         public int trangThai { get; set; }
     }
 }

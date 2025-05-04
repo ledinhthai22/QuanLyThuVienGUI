@@ -319,12 +319,12 @@ namespace QuanLyThuVienGUI.admin
                 DateTime ngayTra = Convert.ToDateTime(dgv_LoadDuLieu.CurrentRow.Cells["NgayTra"].Value);
                 int soLuongSach = Convert.ToInt32(dgv_LoadDuLieu.CurrentRow.Cells["SoLuongSach"].Value);
                 int trangThai = Convert.ToInt32(dgv_LoadDuLieu.CurrentRow.Cells["TrangThai"].Value);
-                phieuMuonDTO.maPhieuMuon = maPhieuMuon;
-                phieuMuonDTO.maDocGia = maDocGia;
-                phieuMuonDTO.hoTenDocGia = hoTenDocGia;
-                phieuMuonDTO.ngayLap = ngayLap;
-                phieuMuonDTO.ngayTra = ngayTra;
-                phieuMuonDTO.soLuongSach = soLuongSach;
+                phieuMuonDTO.MaPhieuMuon = maPhieuMuon;
+                phieuMuonDTO.MaDocGia = maDocGia;
+                phieuMuonDTO.HoTenDocGia = hoTenDocGia;
+                phieuMuonDTO.NgayLap = ngayLap;
+                phieuMuonDTO.NgayTra = ngayTra;
+                phieuMuonDTO.SoLuongSach = soLuongSach;
                 phieuMuonDTO.trangThai = trangThai;
 
             }
@@ -412,11 +412,6 @@ namespace QuanLyThuVienGUI.admin
             }
         }
 
-        private void dgv_LoadDuLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btn_TimKiem_Click(object sender, EventArgs e)
         {
 
@@ -424,9 +419,9 @@ namespace QuanLyThuVienGUI.admin
             if (luaChon == "DS Phiếu mượn đang mượn")
             {
                 string keyword = txt_TimKiem.Text.Trim();
-                List<PhieuMuonDTO> dsPhieuMuon = danhSachPhieuMuon.Where(pm => pm.maPhieuMuon.Contains(keyword)
-                                                                            || pm.maNhanVien.Contains(keyword)
-                                                                            || pm.hoTenDocGia.Contains(keyword)).ToList();
+                List<PhieuMuonDTO> dsPhieuMuon = danhSachPhieuMuon.Where(pm => pm.MaPhieuMuon.Contains(keyword)
+                                                                            || pm.MaNhanVien.Contains(keyword)
+                                                                            || pm.HoTenDocGia.Contains(keyword)).ToList();
                 if (dsPhieuMuon.Count > 0)
                 {
                     dgv_LoadDuLieu.DataSource = dsPhieuMuon;
@@ -466,9 +461,9 @@ namespace QuanLyThuVienGUI.admin
             else if (luaChon == "DS Phiếu mượn đã Trả")
             {
                 string keyword = txt_TimKiem.Text.Trim();
-                List<PhieuMuonDTO> dsPhieuMuon = danhSachPhieuMuon.Where(pm => pm.maPhieuMuon.Contains(keyword)
-                                                                            || pm.maNhanVien.Contains(keyword)
-                                                                            || pm.hoTenDocGia.Contains(keyword)).ToList();
+                List<PhieuMuonDTO> dsPhieuMuon = danhSachPhieuMuon.Where(pm => pm.MaPhieuMuon.Contains(keyword)
+                                                                            || pm.MaNhanVien.Contains(keyword)
+                                                                            || pm.HoTenDocGia.Contains(keyword)).ToList();
                 if (dsPhieuMuon.Count > 0)
                 {
                     dgv_LoadDuLieu.DataSource = dsPhieuMuon;

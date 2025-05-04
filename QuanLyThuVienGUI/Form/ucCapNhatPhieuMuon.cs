@@ -32,15 +32,12 @@ namespace QuanLyThuVienGUI
             this.selectedPM = phieuMuonDTO;
             this.parentForm = parent;
             this.maNV = maNV;
-            txt_MaPhieuMuon.Text = selectedPM.maPhieuMuon;
-            txt_maDocGia.Text = selectedPM.maDocGia;
-            txt_HoTen.Text = selectedPM.hoTenDocGia;
-            dtp_NgayMuon.Value = selectedPM.ngayLap;
-            dtp_NgayTra.Value = selectedPM.ngayTra;
-            txt_SoLuongSach.Text = selectedPM.soLuongSach.ToString();
-
-
-
+            txt_MaPhieuMuon.Text = selectedPM.MaPhieuMuon;
+            txt_maDocGia.Text = selectedPM.MaDocGia;
+            txt_HoTen.Text = selectedPM.HoTenDocGia;
+            dtp_NgayMuon.Value = selectedPM.NgayLap;
+            dtp_NgayTra.Value = selectedPM.NgayTra;
+            txt_SoLuongSach.Text = selectedPM.SoLuongSach.ToString();
         }
 
         private void btn_Thoat_Click(object sender, EventArgs e)
@@ -127,6 +124,7 @@ namespace QuanLyThuVienGUI
             }
             return danhSachSach;
         }
+
         private void btn_xoa_Click(object sender, EventArgs e)
         {
             if (dgv_DSSachMuon.CurrentRow != null)
@@ -272,6 +270,29 @@ namespace QuanLyThuVienGUI
             });
 
         }
+        private List<CTPhieuMuonDTO> loadCTPhieuMuon()
+        {
+            try
+            {
+                List<CTPhieuMuonDTO> dsCTPhieuMuon = ctPhieuMuonBUS.GetDanhSachDangMuonTheoMaDocGia(txt_maDocGia.Text);
+
+                if (dsCTPhieuMuon == null || dsCTPhieuMuon.Count == 0)
+                {
+
+                }
+                else
+                {
+                    danhSachCTPhieuMuon = dsCTPhieuMuon;
+                    dgv_DSSachMuon.DataSource = null;
+                    dgv_DSSachMuon.DataSource = danhSachCTPhieuMuon;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải lại danh sách sách: " + ex.Message);
+            }
+            return danhSachCTPhieuMuon;
+        }
         private void ucCapNhatPhieuMuon_Load(object sender, EventArgs e)
         {
            
@@ -280,7 +301,18 @@ namespace QuanLyThuVienGUI
             dgv_DSS.ClearSelection();
             taoCotDgvDSSachMuon();
             loadDSSachMuon();
-            
+            loadCTPhieuMuon();
+
+            List<string> maSachList = ctPhieuMuonBUS.LayDanhSachMaSachDaMuon(selectedPM.MaPhieuMuon);
+
+            if (maSachList.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy sách đã mượn trong phiếu này.");
+                return;
+            }
+
+
+
             this.BeginInvoke(new Action(() =>
             {
               
@@ -294,6 +326,11 @@ namespace QuanLyThuVienGUI
             dtp_NgayMuon.MinDate = DateTime.Today;
             dtp_NgayTra.MinDate = DateTime.Today.AddDays(1);
             dtp_NgayTra.MaxDate = DateTime.Today.AddDays(14);
+        }
+
+        private void btn_Thoat_Click_1(object sender, EventArgs e)
+        {
+            parentForm.ShowDefaultView();
         }
     }
 }

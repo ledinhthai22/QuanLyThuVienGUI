@@ -31,8 +31,11 @@ namespace QuanLyThuVienGUI
             InitializeComponent();
             this.parentForm = parent;
             this.maNV = maNV;
-            
-            
+            DateTime today = DateTime.Today;
+          
+            dtp_ngayThucTeTra.MaxDate = today;
+            dtp_ngayThucTeTra.Value = today;
+
         }
 
         private void btn_Thoat_Click(object sender, EventArgs e)
@@ -370,14 +373,15 @@ namespace QuanLyThuVienGUI
         }
         private void getDuLieu(PhieuMuonDTO phieuMuonDTO)
         {
-            phieuMuonDTO.maPhieuMuon = dgv_PhieuMuon.CurrentRow.Cells["MaPhieuMuon"].Value.ToString();
-            phieuMuonDTO.maDocGia = txt_maDocGia.Text;
-            phieuMuonDTO.hoTenDocGia = txt_HoTen.Text;
-            phieuMuonDTO.ngayLap = dtp_NgayMuon.Value;
-            phieuMuonDTO.ngayTra = dtp_NgayTra.Value;
-            phieuMuonDTO.ngayTraThucTe = dtp_ngayThucTeTra.Value;
-            phieuMuonDTO.soLuongSach = Convert.ToInt32(txt_SoLuongSach.Text);
-            phieuMuonDTO.ghiChu = txt_GhiChu.Text;
+            phieuMuonDTO.MaPhieuMuon = dgv_PhieuMuon.CurrentRow.Cells["MaPhieuMuon"].Value.ToString();
+            phieuMuonDTO.MaDocGia = txt_maDocGia.Text;
+            phieuMuonDTO.HoTenDocGia = txt_HoTen.Text;
+            phieuMuonDTO.NgayLap = dtp_NgayMuon.Value;
+            phieuMuonDTO.NgayTra = dtp_NgayTra.Value;
+            phieuMuonDTO.NgayTraThucTe = dtp_ngayThucTeTra.Value;
+            phieuMuonDTO.MaCTPhieuMuon = dgv_CTphieuMuon.CurrentRow.Cells["MaCTPhieuMuon"].Value.ToString();
+            phieuMuonDTO.SoLuongSach = Convert.ToInt32(txt_SoLuongSach.Text);
+            phieuMuonDTO.GhiChu = txt_GhiChu.Text;
             phieuMuonDTO.trangThai = 1; // Trạng thái đang mượn
         }
         private void dgv_PhieuMuon_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -405,9 +409,9 @@ namespace QuanLyThuVienGUI
             
            
                 string keyword = txt_TKPhieuMuon.Text.Trim();
-                List<PhieuMuonDTO> dsPhieuMuon = danhSachPhieuMuon.Where(pm => pm.maPhieuMuon.Contains(keyword)
-                                                                            || pm.maDocGia.Contains(keyword)
-                                                                            || pm.hoTenDocGia.Contains(keyword)).ToList();
+                List<PhieuMuonDTO> dsPhieuMuon = danhSachPhieuMuon.Where(pm => pm.MaPhieuMuon.Contains(keyword)
+                                                                            || pm.MaDocGia.Contains(keyword)
+                                                                            || pm.HoTenDocGia.Contains(keyword)).ToList();
                 if (dsPhieuMuon.Count > 0)
                 {
                     dgv_PhieuMuon.DataSource = dsPhieuMuon;

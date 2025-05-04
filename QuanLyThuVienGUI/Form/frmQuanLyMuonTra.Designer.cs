@@ -74,10 +74,10 @@
             this.btn_CapNhatTraSach.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_CapNhatTraSach.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_CapNhatTraSach.ForeColor = System.Drawing.Color.White;
-            this.btn_CapNhatTraSach.Location = new System.Drawing.Point(693, 4);
+            this.btn_CapNhatTraSach.Location = new System.Drawing.Point(706, 1);
             this.btn_CapNhatTraSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_CapNhatTraSach.Name = "btn_CapNhatTraSach";
-            this.btn_CapNhatTraSach.Size = new System.Drawing.Size(211, 44);
+            this.btn_CapNhatTraSach.Size = new System.Drawing.Size(195, 44);
             this.btn_CapNhatTraSach.TabIndex = 52;
             this.btn_CapNhatTraSach.Text = "Cập nhật trả sách";
             // 
@@ -90,10 +90,10 @@
             this.btn_CapNhatPhieuMuon.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_CapNhatPhieuMuon.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_CapNhatPhieuMuon.ForeColor = System.Drawing.Color.White;
-            this.btn_CapNhatPhieuMuon.Location = new System.Drawing.Point(477, 4);
+            this.btn_CapNhatPhieuMuon.Location = new System.Drawing.Point(475, 1);
             this.btn_CapNhatPhieuMuon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_CapNhatPhieuMuon.Name = "btn_CapNhatPhieuMuon";
-            this.btn_CapNhatPhieuMuon.Size = new System.Drawing.Size(211, 44);
+            this.btn_CapNhatPhieuMuon.Size = new System.Drawing.Size(225, 44);
             this.btn_CapNhatPhieuMuon.TabIndex = 51;
             this.btn_CapNhatPhieuMuon.Text = "Cập nhật phiếu mượn";
             this.btn_CapNhatPhieuMuon.Click += new System.EventHandler(this.btn_CapNhatPhieuMuon_Click);
@@ -108,10 +108,10 @@
             this.txt_LamMoi.FillColor = System.Drawing.Color.DodgerBlue;
             this.txt_LamMoi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.txt_LamMoi.ForeColor = System.Drawing.Color.White;
-            this.txt_LamMoi.Location = new System.Drawing.Point(875, 58);
+            this.txt_LamMoi.Location = new System.Drawing.Point(907, 1);
             this.txt_LamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_LamMoi.Name = "txt_LamMoi";
-            this.txt_LamMoi.Size = new System.Drawing.Size(108, 44);
+            this.txt_LamMoi.Size = new System.Drawing.Size(128, 44);
             this.txt_LamMoi.TabIndex = 50;
             this.txt_LamMoi.Text = "Làm mới";
             this.txt_LamMoi.Click += new System.EventHandler(this.txt_LamMoi_Click);
@@ -125,7 +125,7 @@
             this.btn_PhieuPhat.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_PhieuPhat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_PhieuPhat.ForeColor = System.Drawing.Color.White;
-            this.btn_PhieuPhat.Location = new System.Drawing.Point(319, 4);
+            this.btn_PhieuPhat.Location = new System.Drawing.Point(317, 1);
             this.btn_PhieuPhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_PhieuPhat.Name = "btn_PhieuPhat";
             this.btn_PhieuPhat.Size = new System.Drawing.Size(152, 44);
@@ -148,7 +148,7 @@
             "DS Phiếu mượn đang mượn",
             "DS Phiếu mượn đã Trả",
             "DS phiếu phạt "});
-            this.cbo_LocTheoDanhSach.Location = new System.Drawing.Point(909, 7);
+            this.cbo_LocTheoDanhSach.Location = new System.Drawing.Point(875, 63);
             this.cbo_LocTheoDanhSach.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbo_LocTheoDanhSach.Name = "cbo_LocTheoDanhSach";
             this.cbo_LocTheoDanhSach.Size = new System.Drawing.Size(271, 36);
@@ -187,7 +187,7 @@
             this.btn_TimKiem.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_TimKiem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_TimKiem.ForeColor = System.Drawing.Color.White;
-            this.btn_TimKiem.Location = new System.Drawing.Point(739, 58);
+            this.btn_TimKiem.Location = new System.Drawing.Point(737, 58);
             this.btn_TimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_TimKiem.Name = "btn_TimKiem";
             this.btn_TimKiem.Size = new System.Drawing.Size(131, 44);
@@ -213,7 +213,6 @@
             this.dgv_LoadDuLieu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_LoadDuLieu.Size = new System.Drawing.Size(1187, 647);
             this.dgv_LoadDuLieu.TabIndex = 30;
-            this.dgv_LoadDuLieu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_LoadDuLieu_CellContentClick);
             this.dgv_LoadDuLieu.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_LoadDuLieu_CellFormatting);
             // 
             // btn_TraSach
@@ -225,7 +224,7 @@
             this.btn_TraSach.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_TraSach.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_TraSach.ForeColor = System.Drawing.Color.White;
-            this.btn_TraSach.Location = new System.Drawing.Point(161, 4);
+            this.btn_TraSach.Location = new System.Drawing.Point(159, 1);
             this.btn_TraSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_TraSach.Name = "btn_TraSach";
             this.btn_TraSach.Size = new System.Drawing.Size(152, 44);
@@ -242,7 +241,7 @@
             this.btn_MuonSach.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_MuonSach.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btn_MuonSach.ForeColor = System.Drawing.Color.White;
-            this.btn_MuonSach.Location = new System.Drawing.Point(3, 4);
+            this.btn_MuonSach.Location = new System.Drawing.Point(1, 1);
             this.btn_MuonSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_MuonSach.Name = "btn_MuonSach";
             this.btn_MuonSach.Size = new System.Drawing.Size(152, 44);

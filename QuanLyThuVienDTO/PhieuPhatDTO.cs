@@ -10,7 +10,7 @@ namespace QuanLyThuVienDTO
     {
         public string maPhieuPhat { get; set; }
         public string maPhieuMuon { get;set; }
-        public string mactPhieuMuon { get; set; }
+        public string maCTPhieuMuon { get; set; }
         public string maDocGia { get; set; }
         public string hoTenDocGia { get; set; }
         public int soTien {  get; set; }

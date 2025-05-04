@@ -19,8 +19,8 @@ namespace QuanLyThuVienGUI.admin
     {
         ThongKeBUS thongKeBUS = new ThongKeBUS();
         TheLoaiDTO theLoaiDTO = new TheLoaiDTO();
-        SachDTO SachDTO = new SachDTO();
-        DataProvider dp;
+       
+       
         public frmTrangChu()
         {
             InitializeComponent();

@@ -57,6 +57,7 @@ namespace QuanLyThuVienGUI
                 {
                     danhSachSach = dsSach;
                     dgv_DSS.DataSource = null;
+                    dgv_DSS.DataSource = null;
                     dgv_DSS.DataSource = danhSachSach;
 
                 }
@@ -343,13 +344,13 @@ namespace QuanLyThuVienGUI
         }
         private void getDuLieuPhieuMuon()
         {
-            phieuMuonDTO.maNhanVien = maNV;
-            phieuMuonDTO.ngayLap = dtp_NgayMuon.Value;
-            phieuMuonDTO.ngayTra = dtp_NgayTra.Value;
-            phieuMuonDTO.soLuongSach = danhSachSachMuon.Count;
+            phieuMuonDTO.MaNhanVien = maNV;
+            phieuMuonDTO.NgayLap = dtp_NgayMuon.Value;
+            phieuMuonDTO.NgayTra = dtp_NgayTra.Value;
+            phieuMuonDTO.SoLuongSach = danhSachSachMuon.Count;
             phieuMuonDTO.trangThai = 1;
-            phieuMuonDTO.hoTenDocGia = txt_HoTen.Text;
-            phieuMuonDTO.maDocGia = txt_maDocGia.Text;
+            phieuMuonDTO.HoTenDocGia = txt_HoTen.Text;
+            phieuMuonDTO.MaDocGia = txt_maDocGia.Text;
         }
 
         private void btn_TaoPhieuMuon_Click(object sender, EventArgs e)
@@ -405,7 +406,7 @@ namespace QuanLyThuVienGUI
                         maPhieuMuon = maPhieuMuon,
                         maSach = sach.maSach,
                         ngayMuon = DateTime.Now,
-                        ngayTra = phieuMuonDTO.ngayTra,
+                        ngayTra = phieuMuonDTO.NgayTra,
                         ghiChu = ""
                     };
 

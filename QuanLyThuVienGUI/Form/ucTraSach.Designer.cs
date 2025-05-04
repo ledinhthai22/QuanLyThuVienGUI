@@ -66,7 +66,7 @@
             this.grp_DanhSachDangMuon.ForeColor = System.Drawing.Color.Black;
             this.grp_DanhSachDangMuon.Location = new System.Drawing.Point(720, 5);
             this.grp_DanhSachDangMuon.Name = "grp_DanhSachDangMuon";
-            this.grp_DanhSachDangMuon.Size = new System.Drawing.Size(462, 311);
+            this.grp_DanhSachDangMuon.Size = new System.Drawing.Size(462, 380);
             this.grp_DanhSachDangMuon.TabIndex = 13;
             this.grp_DanhSachDangMuon.Text = "Danh Sách Đang mượn";
             // 
@@ -76,13 +76,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_CTphieuMuon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_CTphieuMuon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_CTphieuMuon.Location = new System.Drawing.Point(3, 43);
+            this.dgv_CTphieuMuon.Location = new System.Drawing.Point(2, 41);
             this.dgv_CTphieuMuon.Name = "dgv_CTphieuMuon";
             this.dgv_CTphieuMuon.ReadOnly = true;
             this.dgv_CTphieuMuon.RowHeadersWidth = 51;
             this.dgv_CTphieuMuon.RowTemplate.Height = 24;
             this.dgv_CTphieuMuon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_CTphieuMuon.Size = new System.Drawing.Size(456, 268);
+            this.dgv_CTphieuMuon.Size = new System.Drawing.Size(456, 336);
             this.dgv_CTphieuMuon.TabIndex = 0;
             this.dgv_CTphieuMuon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CTphieuMuon_CellFormatting);
             // 
@@ -95,7 +95,7 @@
             this.btn_Thoat.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_Thoat.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_Thoat.ForeColor = System.Drawing.Color.White;
-            this.btn_Thoat.Location = new System.Drawing.Point(468, 259);
+            this.btn_Thoat.Location = new System.Drawing.Point(404, 259);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(151, 48);
             this.btn_Thoat.TabIndex = 14;
@@ -111,7 +111,7 @@
             this.btn_TraSach.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_TraSach.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btn_TraSach.ForeColor = System.Drawing.Color.White;
-            this.btn_TraSach.Location = new System.Drawing.Point(260, 259);
+            this.btn_TraSach.Location = new System.Drawing.Point(226, 259);
             this.btn_TraSach.Name = "btn_TraSach";
             this.btn_TraSach.Size = new System.Drawing.Size(151, 48);
             this.btn_TraSach.TabIndex = 15;
@@ -132,12 +132,12 @@
             this.txt_TKPhieuMuon.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txt_TKPhieuMuon.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_TKPhieuMuon.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txt_TKPhieuMuon.Location = new System.Drawing.Point(688, 336);
+            this.txt_TKPhieuMuon.Location = new System.Drawing.Point(10, 337);
             this.txt_TKPhieuMuon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_TKPhieuMuon.Name = "txt_TKPhieuMuon";
             this.txt_TKPhieuMuon.PlaceholderText = "Tìm kiếm sách";
             this.txt_TKPhieuMuon.SelectedText = "";
-            this.txt_TKPhieuMuon.Size = new System.Drawing.Size(383, 48);
+            this.txt_TKPhieuMuon.Size = new System.Drawing.Size(593, 48);
             this.txt_TKPhieuMuon.TabIndex = 6;
             // 
             // btn_TimKiemSach
@@ -150,7 +150,7 @@
             this.btn_TimKiemSach.FillColor = System.Drawing.Color.DodgerBlue;
             this.btn_TimKiemSach.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_TimKiemSach.ForeColor = System.Drawing.Color.White;
-            this.btn_TimKiemSach.Location = new System.Drawing.Point(1071, 336);
+            this.btn_TimKiemSach.Location = new System.Drawing.Point(603, 337);
             this.btn_TimKiemSach.Name = "btn_TimKiemSach";
             this.btn_TimKiemSach.Size = new System.Drawing.Size(111, 48);
             this.btn_TimKiemSach.TabIndex = 7;

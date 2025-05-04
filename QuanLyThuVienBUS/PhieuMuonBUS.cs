@@ -19,6 +19,10 @@ namespace QuanLyThuVienBUS
         {
             return phieuMuonDAO.loadDSPMDaTra();
         }
+        public List<PhieuMuonDTO> loadDSPMDaTraDeThanhToan()
+        {
+            return phieuMuonDAO.loadDSPMDaTraDeThanhToan();
+        }
         public List<PhieuMuonDTO> loadDanhSachPhieuMuonVaCTPhieuMuon()
         {
             return phieuMuonDAO.loadDanhSachPhieuMuonVaCTPhieuMuon();
@@ -27,6 +31,7 @@ namespace QuanLyThuVienBUS
         {
             return PhieuMuonDAO.createPhieuMuon(phieuMuonDTO);
         }
+
         public bool traSach(PhieuMuonDTO phieuMuonDTO)
         {
             return PhieuMuonDAO.traSach(phieuMuonDTO);

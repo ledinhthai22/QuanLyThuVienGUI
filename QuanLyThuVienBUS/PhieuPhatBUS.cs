@@ -15,5 +15,13 @@ namespace QuanLyThuVienBUS
         {
             return phieuPhatDAO.loadDSPPAll();
         }
+        //public bool CreatePhieuPhat(PhieuPhatDTO phieuPhatDTO,string maphieumuon,string mactphieumuon)
+        //{
+        //    return PhieuPhatDAO.CreatePhieuPhat(phieuPhatDTO,maphieumuon,mactphieumuon);
+        //}
+        public bool UpdatePhieuPhat(PhieuPhatDTO phieuPhatDTO)
+        {
+            return phieuPhatDAO.UpdatePhieuPhat(phieuPhatDTO);
+        }
     }
 }

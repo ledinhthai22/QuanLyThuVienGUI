@@ -27,13 +27,13 @@ namespace QuanLyThuVienDAO
                 while (dr.Read())
                 {
                     PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO();
-                    phieuMuonDTO.maPhieuMuon = dr["MaPhieuMuon"].ToString();
-                    phieuMuonDTO.maDocGia = dr["MaDocGia"].ToString();
-                    phieuMuonDTO.hoTenDocGia = dr["HoTenDocGia"].ToString();
-                    phieuMuonDTO.maNhanVien = dr["MaNhanVien"].ToString();
-                    phieuMuonDTO.ngayLap = dr["NgayLap"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayLap"]);
-                    phieuMuonDTO.ngayTra = dr["NgayTra"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTra"]);
-                    phieuMuonDTO.soLuongSach = Convert.ToInt32(dr["SoLuongSach"]);
+                    phieuMuonDTO.MaPhieuMuon = dr["MaPhieuMuon"].ToString();
+                    phieuMuonDTO.MaDocGia = dr["MaDocGia"].ToString();
+                    phieuMuonDTO.HoTenDocGia = dr["HoTenDocGia"].ToString();
+                    phieuMuonDTO.MaNhanVien = dr["MaNhanVien"].ToString();
+                    phieuMuonDTO.NgayLap = dr["NgayLap"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayLap"]);
+                    phieuMuonDTO.NgayTra = dr["NgayTra"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTra"]);
+                    phieuMuonDTO.SoLuongSach = Convert.ToInt32(dr["SoLuongSach"]);
                     phieuMuonDTO.trangThai = Convert.ToInt32(dr["TrangThai"]);
                     listPhieuMuon.Add(phieuMuonDTO);
                 }
@@ -47,19 +47,29 @@ namespace QuanLyThuVienDAO
                 return null;
             }
         }
+
+
         public List<PhieuMuonDTO> loadDSPMDaTra()
         {
-            string select = @"SELECT PM.*, MAX(CTPM.NgayThucTe) AS NgayThucTe
-                              FROM PhieuMuon PM
-                              JOIN CTPhieuMuon CTPM ON PM.MaPhieuMuon = CTPM.MaPhieuMuon
-                              WHERE PM.TrangThai = 0
-                              GROUP BY 
-                              PM.MaPhieuMuon, PM.MaDocGia, PM.HoTenDocGia, PM.MaNhanVien, 
-                              PM.NgayLap, PM.NgayTra, PM.GhiChu, PM.SoLuongSach, PM.TrangThai";
+            string query = @"SELECT PM.MaPhieuMuon, 
+                            PM.MaDocGia, 
+                            PM.HoTenDocGia, 
+                            PM.MaNhanVien, 
+                            PM.NgayLap, 
+                            PM.NgayTra, 
+                            PM.SoLuongSach, 
+                            PM.TrangThai, 
+                            PM.GhiChu,
+                            CTPM.MaCTPhieuMuon, 
+                            CTPM.NgayThucTe
+                            FROM PhieuMuon PM
+                            JOIN CTPhieuMuon CTPM ON PM.MaPhieuMuon = CTPM.MaPhieuMuon
+                            WHERE PM.TrangThai = 0 AND CTPM.TrangThai = 0
+                            AND CTPM.NgayThucTe IS NOT NULL";
 
             try
             {
-                SqlCommand cmd = new SqlCommand(select, dp.GetConnection());
+                SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
                 SqlDataReader dr = cmd.ExecuteReader();
                 listPhieuMuon.Clear();
 
@@ -67,18 +77,18 @@ namespace QuanLyThuVienDAO
                 {
                     PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO
                     {
-                        maPhieuMuon = dr["MaPhieuMuon"].ToString(),
-                        maDocGia = dr["MaDocGia"].ToString(),
-                        hoTenDocGia = dr["HoTenDocGia"].ToString(),
-                        maNhanVien = dr["MaNhanVien"].ToString(),
-                        ngayLap = dr["NgayLap"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayLap"]),
-                        ngayTra = dr["NgayTra"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTra"]),
-                        ngayTraThucTe = dr["NgayThucTe"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayThucTe"]),
-                        ghiChu = dr["GhiChu"].ToString(),
-                        soLuongSach = Convert.ToInt32(dr["SoLuongSach"]),
-                        trangThai = Convert.ToInt32(dr["TrangThai"])
+                        MaPhieuMuon = dr["MaPhieuMuon"].ToString(),
+                        MaCTPhieuMuon = dr["MaCTPhieuMuon"].ToString(),
+                        MaDocGia = dr["MaDocGia"].ToString(),
+                        HoTenDocGia = dr["HoTenDocGia"].ToString(),
+                        MaNhanVien = dr["MaNhanVien"].ToString(),
+                        NgayLap = dr["NgayLap"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayLap"]),
+                        NgayTra = dr["NgayTra"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTra"]),
+                        NgayTraThucTe = dr["NgayThucTe"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayThucTe"]),
+                        GhiChu = dr["GhiChu"].ToString(),
+                        SoLuongSach = Convert.ToInt32(dr["SoLuongSach"]),
+                        TrangThaiPhieuMuon = Convert.ToInt32(dr["TrangThai"])
                     };
-
                     listPhieuMuon.Add(phieuMuonDTO);
                 }
 
@@ -91,6 +101,66 @@ namespace QuanLyThuVienDAO
                 return null;
             }
         }
+        public List<PhieuMuonDTO> loadDSPMDaTraDeThanhToan()
+        {
+            string query = @"
+                            SELECT 
+                            PM.MaPhieuMuon, 
+                            PM.MaDocGia, 
+                            PM.HoTenDocGia, 
+                            PM.MaNhanVien, 
+                            PM.NgayLap, 
+                            PM.NgayTra, 
+                            PM.SoLuongSach, 
+                            PM.TrangThai AS TrangThaiPhieuMuon, 
+                            PM.GhiChu,
+                            CTPM.MaCTPhieuMuon, 
+                            CTPM.NgayThucTe,
+                            PP.MaPhieuPhat,
+                            PP.TrangThai AS TrangThaiPhieuPhat
+                            FROM PhieuMuon PM
+                            JOIN CTPhieuMuon CTPM ON PM.MaPhieuMuon = CTPM.MaPhieuMuon
+                            LEFT JOIN PhieuPhat PP ON CTPM.MaCTPhieuMuon = PP.MaCTPhieuMuon
+                            WHERE PM.TrangThai = 0 AND PP.TrangThai = 1
+                            AND CTPM.NgayThucTe IS NOT NULL";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
+                SqlDataReader dr = cmd.ExecuteReader();
+                listPhieuMuon.Clear();
+
+                while (dr.Read())
+                {
+                    PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO
+                    {
+                        MaPhieuMuon = dr["MaPhieuMuon"].ToString(),
+                        MaCTPhieuMuon = dr["MaCTPhieuMuon"].ToString(),
+                        MaDocGia = dr["MaDocGia"].ToString(),
+                        HoTenDocGia = dr["HoTenDocGia"].ToString(),
+                        MaNhanVien = dr["MaNhanVien"].ToString(),
+                        NgayLap = dr["NgayLap"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayLap"]),
+                        NgayTra = dr["NgayTra"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTra"]),
+                        NgayTraThucTe = dr["NgayThucTe"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayThucTe"]),
+                        GhiChu = dr["GhiChu"].ToString(),
+                        SoLuongSach = Convert.ToInt32(dr["SoLuongSach"]),
+                        TrangThaiPhieuMuon = Convert.ToInt32(dr["TrangThaiPhieuMuon"]),
+                        MaPhieuPhat = dr["MaPhieuPhat"].ToString(),
+                        TrangThaiPhieuPhat = dr["TrangThaiPhieuPhat"] == DBNull.Value ? -1 : Convert.ToInt32(dr["TrangThaiPhieuPhat"]) // Trạng thái phiếu phạt có thể NULL
+                    };
+                    listPhieuMuon.Add(phieuMuonDTO);
+                }
+
+                dp.Close();
+                return listPhieuMuon;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi load danh sách phiếu mượn: " + ex.Message);
+                return null;
+            }
+        }
+
 
         public List<PhieuMuonDTO> loadDanhSachPhieuMuonVaCTPhieuMuon()
         {
@@ -116,15 +186,15 @@ namespace QuanLyThuVienDAO
                         {
                             PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO
                             {
-                                maPhieuMuon = dr["MaPhieuMuon"].ToString(),
-                                maDocGia = dr["MaDocGia"].ToString(),
-                                hoTenDocGia = dr["HoTenDocGia"].ToString(),
-                                maNhanVien = dr["MaNhanVien"].ToString(),
-                                ngayLap = dr["NgayLap"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayLap"]),
-                                ngayTra = dr["NgayTra"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTra"]),
-                                ngayTraThucTe = dr["NgayThucTe"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayThucTe"]),
-                                soLuongSach = Convert.ToInt32(dr["SoLuongSach"]),
-                                trangThai = Convert.ToInt32(dr["TrangThai"])
+                                MaPhieuMuon = dr["MaPhieuMuon"].ToString(),
+                                MaDocGia = dr["MaDocGia"].ToString(),
+                                HoTenDocGia = dr["HoTenDocGia"].ToString(),
+                                MaNhanVien = dr["MaNhanVien"].ToString(),
+                                NgayLap = dr["NgayLap"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayLap"]),
+                                NgayTra = dr["NgayTra"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayTra"]),
+                                NgayTraThucTe = dr["NgayThucTe"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(dr["NgayThucTe"]),
+                                SoLuongSach = Convert.ToInt32(dr["SoLuongSach"]),
+                                TrangThaiPhieuMuon = Convert.ToInt32(dr["TrangThai"])
                             };
 
                             listPhieuMuon.Add(phieuMuonDTO);
@@ -161,7 +231,7 @@ namespace QuanLyThuVienDAO
                 }
 
                 DateTime ngayTra;
-                if (!DateTime.TryParse(phieuMuonDTO.ngayTra.ToString(), out ngayTra) ||
+                if (!DateTime.TryParse(phieuMuonDTO.NgayTra.ToString(), out ngayTra) ||
                     ngayTra < (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue ||
                     ngayTra > (DateTime)System.Data.SqlTypes.SqlDateTime.MaxValue)
                 {
@@ -169,7 +239,7 @@ namespace QuanLyThuVienDAO
                 }
 
                 DateTime ngayLap;
-                if (!DateTime.TryParse(phieuMuonDTO.ngayLap.ToString(), out ngayLap) ||
+                if (!DateTime.TryParse(phieuMuonDTO.NgayLap.ToString(), out ngayLap) ||
                     ngayLap < (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue ||
                     ngayLap > (DateTime)System.Data.SqlTypes.SqlDateTime.MaxValue)
                 {
@@ -180,12 +250,12 @@ namespace QuanLyThuVienDAO
                                 "VALUES (@maPhieuMuon, @maDocGia, @maNhanVien, @hoTenDocGia, @ngayLap, @ngayTra, @soLuongSach, 1)";
                 SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
                 cmd.Parameters.AddWithValue("@maPhieuMuon", newMaPhieuMuon);
-                cmd.Parameters.AddWithValue("@maDocGia", phieuMuonDTO.maDocGia);
-                cmd.Parameters.AddWithValue("@maNhanVien", phieuMuonDTO.maNhanVien);
-                cmd.Parameters.AddWithValue("@hoTenDocGia", phieuMuonDTO.hoTenDocGia);
+                cmd.Parameters.AddWithValue("@maDocGia", phieuMuonDTO.MaDocGia);
+                cmd.Parameters.AddWithValue("@maNhanVien", phieuMuonDTO.MaNhanVien);
+                cmd.Parameters.AddWithValue("@hoTenDocGia", phieuMuonDTO.HoTenDocGia);
                 cmd.Parameters.AddWithValue("@ngayLap", ngayLap);
                 cmd.Parameters.AddWithValue("@ngayTra", ngayTra);
-                cmd.Parameters.AddWithValue("@soLuongSach", phieuMuonDTO.soLuongSach);
+                cmd.Parameters.AddWithValue("@soLuongSach", phieuMuonDTO.SoLuongSach);
                 int n = cmd.ExecuteNonQuery();
                 dp.Close();
 
@@ -194,10 +264,12 @@ namespace QuanLyThuVienDAO
            
           
         }
+        
         public static bool traSach(PhieuMuonDTO phieuMuonDTO)
         {
             string updateCTPhieuMuon = "UPDATE CTPhieuMuon SET NgayThucTe = @ngayThucTe, TrangThai = 0 WHERE MaPhieuMuon = @maPhieuMuon";
             string updatePhieuMuon = "UPDATE PhieuMuon SET TrangThai = 0 ,GhiChu = @ghiChu WHERE MaPhieuMuon = @maPhieuMuon";
+           
 
             try
             {
@@ -205,18 +277,19 @@ namespace QuanLyThuVienDAO
 
                 // Cập nhật CTPhieuMuon
                 SqlCommand cmdCT = new SqlCommand(updateCTPhieuMuon, dp.GetConnection());
-                cmdCT.Parameters.AddWithValue("@maPhieuMuon", phieuMuonDTO.maPhieuMuon);
-                cmdCT.Parameters.AddWithValue("@ngayThucTe", phieuMuonDTO.ngayTraThucTe);
+                cmdCT.Parameters.AddWithValue("@maPhieuMuon", phieuMuonDTO.MaPhieuMuon);
+                cmdCT.Parameters.AddWithValue("@ngayThucTe", phieuMuonDTO.NgayTraThucTe);
                 int result1 = cmdCT.ExecuteNonQuery();
 
                 // Cập nhật PhieuMuon
                 SqlCommand cmdPM = new SqlCommand(updatePhieuMuon, dp.GetConnection());
-                cmdPM.Parameters.AddWithValue("@maPhieuMuon", phieuMuonDTO.maPhieuMuon);
-                cmdPM.Parameters.AddWithValue("@ghiChu",phieuMuonDTO.ghiChu);
+                cmdPM.Parameters.AddWithValue("@maPhieuMuon", phieuMuonDTO.MaPhieuMuon);
+                cmdPM.Parameters.AddWithValue("@ghiChu",phieuMuonDTO.GhiChu);
                 int result2 = cmdPM.ExecuteNonQuery();
+                CreatePhieuPhat(new PhieuPhatDTO(), phieuMuonDTO.MaPhieuMuon, phieuMuonDTO.MaCTPhieuMuon);
 
                 // Trả về true nếu cả hai cập nhật đều thành công
-                return result1 > 0 && result2 > 0;
+                return result1 > 0 && result2 > 0 ;
             }
             catch (Exception ex)
             {
@@ -227,6 +300,41 @@ namespace QuanLyThuVienDAO
             {
                 dp.Close();
             }
+        }
+        public static bool CreatePhieuPhat(PhieuPhatDTO phieuPhatDTO, string maPhieuMuon, string maCTPhieuMuon)
+        {
+            dp.Open();
+
+            // Gọi stored procedure để sinh mã mới
+            SqlCommand getIdCmd = new SqlCommand("GetNextMaPhieuPhat", dp.GetConnection());
+            getIdCmd.CommandType = CommandType.StoredProcedure;
+
+            string newMaPhieuPhat = "";
+            using (SqlDataReader reader = getIdCmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    newMaPhieuPhat = reader.GetString(0);
+                }
+            }
+
+            // Câu lệnh INSERT đã cập nhật đúng cột
+            string insert = @"INSERT INTO PhieuPhat 
+                      (MaPhieuPhat, MaPhieuMuon, MaCTPhieuMuon, SoTien, LyDoPhat, NgayThanhToan, TrangThai)
+                      VALUES 
+                      (@maPhieuPhat, @maPhieuMuon, @maCTPhieuMuon, null, null, null, 1)";
+
+            SqlCommand cmd = new SqlCommand(insert, dp.GetConnection());
+            cmd.Parameters.AddWithValue("@maPhieuPhat", newMaPhieuPhat);
+            cmd.Parameters.AddWithValue("@maPhieuMuon", maPhieuMuon);
+            cmd.Parameters.AddWithValue("@maCTPhieuMuon", maCTPhieuMuon);
+            // kiểu DateTime
+                
+
+            int n = cmd.ExecuteNonQuery();
+            dp.Close();
+
+            return n > 0;
         }
 
         public static bool kiemTraMuon(string maDocGia)
