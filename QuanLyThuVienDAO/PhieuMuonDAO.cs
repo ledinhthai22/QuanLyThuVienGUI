@@ -122,7 +122,8 @@ namespace QuanLyThuVienDAO
                             JOIN CTPhieuMuon CTPM ON PM.MaPhieuMuon = CTPM.MaPhieuMuon
                             LEFT JOIN PhieuPhat PP ON CTPM.MaCTPhieuMuon = PP.MaCTPhieuMuon
                             WHERE PM.TrangThai = 0 AND PP.TrangThai = 1
-                            AND CTPM.NgayThucTe IS NOT NULL";
+                            AND CTPM.NgayThucTe IS NOT NULL  AND PM.GhiChu IS NOT NULL 
+                            AND PM.GhiChu <> ''";
 
             try
             {
@@ -259,7 +260,6 @@ namespace QuanLyThuVienDAO
                 int n = cmd.ExecuteNonQuery();
                 dp.Close();
 
-                // Trả về mã phiếu mượn nếu thêm thành công, nếu không thì trả về chuỗi rỗng
                 return n > 0 ? newMaPhieuMuon : "";
            
           
@@ -288,7 +288,6 @@ namespace QuanLyThuVienDAO
                 int result2 = cmdPM.ExecuteNonQuery();
                 CreatePhieuPhat(new PhieuPhatDTO(), phieuMuonDTO.MaPhieuMuon, phieuMuonDTO.MaCTPhieuMuon);
 
-                // Trả về true nếu cả hai cập nhật đều thành công
                 return result1 > 0 && result2 > 0 ;
             }
             catch (Exception ex)

@@ -127,17 +127,8 @@ namespace QuanLyThuVienDAO
                     updateCmd.Parameters.AddWithValue("@soTien", phieuPhatDTO.soTien);
                     updateCmd.Parameters.AddWithValue("@ngayThanhToan", phieuPhatDTO.ngayThanhToan);
 
-                    int rowsAffected = updateCmd.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show($"Cập nhật phiếu phạt {phieuPhatDTO.maPhieuPhat} thành công.");
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Cập nhật phiếu phạt {phieuPhatDTO.maPhieuPhat} thất bại.");
-                        return false;
-                    }
+                    int n = updateCmd.ExecuteNonQuery();
+                    return n > 0;
                 }
                 else
                 {

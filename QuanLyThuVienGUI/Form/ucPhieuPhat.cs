@@ -21,6 +21,7 @@ namespace QuanLyThuVienGUI
         PhieuPhatDTO phieuPhatDTO = new PhieuPhatDTO();
         PhieuPhatBUS phieuPhatBUS = new PhieuPhatBUS();
         List<PhieuMuonDTO> danhSachPhieuMuon = new List<PhieuMuonDTO>();
+        List<PhieuPhatDTO> danhSachPhieuPhat;
         public ucPhieuPhat(admin.frmQuanLyMuonTra parent, string maNV)
         {
             InitializeComponent();
@@ -52,6 +53,7 @@ namespace QuanLyThuVienGUI
             }
             return danhSachPhieuMuon;
         }
+       
         private void taoCotDgvPhieuMuon()
         {
             dgv_DSPhieuMuon.Columns.Clear();
@@ -203,6 +205,7 @@ namespace QuanLyThuVienGUI
 
             try
             {
+                txt_MaPhieuMuon.Text = dgv_DSPhieuMuon.Rows[e.RowIndex].Cells["MaPhieuMuon"].Value.ToString();
                 txt_HoTen.Text = dgv_DSPhieuMuon.Rows[e.RowIndex].Cells["HoTenDocGia"].Value.ToString();
                 txt_maDocGia.Text = dgv_DSPhieuMuon.Rows[e.RowIndex].Cells["MaDocGia"].Value.ToString();
                 dtp_NgayMuon.Value = DateTime.Parse(dgv_DSPhieuMuon.Rows[e.RowIndex].Cells["NgayLap"].Value.ToString());
@@ -299,6 +302,60 @@ namespace QuanLyThuVienGUI
             {
                 MessageBox.Show("Tạo phiếu phạt thất bại");
             }
+        }
+
+        private void btn_TimKiem_Click(object sender, EventArgs e)
+        {
+       
+            try
+            {
+                string keyword = txt_TimKiem.Text.Trim();
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+
+                    List<PhieuPhatDTO> danhsachtimkiem = TimKiemPhieuPhat(keyword);
+
+
+                    if (danhsachtimkiem.Any())
+                    {
+
+                        dgv_DSPhieuMuon.DataSource = null;
+                        taoCotDgvPhieuMuon();
+                        dgv_DSPhieuMuon.DataSource = danhsachtimkiem;
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy kết quả khớp với từ khóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadDSPM();
+                    }
+                    txt_TimKiem.Clear();
+
+                    dgv_DSPhieuMuon.ClearSelection();
+                }
+                else
+                {
+                    loadDSPM();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
+                loadDSPM();
+            }
+        }
+        
+        public List<PhieuPhatDTO> TimKiemPhieuPhat(string keyword)
+        {
+            var danhSach = phieuPhatBUS.loadDSPPAll();
+            keyword = keyword.ToLower();
+
+            return danhSach.Where(pp =>
+                (!string.IsNullOrEmpty(pp.maPhieuPhat) && pp.maPhieuPhat.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(pp.hoTenDocGia) && pp.hoTenDocGia.ToLower().Contains(keyword)) ||
+                (!string.IsNullOrEmpty(pp.maPhieuMuon) && pp.maPhieuMuon.ToLower().Contains(keyword))
+            ).ToList();
         }
     }
 }

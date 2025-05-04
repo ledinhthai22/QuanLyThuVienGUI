@@ -116,6 +116,7 @@ namespace QuanLyThuVienGUI
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message);
+                loadDSSach();
             }
         }
         public List<SachDTO> TimKiemSach(string keyword)

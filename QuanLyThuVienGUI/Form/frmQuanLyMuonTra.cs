@@ -161,6 +161,69 @@ namespace QuanLyThuVienGUI.admin
                 MessageBox.Show("Lỗi khi tải danh sách phiếu phạt: " + ex.Message);
             }
         }
+        private void taoCotDgvPhieuMuonDaTra()
+        {
+            dgv_LoadDuLieu.Columns.Clear();
+            dgv_LoadDuLieu.AutoGenerateColumns = false;
+
+            dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "MaPhieuMuon",
+                DataPropertyName = "MaPhieuMuon",
+                HeaderText = "Mã phiếu mượn"
+            });
+
+            //dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "MaNhanVien",
+            //    DataPropertyName = "MaNhanVien",
+            //    HeaderText = "Mã nhân viên"
+            //});
+            dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "MaDocGia",
+                DataPropertyName = "MaDocGia",
+                HeaderText = "Mã độc giả"
+            });
+            dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "HoTenDocGia",
+                DataPropertyName = "HoTenDocGia",
+                HeaderText = "Họ tên độc giả"
+            });
+            dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "NgayLap",
+                DataPropertyName = "NgayLap",
+                HeaderText = "Ngày Lập"
+            });
+
+            dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "NgayTra",
+                DataPropertyName = "NgayTra",
+                HeaderText = "Ngày trả"
+            });
+            dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "ngayTraThucTe",
+                DataPropertyName = "ngayTraThucTe",
+                HeaderText = "Ngày trả thực tế"
+            });
+            dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "SoLuongSach",
+                DataPropertyName = "SoLuongSach",
+                HeaderText = "Số lượng sách"
+            });
+
+            dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "TrangThai",
+                DataPropertyName = "TrangThai",
+                HeaderText = "Trạng thái"
+            });
+        }
         private void taoCotDgvPhieuMuon()
         {
             dgv_LoadDuLieu.Columns.Clear();
@@ -204,7 +267,12 @@ namespace QuanLyThuVienGUI.admin
                 DataPropertyName = "NgayTra",
                 HeaderText = "Ngày trả"
             });
-
+            //dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "ngayTraThucTe",
+            //    DataPropertyName = "ngayTraThucTe",
+            //    HeaderText = "Ngày trả thực tế"
+            //});
             dgv_LoadDuLieu.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "SoLuongSach",
@@ -298,7 +366,7 @@ namespace QuanLyThuVienGUI.admin
             }
             else if(luaChon == "DS Phiếu mượn đã Trả")
             {
-                taoCotDgvPhieuMuon();
+                taoCotDgvPhieuMuonDaTra();
                 loadDSPMDaTra();
             }
             else if (luaChon == "DS phiếu phạt ")
