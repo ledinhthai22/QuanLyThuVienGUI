@@ -142,8 +142,6 @@ namespace QuanLyThuVienGUI
                     danhSachCTPhieuMuon = dsCTPhieuMuon;
                     dgv_CTphieuMuon.DataSource = null;
                     dgv_CTphieuMuon.DataSource = danhSachCTPhieuMuon;
-
-
                 }
             }
             catch (Exception ex)

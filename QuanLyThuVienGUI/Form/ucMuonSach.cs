@@ -110,38 +110,7 @@ namespace QuanLyThuVienGUI
                 DataPropertyName = "HoTen",
                 HeaderText = "Họ tên"
             });
-            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "NgaySinh",
-            //    DataPropertyName = "NgaySinh",
-            //    HeaderText = "Ngày sinh"
-            //});
-            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "GioiTinh",
-            //    DataPropertyName = "GioiTinh",
-            //    HeaderText = "Giới tính"
-            //});
-            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "DiaChi",
-            //    DataPropertyName = "DiaChi",
-            //    HeaderText = "Địa chỉ"
-            //});
-
-            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "SoDienThoai",
-            //    DataPropertyName = "SoDienThoai",
-            //    HeaderText = "Số điện thoại"
-            //});
-
-            //dgv_DSDG.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "Email",
-            //    DataPropertyName = "Email",
-            //    HeaderText = "Email"
-            //});
+           
         }
         private void taoCotDgvSach()
         {
@@ -285,7 +254,7 @@ namespace QuanLyThuVienGUI
                 dgv_DSSachMuon.CurrentCell = null;
             }));
             dtp_NgayMuon.MinDate = DateTime.Today;
-            dtp_NgayTra.MinDate = DateTime.Today.AddDays(1); // Ngày trả ít nhất sau ngày mượn 1 ngày
+            dtp_NgayTra.MinDate = DateTime.Today.AddDays(1); 
             dtp_NgayTra.MaxDate = DateTime.Today.AddDays(14);
         }
 
@@ -304,7 +273,7 @@ namespace QuanLyThuVienGUI
                 SachDTO sachDuocChon = danhSachSach.FirstOrDefault(s => s.maSach == maSach);
                 if (sachDuocChon != null)
                 {
-                    // Đếm số lượng sách này đã chọn trong danh sách mượn
+                    
                     int soLuongDaChon = danhSachSachMuon.Count(s => s.maSach == maSach);
 
                     if (soLuongDaChon >= sachDuocChon.soLuong)
@@ -343,17 +312,17 @@ namespace QuanLyThuVienGUI
             {
                 string maSach = dgv_DSSachMuon.CurrentRow.Cells["maSach"].Value.ToString();
 
-                // Tìm sách cần xóa trong danh sách mượn
+               
                 SachDTO sachCanXoa = danhSachSachMuon.FirstOrDefault(s => s.maSach == maSach);
                 if (sachCanXoa != null)
                 {
                     danhSachSachMuon.Remove(sachCanXoa);
 
-                    // Cập nhật lại DataSource
+                 
                     dgv_DSSachMuon.DataSource = null;
                     dgv_DSSachMuon.DataSource = danhSachSachMuon;
 
-                    // Cập nhật số lượng sách mượn
+                  
                     txt_SoLuongSach.Text = danhSachSachMuon.Count.ToString();
                 }
             }

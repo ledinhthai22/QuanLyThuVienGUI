@@ -8,7 +8,10 @@ namespace QuanLyThuVienDTO
 {
     public class ThongKeDTO
     {
-        public DateTime NgayMuon { get; set; }
+        public string TenSach { get; set; }
+        public int SoLuotMuon { get; set; }
         public int SoNguoiMuon { get; set; }
+        public int SoLuong { get; set; }
+
     }
 }

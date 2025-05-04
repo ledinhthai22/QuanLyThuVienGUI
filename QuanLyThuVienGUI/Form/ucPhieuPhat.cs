@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyThuVienBUS;
+using QuanLyThuVienDTO;
 
 namespace QuanLyThuVienGUI
 {
@@ -14,7 +16,11 @@ namespace QuanLyThuVienGUI
     {
         private admin.frmQuanLyMuonTra parentForm;
         private string maNV;
-       
+        PhieuMuonDTO phieuMuonDTO = new PhieuMuonDTO();
+        PhieuMuonBUS phieuMuonBUS = new PhieuMuonBUS();
+        PhieuPhatDTO phieuPhatDTO = new PhieuPhatDTO();
+        PhieuPhatBUS phieuPhatBUS = new PhieuPhatBUS();
+        List<PhieuMuonDTO> danhSachPhieuMuon = new List<PhieuMuonDTO>();
         public ucPhieuPhat(admin.frmQuanLyMuonTra parent, string maNV)
         {
             InitializeComponent();
@@ -24,13 +30,12 @@ namespace QuanLyThuVienGUI
 
         private void ucPhieuPhat_Load(object sender, EventArgs e)
         {
-
+           
+            
+            
+            
         }
-
-
-        private void txt_Thoat_Click(object sender, EventArgs e)
-        {
-            parentForm.ShowDefaultView();
-        }
+       
+       
     }
 }

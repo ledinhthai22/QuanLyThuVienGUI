@@ -15,7 +15,7 @@ namespace QuanLyThuVienDAO
         private List<PhieuPhatDTO> listPhieuPhat= new List<PhieuPhatDTO>();
         public List<PhieuPhatDTO> loadDSPPAll()
         {
-            string select = "SELECT MaPhieuPhat, pm.MaPhieuMuon, MaCTPhieuMuon, dg.HoTen, SoTien, LyDoPhat, NgayThanhToan, pp.TrangThai " +
+            string select = "SELECT MaPhieuPhat, pm.MaPhieuMuon, MaCTPhieuMuon,dg.MaDocGia, dg.HoTen, SoTien, LyDoPhat, NgayThanhToan, pp.TrangThai " +
                 "FROM PhieuPhat pp " +
                 "JOIN PhieuMuon pm ON pp.MaPhieuMuon = pm.MaPhieuMuon " +
                 "JOIN DocGia dg ON pm.MaDocGia = dg.MaDocGia";
@@ -32,6 +32,7 @@ namespace QuanLyThuVienDAO
                     phieuPhatDTO.maPhieuPhat = dr["MaPhieuPhat"].ToString();
                     phieuPhatDTO.maPhieuMuon = dr["MaPhieuMuon"].ToString();
                     phieuPhatDTO.mactPhieuMuon = dr["MaCTPhieuMuon"].ToString();
+                    phieuPhatDTO.maDocGia = dr["MaDocGia"].ToString();
                     phieuPhatDTO.hoTenDocGia = dr["HoTen"].ToString();
                     phieuPhatDTO.soTien = Convert.ToInt32(dr["SoTien"]);
                     phieuPhatDTO.lyDoPhat = dr["LyDoPhat"].ToString();

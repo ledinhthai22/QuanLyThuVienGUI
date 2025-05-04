@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 using QuanLyThuVienDTO;
 
 namespace QuanLyThuVienDAO
@@ -11,28 +10,63 @@ namespace QuanLyThuVienDAO
     public class ThongKeDAO
     {
         DataProvider dp = new DataProvider();
-        public List<ThongKeDTO> thongKeNguoiMuonTheoNgay(DateTime ngaybat,DateTime ngayketthuc)
+
+        public List<ThongKeDTO> ThongKeToanBo(DateTime tuNgay, DateTime denNgay)
         {
-            List<ThongKeDTO> danhSach = new List<ThongKeDTO>();
-            string query = "SELECT CONVERT(DATE, NgayLap) AS Ngay, COUNT(DISTINCT MaDocGia) AS SoNguoiMuon " +
-                           "FROM PhieuMuon GROUP BY CONVERT(DATE, NgayLap) ORDER BY Ngay";
+            List<ThongKeDTO> ds = new List<ThongKeDTO>();
+            string query = @"
+        SELECT 
+            s.TenSach, 
+            COUNT(ct.MaCTPhieuMuon) AS SoLuotMuon, 
+            s.SoLuong, 
+            (SELECT COUNT(DISTINCT pm.MaDocGia) 
+             FROM PhieuMuon pm 
+             WHERE pm.NgayLap BETWEEN @tuNgay AND @denNgay) AS SoNguoiMuon
+        FROM 
+            CTPhieuMuon ct
+        JOIN 
+            Sach s ON s.MaSach = ct.MaSach
+        WHERE 
+            ct.NgayMuon BETWEEN @tuNgay AND @denNgay
+        GROUP BY 
+            s.TenSach, s.SoLuong";
 
-            SqlCommand cmd = new SqlCommand(query, dp.GetConnection());
-            dp.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                ThongKeDTO tk = new ThongKeDTO()
-                {
-                    NgayMuon = reader.GetDateTime(0),
-                    SoNguoiMuon = reader.GetInt32(1)
-                };
-                danhSach.Add(tk);
+                
+                    dp.Open(); // QUAN TRỌNG: mở kết nối tại đây
+                    using (SqlCommand cmd = new SqlCommand(query, dp.GetConnection()))
+                    {
+                        dp.Open();
+                        cmd.Parameters.Add("@tuNgay", SqlDbType.DateTime).Value = tuNgay;
+                        cmd.Parameters.Add("@denNgay", SqlDbType.DateTime).Value = denNgay;
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ThongKeDTO tk = new ThongKeDTO
+                                {
+                                    TenSach = reader["TenSach"].ToString(),
+                                    SoLuotMuon = Convert.ToInt32(reader["SoLuotMuon"]),
+                                    SoLuong = Convert.ToInt32(reader["SoLuong"]),
+                                    SoNguoiMuon = Convert.ToInt32(reader["SoNguoiMuon"])
+                                };
+                                ds.Add(tk);
+                            }
+                        }
+                    }
+                    dp.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi thống kê dữ liệu: " + ex.Message);
             }
 
-            dp.Close();
-            return danhSach;
+            return ds;
         }
+
+
     }
 }

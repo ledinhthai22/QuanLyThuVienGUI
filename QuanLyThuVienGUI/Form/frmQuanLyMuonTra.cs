@@ -68,6 +68,16 @@ namespace QuanLyThuVienGUI.admin
             pn_Thongtin.Controls.Add(frmMuonTra);
             frmMuonTra.Show(); 
         }
+        private void btn_CapNhatPhieuMuon_Click(object sender, EventArgs e)
+        {
+            getDuLieu();
+            pn_Thongtin.Controls.Clear();
+            ucCapNhatPhieuMuon ucCapNhatPhieu = new ucCapNhatPhieuMuon(this, manv,phieuMuonDTO);
+            ucCapNhatPhieu.Dock = DockStyle.Fill;
+            pn_Thongtin.Controls.Add(ucCapNhatPhieu);
+
+        }
+       
         private List<PhieuMuonDTO> loadDSPMDangMuon()
         {
             try
@@ -297,7 +307,36 @@ namespace QuanLyThuVienGUI.admin
                 loadDSPP();
             }
         }
+        private void getDuLieu()
+        {
+            string luaChon = cbo_LocTheoDanhSach.SelectedItem.ToString();
+            if (luaChon == "DS Phiếu mượn đang mượn")
+            {
+                string maPhieuMuon = dgv_LoadDuLieu.CurrentRow.Cells["MaPhieuMuon"].Value.ToString();
+                string maDocGia = dgv_LoadDuLieu.CurrentRow.Cells["MaDocGia"].Value.ToString();
+                string hoTenDocGia = dgv_LoadDuLieu.CurrentRow.Cells["HoTenDocGia"].Value.ToString();
+                DateTime ngayLap = Convert.ToDateTime(dgv_LoadDuLieu.CurrentRow.Cells["NgayLap"].Value);
+                DateTime ngayTra = Convert.ToDateTime(dgv_LoadDuLieu.CurrentRow.Cells["NgayTra"].Value);
+                int soLuongSach = Convert.ToInt32(dgv_LoadDuLieu.CurrentRow.Cells["SoLuongSach"].Value);
+                int trangThai = Convert.ToInt32(dgv_LoadDuLieu.CurrentRow.Cells["TrangThai"].Value);
+                phieuMuonDTO.maPhieuMuon = maPhieuMuon;
+                phieuMuonDTO.maDocGia = maDocGia;
+                phieuMuonDTO.hoTenDocGia = hoTenDocGia;
+                phieuMuonDTO.ngayLap = ngayLap;
+                phieuMuonDTO.ngayTra = ngayTra;
+                phieuMuonDTO.soLuongSach = soLuongSach;
+                phieuMuonDTO.trangThai = trangThai;
 
+            }
+            else if (luaChon == "DS Phiếu mượn đã Trả")
+            {
+                
+            }
+            else if (luaChon == "DS phiếu phạt ")
+            {
+                
+            }
+        }
         private void dgv_LoadDuLieu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             string luaChon = cbo_LocTheoDanhSach.SelectedItem.ToString();
@@ -473,8 +512,9 @@ namespace QuanLyThuVienGUI.admin
                 loadDSPP();
             }
         }
-
-        
+      
+    
+       
     }
 }
 
